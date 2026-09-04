@@ -27,6 +27,7 @@ export const Route = createFileRoute("/")({
 });
 
 const social = [
+  { label: "Mail", href: "mailto:luca@scalvinoni.com" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/luca-scalvinoni/" },
   { label: "Dribbble", href: "https://dribbble.com/Scalvinoni" },
 ];
@@ -110,8 +111,9 @@ function Index() {
           <a
             key={item.label}
             href={item.href}
-            target="_blank"
-            rel="noreferrer"
+            // ponytail: il mailto non apre una scheda nuova, resterebbe vuota
+            target={item.href.startsWith("http") ? "_blank" : undefined}
+            rel={item.href.startsWith("http") ? "noreferrer" : undefined}
             className="transition-colors hover:text-foreground"
           >
             {item.label}
