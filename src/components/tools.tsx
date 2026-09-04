@@ -85,20 +85,49 @@ function CopyButton({ text, label }: { text: string; label: string }) {
 
 /* ---------- gli strumenti ---------- */
 
+type Side = "heads" | "tails";
+
+const HISTORY = 12;
+
 export function CoinFlip() {
   const t = useT();
-  const [side, setSide] = useState<"heads" | "tails" | null>(null);
+  // La cronologia, non il solo risultato: due "Testa" di fila sono indistinguibili
+  // da un click andato perso se in pagina cambia soltanto la parola.
+  const [flips, setFlips] = useState<Side[]>([]);
+  const [latest, ...previous] = flips;
+  const name = (side: Side) => t(side === "heads" ? tx.heads : tx.tails);
 
   return (
     <>
       <div className="flex items-baseline gap-x-4">
-        <Action onClick={() => setSide(Math.random() < 0.5 ? "heads" : "tails")}>
+        <Action
+          onClick={() => {
+            const side: Side = Math.random() < 0.5 ? "heads" : "tails";
+            setFlips((history) => [side, ...history].slice(0, HISTORY));
+          }}
+        >
           {t(tx.flip)}
         </Action>
-        <span aria-live="polite" className="text-foreground">
-          {side ? t(side === "heads" ? tx.heads : tx.tails) : null}
-        </span>
+        {latest ? (
+          // key sul numero di lanci: React rimonta lo span a ogni lancio, così
+          // l'animazione riparte anche quando esce due volte lo stesso lato.
+          <span key={flips.length} className="animate-in fade-in text-foreground">
+            {name(latest)}
+          </span>
+        ) : null}
       </div>
+
+      <p aria-live="polite" className="sr-only">
+        {latest ? `${name(latest)}, ${flips.length}` : ""}
+      </p>
+
+      {previous.length ? (
+        <p className="mt-2 flex flex-wrap gap-x-2 text-[0.85rem] text-muted-foreground">
+          {previous.map((side, i) => (
+            <span key={flips.length - 1 - i}>{name(side)}</span>
+          ))}
+        </p>
+      ) : null}
     </>
   );
 }
