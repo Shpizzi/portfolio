@@ -2,12 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { BackHome, PageShell, SectionLabel } from "@/components/PageShell";
 import { tools } from "@/data/site";
-import { ui, useT, type Localized } from "@/i18n";
-
-const intro: Localized<string> = {
-  it: "Cose che cercavo su Google ogni volta. Girano nel browser, non mandano niente da nessuna parte.",
-  en: "Things I used to google every time. They run in the browser and send nothing anywhere.",
-};
+import { ui, useT } from "@/i18n";
 
 export const Route = createFileRoute("/tools/")({
   head: () => ({
@@ -39,7 +34,6 @@ function ToolsIndex() {
       <h1 className="sr-only">{t(ui.toolbox)}</h1>
       <section className="mt-16">
         <SectionLabel>{t(ui.toolbox)}</SectionLabel>
-        <p className="mb-10 text-muted-foreground">{t(intro)}</p>
         <ul className="space-y-3">
           {tools.map((tool) => (
             <li key={tool.slug}>
