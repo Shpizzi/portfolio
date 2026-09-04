@@ -26,6 +26,11 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+// Un recap, non un elenco: sulla home entrano al massimo tre voci, e quante
+// davvero ce ne stiano lo decide l'altezza dello schermo. Media query e non JS,
+// così il server rende già il numero giusto e la pagina non scrolla.
+const RECAP = ["", "[@media(max-height:949px)]:hidden", "[@media(max-height:1199px)]:hidden"];
+
 const social = [
   { label: "Mail", href: "mailto:luca@scalvinoni.com" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/luca-scalvinoni/" },
@@ -107,7 +112,7 @@ function Index() {
             // ponytail: il mailto non apre una scheda nuova, resterebbe vuota
             target={item.href.startsWith("http") ? "_blank" : undefined}
             rel={item.href.startsWith("http") ? "noreferrer" : undefined}
-            className="transition-colors hover:text-foreground"
+            className="link-nav"
           >
             {item.label}
           </a>
@@ -117,35 +122,35 @@ function Index() {
           href="https://www.geoguessr.com/user/59a8651656e5a24cf0c50fb8"
           target="_blank"
           rel="noreferrer"
-          className="ml-4 transition-colors hover:text-foreground"
+          className="ml-4 link-nav"
         >
           GeoGuessr
         </a>
       </nav>
 
       <nav className="mt-5 flex gap-x-6 text-[0.95rem] text-muted-foreground">
-        <Link to="/projects" className="transition-colors hover:text-foreground">
+        <Link to="/projects" className="link-nav">
           {t(ui.projects)}
         </Link>
-        <Link to="/tools" className="transition-colors hover:text-foreground">
+        <Link to="/tools" className="link-nav">
           {t(ui.toolbox)}
         </Link>
-        <Link to="/updates" className="transition-colors hover:text-foreground">
+        <Link to="/updates" className="link-nav">
           {t(ui.path)}
         </Link>
       </nav>
 
-      <section className="mt-20">
-        <SectionLabel>{t(ui.recentPath)}</SectionLabel>
+      <section className="mt-20 [@media(max-height:949px)]:mt-12">
+        <SectionLabel>{t(ui.lately)}</SectionLabel>
         <ul className="space-y-5">
-          {updates.map((item) => (
-            <li key={item.title.it}>
+          {updates.slice(0, RECAP.length).map((item, i) => (
+            <li key={item.title.it} className={RECAP[i]}>
               {item.href ? (
                 <a
                   href={item.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="link-quiet"
+                  className="group link-quiet"
                 >
                   {t(item.title)}
                   <ExternalArrow />
@@ -161,7 +166,7 @@ function Index() {
         </ul>
         <Link
           to="/projects"
-          className="mt-8 inline-block text-[0.95rem] text-muted-foreground transition-colors hover:text-foreground"
+          className="link-nav mt-8 inline-block text-[0.95rem] text-muted-foreground"
         >
           {t(ui.seeProjects)}
         </Link>

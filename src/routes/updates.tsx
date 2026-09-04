@@ -39,7 +39,7 @@ function Updates() {
           {updates.map((item) => (
             <li key={item.title.it}>
               {item.href ? (
-                <a href={item.href} target="_blank" rel="noreferrer" className="link-quiet">
+                <a href={item.href} target="_blank" rel="noreferrer" className="group link-quiet">
                   {t(item.title)}
                   <ExternalArrow />
                 </a>

@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useRef, useState, type ReactNode } from "react";
 
 import { useT, type Localized } from "@/i18n";
 import { contrastRatio, loremParagraphs, parseHexList, randomInt, wcagVerdict } from "@/lib/tools";
@@ -48,10 +48,13 @@ function Action({ onClick, children }: { onClick: () => void; children: ReactNod
 }
 
 const fieldClass =
-  "border-b border-border bg-transparent py-1 text-foreground outline-none transition-colors focus:border-foreground";
+  "border-b border-border bg-transparent py-1 text-foreground outline-none transition-colors focus:border-brand";
 
 function useCopy() {
   const [state, setState] = useState<"" | "ok" | "ko">("");
+  // Senza azzerarlo, due copie ravvicinate fanno sparire la conferma
+  // al timer della prima invece che 1600ms dopo il secondo click.
+  const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   const copy = async (text: string) => {
     try {
@@ -61,7 +64,8 @@ function useCopy() {
       // Succede fuori da HTTPS o se il browser nega il permesso.
       setState("ko");
     }
-    setTimeout(() => setState(""), 1600);
+    clearTimeout(timer.current);
+    timer.current = setTimeout(() => setState(""), 1600);
   };
 
   return { copy, state };
@@ -143,8 +147,11 @@ export function RandomNumber() {
       <div className="flex flex-wrap items-baseline gap-x-3 gap-y-2">
         <label className="text-muted-foreground">
           {t(tx.from)}{" "}
+          {/* Su iOS type="number" da solo apre la tastiera con la fila di simboli:
+              inputMode porta su il tastierino a dieci tasti. */}
           <input
             type="number"
+            inputMode="numeric"
             value={min}
             onChange={(e) => setMin(e.target.value)}
             className={`${fieldClass} w-16 tabular-nums`}
@@ -154,6 +161,7 @@ export function RandomNumber() {
           {t(tx.to)}{" "}
           <input
             type="number"
+            inputMode="numeric"
             value={max}
             onChange={(e) => setMax(e.target.value)}
             className={`${fieldClass} w-20 tabular-nums`}
@@ -302,6 +310,7 @@ export function Lorem() {
         <label className="text-muted-foreground">
           <input
             type="number"
+            inputMode="numeric"
             min={1}
             max={20}
             value={count}

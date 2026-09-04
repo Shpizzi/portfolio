@@ -1,7 +1,7 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound } from "@tanstack/react-router";
 import type { ComponentType } from "react";
 
-import { PageShell } from "@/components/PageShell";
+import { BackLink, PageShell } from "@/components/PageShell";
 import { CharacterCount, CoinFlip, Contrast, Lorem, RandomNumber } from "@/components/tools";
 // `summary` non compare più in pagina: sopravvive solo come meta description.
 import { tools, type ToolItem } from "@/data/site";
@@ -52,9 +52,7 @@ function ToolNotFound() {
   const t = useT();
   return (
     <PageShell>
-      <Link to="/tools" className="link-quiet text-[0.95rem]">
-        {t(ui.toolbox)}
-      </Link>
+      <BackLink to="/tools">{t(ui.toolbox)}</BackLink>
       <h1 className="mt-16 text-[1.05rem]">{t(ui.toolNotFound)}</h1>
       <p className="mt-3 text-muted-foreground">{t(ui.toolNotFoundBody)}</p>
     </PageShell>
@@ -71,9 +69,7 @@ function ToolDetail() {
 
   return (
     <PageShell>
-      <Link to="/tools" className="link-quiet text-[0.95rem]">
-        {t(ui.toolbox)}
-      </Link>
+      <BackLink to="/tools">{t(ui.toolbox)}</BackLink>
 
       <article className="mt-16">
         <h1 className="text-[1.05rem]">{t(tool.label)}</h1>

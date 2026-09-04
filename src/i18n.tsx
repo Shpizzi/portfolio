@@ -68,7 +68,7 @@ export const ui = {
   projects: { it: "Progetti", en: "Projects" },
   toolbox: { it: "Strumenti", en: "Tools" },
   path: { it: "Percorso", en: "Journey" },
-  recentPath: { it: "Percorso recente", en: "Recent journey" },
+  lately: { it: "Ultimamente", en: "Lately" },
   seeProjects: { it: "vedi i progetti", en: "see the projects" },
   tools: { it: "Strumenti e tecnologie", en: "Tools and technologies" },
   notFound: { it: "Progetto non trovato", en: "Project not found" },

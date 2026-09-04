@@ -46,6 +46,7 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
+  --color-brand: var(--brand);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -83,6 +84,7 @@
   --border: oklch(0.92 0 0);
   --input: oklch(0.92 0 0);
   --ring: oklch(0.7 0 0);
+  --brand: oklch(0.455 0.167 269);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -119,6 +121,7 @@
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.551 0.027 264.364);
+  --brand: oklch(0.72 0.14 269);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -156,6 +159,20 @@
     letter-spacing: -0.005em;
   }
 
+  /* La selezione è l'altro momento in cui l'utente "tocca" la pagina: stesso blu.
+     Pieno e non trasparente, così anche il testo muted resta leggibile sopra. */
+  ::selection {
+    background-color: var(--color-brand);
+    color: var(--color-background);
+  }
+
+  /* L'anello di sistema non parla la lingua del sito. Questo sì, ed è l'unico
+     posto fisso in cui compare l'accento: uno stato, non una decorazione. */
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+  }
+
   /* Le frecce di incremento native stonano con il resto: il numero si scrive. */
   input[type="number"] {
     appearance: textfield;
@@ -189,8 +206,58 @@
   text-underline-offset: 3px;
   transition: text-decoration-color 150ms ease;
 
-  &:hover {
+  /* :active perché su touch l'hover non esiste e un tap resterebbe senza risposta. */
+  &:hover,
+  &:active {
     text-decoration-color: var(--color-foreground);
+  }
+}
+
+/* L'aria verticale è tanta di proposito, ma su uno schermo basso è proprio lei a
+   far scrollare la home: si riduce con l'altezza della finestra, non con la
+   larghezza. Sui telefoni resta com'era, tanto lì la pagina scorre comunque. */
+@utility page-pad {
+  padding-block: 6rem;
+
+  @media (min-width: 768px) {
+    padding-block: 3rem;
+
+    @media (min-height: 950px) {
+      padding-block: 4rem;
+    }
+
+    @media (min-height: 1200px) {
+      padding-block: 10rem;
+    }
+  }
+}
+
+/* Stesso gesto dei link nel testo — sottolineatura, stesso offset, stessi 150ms —
+   ma senza traccia a riposo: una lista di link non ha bisogno di dichiararsi tale. */
+@utility link-nav {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  transition:
+    text-decoration-color 150ms ease,
+    color 150ms ease;
+
+  &:hover,
+  &:active {
+    color: var(--color-foreground);
+    text-decoration-color: currentColor;
+  }
+}
+
+/* Chi chiede meno movimento riceve gli stessi stati, senza il tragitto. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 

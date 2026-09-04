@@ -1,6 +1,6 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound } from "@tanstack/react-router";
 
-import { PageShell, SectionLabel } from "@/components/PageShell";
+import { BackLink, PageShell, SectionLabel } from "@/components/PageShell";
 import { visibleProjects, type ProjectItem } from "@/data/site";
 import { ui, useT } from "@/i18n";
 
@@ -46,9 +46,7 @@ function ProjectNotFound() {
   const t = useT();
   return (
     <PageShell>
-      <Link to="/projects" className="link-quiet text-[0.95rem]">
-        {t(ui.projects)}
-      </Link>
+      <BackLink to="/projects">{t(ui.projects)}</BackLink>
       <h1 className="mt-16 text-[1.05rem]">{t(ui.notFound)}</h1>
       <p className="mt-3 text-muted-foreground">{t(ui.notFoundBody)}</p>
     </PageShell>
@@ -63,9 +61,7 @@ function ProjectDetail() {
 
   return (
     <PageShell>
-      <Link to="/projects" className="link-quiet text-[0.95rem]">
-        {t(ui.projects)}
-      </Link>
+      <BackLink to="/projects">{t(ui.projects)}</BackLink>
 
       <article className="mt-16">
         <h1 className="text-[1.05rem]">{project.title}</h1>
