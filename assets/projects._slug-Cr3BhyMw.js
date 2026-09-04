@@ -1,0 +1,1 @@
+import{t as e}from"./projects._slug-ClUS1oTe.js";export{e as notFoundComponent};
