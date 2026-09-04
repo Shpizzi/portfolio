@@ -34,3 +34,6 @@ dist-ssr
 # build statica pronta per il deploy
 public-dist
 .site-url
+
+# tarball di build
+production-build.tar.gz
