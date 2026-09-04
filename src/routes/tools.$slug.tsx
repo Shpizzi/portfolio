@@ -2,14 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import type { ComponentType } from "react";
 
 import { PageShell } from "@/components/PageShell";
-import {
-  CharacterCount,
-  CoinFlip,
-  Contrast,
-  Lorem,
-  RandomNumber,
-  Swatches,
-} from "@/components/tools";
+import { CharacterCount, CoinFlip, Contrast, Lorem, RandomNumber } from "@/components/tools";
 // `summary` non compare più in pagina: sopravvive solo come meta description.
 import { tools, type ToolItem } from "@/data/site";
 import { ui, useT } from "@/i18n";
@@ -22,7 +15,6 @@ const components: Record<string, ComponentType> = {
   "character-count": CharacterCount,
   "contrast-checker": Contrast,
   "lorem-ipsum": Lorem,
-  "figma-swatches": Swatches,
 };
 
 export const Route = createFileRoute("/tools/$slug")({

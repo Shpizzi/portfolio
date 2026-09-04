@@ -354,14 +354,6 @@ export const tools: ToolItem[] = [
       en: "Filler paragraphs to copy.",
     },
   },
-  {
-    slug: "figma-swatches",
-    label: { it: "Swatches per Figma", en: "Figma swatches" },
-    summary: {
-      it: "Incolla colori in qualsiasi formato: copi un SVG che in Figma diventa un rettangolo per colore.",
-      en: "Paste colours in any format: you copy an SVG that becomes one rectangle per colour in Figma.",
-    },
-  },
 ];
 
 export type UpdateItem = {

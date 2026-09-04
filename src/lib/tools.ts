@@ -54,18 +54,6 @@ export function wcagVerdict(ratio: number): WcagVerdict {
   };
 }
 
-/** SVG di quadrati affiancati: incollato in Figma diventa un rettangolo per colore. */
-export function swatchesSvg(colors: string[], size = 88, gap = 8): string {
-  const width = colors.length * size + Math.max(0, colors.length - 1) * gap;
-  const rects = colors
-    .map(
-      (c, i) =>
-        `<rect x="${i * (size + gap)}" y="0" width="${size}" height="${size}" fill="${c}"/>`,
-    )
-    .join("");
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${size}" viewBox="0 0 ${width} ${size}">${rects}</svg>`;
-}
-
 const LOREM =
   `lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut
    labore et dolore magna aliqua enim ad minim veniam quis nostrud exercitation ullamco laboris

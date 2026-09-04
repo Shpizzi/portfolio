@@ -1,14 +1,7 @@
 import { useState, type ReactNode } from "react";
 
 import { useT, type Localized } from "@/i18n";
-import {
-  contrastRatio,
-  loremParagraphs,
-  parseHexList,
-  randomInt,
-  swatchesSvg,
-  wcagVerdict,
-} from "@/lib/tools";
+import { contrastRatio, loremParagraphs, parseHexList, randomInt, wcagVerdict } from "@/lib/tools";
 
 // Un componente per strumento. La pagina che li ospita è src/routes/tools.$slug.tsx,
 // l'elenco e gli slug stanno in src/data/site.ts.
@@ -39,7 +32,6 @@ const tx = {
   },
   paragraphs: { it: "paragrafi", en: "paragraphs" },
   generate: { it: "genera", en: "generate" },
-  copySvg: { it: "copia SVG", en: "copy SVG" },
   copy: { it: "copia", en: "copy" },
   copied: { it: "copiato", en: "copied" },
   copyFailed: { it: "copia non riuscita", en: "copy failed" },
@@ -189,6 +181,56 @@ export function CharacterCount() {
   );
 }
 
+/**
+ * Selettore più campo di testo, tenuti in sincrono. Il testo ha uno stato suo
+ * perché mentre si scrive passa da valori incompleti ("#1a") che non sono colori:
+ * il colore vero si aggiorna solo quando quello che c'è scritto è leggibile.
+ */
+function ColorField({
+  label,
+  value,
+  onChange,
+}: {
+  label: string;
+  value: string;
+  onChange: (hex: string) => void;
+}) {
+  const [draft, setDraft] = useState(value);
+
+  const set = (hex: string) => {
+    setDraft(hex);
+    onChange(hex);
+  };
+
+  return (
+    <label className="flex items-center gap-x-2 text-muted-foreground">
+      <input
+        type="color"
+        value={value}
+        onChange={(e) => set(e.target.value)}
+        aria-label={label}
+        className="h-6 w-6 shrink-0 cursor-pointer rounded-sm border border-border bg-transparent"
+      />
+      <input
+        type="text"
+        value={draft}
+        onChange={(e) => {
+          setDraft(e.target.value);
+          const parsed = parseHexList(e.target.value);
+          if (parsed.length === 1) onChange(parsed[0]!);
+        }}
+        // Uscendo dal campo si torna alla forma normalizzata: "1a1a1a" → "#1a1a1a".
+        onBlur={() => setDraft(value)}
+        onFocus={(e) => e.target.select()}
+        spellCheck={false}
+        aria-label={label}
+        placeholder="#000000"
+        className={`${fieldClass} w-24 tabular-nums placeholder:text-muted-foreground`}
+      />
+    </label>
+  );
+}
+
 export function Contrast() {
   const t = useT();
   const [fg, setFg] = useState("#767676");
@@ -198,22 +240,9 @@ export function Contrast() {
 
   return (
     <>
-      <div className="flex flex-wrap gap-x-5 gap-y-2">
-        {[
-          { label: t(tx.text), value: fg, set: setFg },
-          { label: t(tx.background), value: bg, set: setBg },
-        ].map((input) => (
-          <label key={input.label} className="flex items-center gap-x-2 text-muted-foreground">
-            <input
-              type="color"
-              value={input.value}
-              onChange={(e) => input.set(e.target.value)}
-              aria-label={input.label}
-              className="h-6 w-6 cursor-pointer rounded-sm border border-border bg-transparent"
-            />
-            <span className="tabular-nums">{input.value}</span>
-          </label>
-        ))}
+      <div className="flex flex-wrap gap-x-5 gap-y-3">
+        <ColorField label={t(tx.text)} value={fg} onChange={setFg} />
+        <ColorField label={t(tx.background)} value={bg} onChange={setBg} />
       </div>
 
       <p className="mt-3 rounded-sm px-3 py-3" style={{ backgroundColor: bg, color: fg }}>
@@ -258,40 +287,6 @@ export function Lorem() {
         {text ? <CopyButton text={text} label={t(tx.copy)} /> : null}
       </div>
       {text ? <p className="mt-3 whitespace-pre-line text-muted-foreground">{text}</p> : null}
-    </>
-  );
-}
-
-export function Swatches() {
-  const t = useT();
-  const [input, setInput] = useState("#1a1a1a\n#767676\n#e5e5e5");
-  const colors = parseHexList(input);
-
-  return (
-    <>
-      <textarea
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        rows={3}
-        className={`${fieldClass} w-full resize-y`}
-      />
-      {colors.length ? (
-        <>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {colors.map((color, i) => (
-              <span
-                key={`${color}-${i}`}
-                title={color}
-                className="h-10 w-10 rounded-sm border border-border"
-                style={{ backgroundColor: color }}
-              />
-            ))}
-          </div>
-          <div className="mt-3">
-            <CopyButton text={swatchesSvg(colors)} label={t(tx.copySvg)} />
-          </div>
-        </>
-      ) : null}
     </>
   );
 }

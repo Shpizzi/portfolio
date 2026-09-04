@@ -3,14 +3,7 @@
 // ponytail: assert nudi invece di un test runner, il progetto non ne ha uno.
 import assert from "node:assert/strict";
 
-import {
-  contrastRatio,
-  loremParagraphs,
-  parseHexList,
-  randomInt,
-  swatchesSvg,
-  wcagVerdict,
-} from "./tools.ts";
+import { contrastRatio, loremParagraphs, parseHexList, randomInt, wcagVerdict } from "./tools.ts";
 
 // parseHexList: forma corta, forma lunga, cancelletto opzionale, testo sporco
 assert.deepEqual(parseHexList("#fff"), ["#ffffff"]);
@@ -32,13 +25,6 @@ assert.equal(wcagVerdict(2).normal, "—");
 // testo grande: la soglia scende a 3
 assert.equal(wcagVerdict(3.2).large, "AA");
 assert.equal(wcagVerdict(2.9).large, "—");
-
-// swatchesSvg: larghezza = quadrati + spazi fra i quadrati, un rect per colore
-const svg = swatchesSvg(["#ff0000", "#00ff00"], 88, 8);
-assert.match(svg, /width="184"/); // 88*2 + 8
-assert.equal(svg.match(/<rect/g)?.length, 2);
-assert.match(svg, /fill="#00ff00"/);
-assert.equal(swatchesSvg(["#000"], 88, 8).match(/width="88"/)?.length, 1); // un colore, nessuno spazio
 
 // randomInt: sempre dentro l'intervallo, estremi inclusi, argomenti invertiti tollerati
 const estratti = new Set<number>();
