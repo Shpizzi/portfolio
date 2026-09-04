@@ -2,5 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://luca.scalvinoni.com/</loc></url>
   <url><loc>https://luca.scalvinoni.com/projects/</loc></url>
+  <url><loc>https://luca.scalvinoni.com/tools/</loc></url>
+  <url><loc>https://luca.scalvinoni.com/tools/character-count/</loc></url>
+  <url><loc>https://luca.scalvinoni.com/tools/coin-flip/</loc></url>
+  <url><loc>https://luca.scalvinoni.com/tools/contrast-checker/</loc></url>
+  <url><loc>https://luca.scalvinoni.com/tools/lorem-ipsum/</loc></url>
+  <url><loc>https://luca.scalvinoni.com/tools/random-number/</loc></url>
   <url><loc>https://luca.scalvinoni.com/updates/</loc></url>
 </urlset>
