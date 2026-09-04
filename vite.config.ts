@@ -6,24 +6,20 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
+import { visibleProjects } from "./src/data/site";
+
 export default defineConfig({
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
+    // ponytail: le schede progetto vengono da src/data/site.ts, così aggiungerne una
+    // (o togliere il suo `hidden`) non richiede di aggiornare anche questo elenco.
     pages: [
       { path: "/" },
       { path: "/projects" },
       { path: "/updates" },
-      { path: "/projects/dazn-pass-subscription-ux-flow" },
-      { path: "/projects/crypto-dashboard-landing-page-ui" },
-      { path: "/projects/greeting-card-builder-web-app-ui-concept-design" },
-      { path: "/projects/iot-home-ui" },
-      { path: "/projects/takt-design-catalog" },
-      { path: "/projects/italian-passport-redesign" },
-      { path: "/projects/fast-food-landing-page" },
-      { path: "/projects/medieval-bestiary-redesign" },
-      { path: "/projects/scalvinoni-bakery-branding" },
+      ...visibleProjects.map((project) => ({ path: `/projects/${project.slug}` })),
     ],
     prerender: { enabled: true, autoStaticPathsDiscovery: false },
   },

@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { BackHome, PageShell, SectionLabel } from "@/components/PageShell";
-import { projects } from "@/data/site";
+import { visibleProjects } from "@/data/site";
 import { ui, useT } from "@/i18n";
 
 export const Route = createFileRoute("/projects/")({
@@ -35,8 +35,11 @@ function Projects() {
       <h1 className="sr-only">{t(ui.projects)}</h1>
       <section className="mt-16">
         <SectionLabel>{t(ui.projects)}</SectionLabel>
+        {visibleProjects.length === 0 ? (
+          <p className="text-[0.95rem] text-muted-foreground">{t(ui.projectsEmpty)}</p>
+        ) : null}
         <ul className="space-y-10">
-          {projects.map((project) => (
+          {visibleProjects.map((project) => (
             <li key={project.slug}>
               {project.image ? (
                 <Link

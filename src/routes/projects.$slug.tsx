@@ -1,12 +1,12 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 
 import { PageShell, SectionLabel } from "@/components/PageShell";
-import { projects, type ProjectItem } from "@/data/site";
+import { visibleProjects, type ProjectItem } from "@/data/site";
 import { ui, useT } from "@/i18n";
 
 export const Route = createFileRoute("/projects/$slug")({
   loader: ({ params }): ProjectItem => {
-    const project = projects.find((item) => item.slug === params.slug);
+    const project = visibleProjects.find((item) => item.slug === params.slug);
     if (!project) throw notFound();
     return project;
   },

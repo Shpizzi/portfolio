@@ -117,6 +117,15 @@ function Index() {
             {item.label}
           </a>
         ))}
+        {/* ponytail: staccato dai contatti con un ml-4, senza un secondo <nav> */}
+        <a
+          href="https://www.geoguessr.com/user/59a8651656e5a24cf0c50fb8"
+          target="_blank"
+          rel="noreferrer"
+          className="ml-4 transition-colors hover:text-foreground"
+        >
+          GeoGuessr
+        </a>
       </nav>
 
       <nav className="mt-5 flex gap-x-6 text-[0.95rem] text-muted-foreground">

@@ -7,12 +7,13 @@ export type ProjectItem = {
   year: string;
   href?: string;
   image?: string;
+  hidden?: boolean;
   summary: Localized<string>;
   description: Localized<string[]>;
   tech: Localized<string[]>;
 };
 
-const media = "https://luca.scalvinoni.com/wp-content/uploads";
+const media = "/media";
 
 const uxui: Localized<string> = { it: "UX/UI", en: "UX/UI" };
 const graphic: Localized<string> = { it: "Graphic Design", en: "Graphic Design" };
@@ -20,11 +21,12 @@ const graphic: Localized<string> = { it: "Graphic Design", en: "Graphic Design" 
 export const projects: ProjectItem[] = [
   {
     slug: "dazn-pass-subscription-ux-flow",
+    hidden: true,
     title: "DAZN Pass subscription UX Flow",
     category: uxui,
     year: "2025",
     href: "https://luca.scalvinoni.com/portfolio/dazn-pass-subscription-ux-flow/",
-    image: `${media}/2025/02/mockup2.jpg`,
+    image: `${media}/dazn-pass-subscription-ux-flow.jpg`,
     summary: {
       it: "Un flusso di sottoscrizione ripensato per far capire in pochi secondi cosa si compra, quanto costa e per quanto tempo.",
       en: "A subscription flow rebuilt so people understand in seconds what they are buying, at what price and for how long.",
@@ -50,11 +52,12 @@ export const projects: ProjectItem[] = [
   },
   {
     slug: "crypto-dashboard-landing-page-ui",
+    hidden: true,
     title: "Crypto Dashboard & Landing page UI",
     category: uxui,
     year: "2025",
     href: "https://luca.scalvinoni.com/portfolio/crypto-dashboard-landing-page-ui/",
-    image: `${media}/2025/02/Desktop-2.png`,
+    image: `${media}/crypto-dashboard-landing-page-ui.png`,
     summary: {
       it: "Una dashboard per il monitoraggio di asset digitali e la landing page che la introduce, costruite sullo stesso linguaggio visivo.",
       en: "A dashboard for tracking digital assets and the landing page that introduces it, built on one shared visual language.",
@@ -80,11 +83,12 @@ export const projects: ProjectItem[] = [
   },
   {
     slug: "greeting-card-builder-web-app-ui-concept-design",
+    hidden: true,
     title: "Greeting Card Builder web app UI Concept Design",
     category: uxui,
     year: "2025",
     href: "https://luca.scalvinoni.com/portfolio/greeting-card-builder-web-app-ui-concept-design/",
-    image: `${media}/2025/02/screens.jpg`,
+    image: `${media}/greeting-card-builder-web-app-ui-concept-design.jpg`,
     summary: {
       it: "Concept di una web app per comporre biglietti d'auguri, dove l'anteprima è sempre al centro e gli strumenti restano a portata di mano.",
       en: "A concept for a web app to compose greeting cards, where the preview stays centre stage and the tools stay within reach.",
@@ -110,11 +114,12 @@ export const projects: ProjectItem[] = [
   },
   {
     slug: "iot-home-ui",
+    hidden: true,
     title: "IoT Smart Home Concept Design",
     category: uxui,
     year: "2025",
     href: "https://luca.scalvinoni.com/portfolio/iot-home-ui/",
-    image: `${media}/2025/02/dashboard2.jpg`,
+    image: `${media}/iot-home-ui.jpg`,
     summary: {
       it: "Un pannello di controllo per la casa connessa, organizzato per stanze e scenari invece che per dispositivi.",
       en: "A control panel for the connected home, organised by rooms and scenes instead of by devices.",
@@ -140,11 +145,12 @@ export const projects: ProjectItem[] = [
   },
   {
     slug: "takt-design-catalog",
+    hidden: true,
     title: "TAKT Design catalog",
     category: graphic,
     year: "2024",
     href: "https://luca.scalvinoni.com/portfolio/takt-design-catalog/",
-    image: `${media}/2024/07/copertina-scaled.webp`,
+    image: `${media}/takt-design-catalog.webp`,
     summary: {
       it: "Catalogo editoriale per una collezione di arredi, costruito su una griglia costante che lascia respirare le immagini.",
       en: "An editorial catalogue for a furniture collection, built on a constant grid that lets the images breathe.",
@@ -170,11 +176,12 @@ export const projects: ProjectItem[] = [
   },
   {
     slug: "italian-passport-redesign",
+    hidden: true,
     title: "Italian E-Passport redesign",
     category: uxui,
     year: "2024",
     href: "https://luca.scalvinoni.com/portfolio/italian-passport-redesign/",
-    image: `${media}/2024/07/mockup_passaporto-scaled.webp`,
+    image: `${media}/italian-passport-redesign.webp`,
     summary: {
       it: "Il passaporto italiano ripensato come documento contemporaneo, in equilibrio tra identità nazionale e leggibilità dei dati.",
       en: "The Italian passport rethought as a contemporary document, balancing national identity with data legibility.",
@@ -200,11 +207,12 @@ export const projects: ProjectItem[] = [
   },
   {
     slug: "fast-food-landing-page",
+    hidden: true,
     title: "Fast Food landing page",
     category: uxui,
     year: "2023",
     href: "https://luca.scalvinoni.com/portfolio/fast-food-landing-page/",
-    image: `${media}/2023/06/food-mockup-scaled.webp`,
+    image: `${media}/fast-food-landing-page.webp`,
     summary: {
       it: "Una landing page costruita attorno al menu e all'ordine, pensata prima di tutto per il telefono.",
       en: "A landing page built around the menu and the order, designed for the phone first.",
@@ -230,11 +238,12 @@ export const projects: ProjectItem[] = [
   },
   {
     slug: "medieval-bestiary-redesign",
+    hidden: true,
     title: "Medieval Bestiary redesign",
     category: uxui,
     year: "2023",
     href: "https://luca.scalvinoni.com/portfolio/progetto-3/",
-    image: `${media}/2023/06/mockup-mac-scaled.jpg`,
+    image: `${media}/medieval-bestiary-redesign.jpg`,
     summary: {
       it: "Un bestiario medievale tradotto in un'esperienza digitale di consultazione, tra manoscritto e leggibilità sullo schermo.",
       en: "A medieval bestiary turned into a digital reading experience, between manuscript and on-screen legibility.",
@@ -260,11 +269,12 @@ export const projects: ProjectItem[] = [
   },
   {
     slug: "scalvinoni-bakery-branding",
+    hidden: true,
     title: "Scalvinoni bakery Branding",
     category: graphic,
     year: "2023",
     href: "https://luca.scalvinoni.com/portfolio/progetto-2/",
-    image: `${media}/2023/06/brand_manual_forneria_331.jpg`,
+    image: `${media}/scalvinoni-bakery-branding.jpg`,
     summary: {
       it: "Identità visiva completa per una forneria, dal marchio ai packaging fino al manuale d'uso.",
       en: "A complete visual identity for a bakery, from the mark to the packaging and the brand manual.",
@@ -289,6 +299,11 @@ export const projects: ProjectItem[] = [
     },
   },
 ];
+
+// ponytail: un progetto con `hidden: true` sparisce dall'elenco, dal prerender e dalla
+// sitemap, e la sua pagina risponde 404. I dati restano qui: per rimetterlo online basta
+// togliergli quella riga. Ora sono nascosti tutti.
+export const visibleProjects = projects.filter((project) => !project.hidden);
 
 export type UpdateItem = {
   title: Localized<string>;

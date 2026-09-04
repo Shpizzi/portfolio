@@ -89,7 +89,10 @@ Sta in `deploy/.htaccess` e viene copiato nella build a ogni deploy.
 
 ## Rotte pubblicate
 
-`/`, `/projects`, `/updates` e le otto schede progetto. Aggiungendo un progetto in
-`src/data/site.ts` va aggiunta la rotta anche nell'elenco `pages` di `vite.config.ts`,
-altrimenti la pagina non viene prerenderizzata e resta raggiungibile solo navigando
-dall'interno del sito.
+`/`, `/projects`, `/updates` più una pagina per ogni progetto visibile. L'elenco `pages`
+di `vite.config.ts` legge i progetti da `src/data/site.ts`, quindi non va aggiornato a
+mano: basta aggiungere il progetto ai dati.
+
+Un progetto con `hidden: true` sparisce dall'elenco, dal prerender e dalla sitemap, e la
+sua pagina risponde 404. I dati restano nel repository. **Al momento sono nascosti tutti**:
+per rimetterne uno online togli la sua riga `hidden: true` e ripubblica.

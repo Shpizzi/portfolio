@@ -76,4 +76,8 @@ export const ui = {
     en: "This project doesn't exist or has been moved.",
   },
   previewAlt: { it: "Anteprima del progetto", en: "Project preview" },
+  projectsEmpty: {
+    it: "Le schede sono in aggiornamento, tornano presto.",
+    en: "The case studies are being updated, back soon.",
+  },
 } satisfies Record<string, Localized<string>>;
