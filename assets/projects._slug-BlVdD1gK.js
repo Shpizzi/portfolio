@@ -1,0 +1,1 @@
+import{g as e,i as t,l as n,n as r,s as i}from"./PageShell-FIoyUSmk.js";var a=e();function o(){let e=n();return(0,a.jsxs)(t,{children:[(0,a.jsx)(r,{to:`/projects`,children:e(i.projects)}),(0,a.jsx)(`h1`,{className:`mt-16 text-[1.05rem]`,children:e(i.notFound)}),(0,a.jsx)(`p`,{className:`mt-3 text-muted-foreground`,children:e(i.notFoundBody)})]})}export{o as t};
