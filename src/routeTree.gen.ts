@@ -13,6 +13,8 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as UpdatesRouteImport } from './routes/updates'
 import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
 import { Route as ProjectsSlugRouteImport } from './routes/projects.$slug'
+import { Route as ToolsIndexRouteImport } from './routes/tools.index'
+import { Route as ToolsSlugRouteImport } from './routes/tools.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,39 +36,76 @@ const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
   path: '/projects/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToolsIndexRoute = ToolsIndexRouteImport.update({
+  id: '/tools/',
+  path: '/tools/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsSlugRoute = ToolsSlugRouteImport.update({
+  id: '/tools/$slug',
+  path: '/tools/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/updates': typeof UpdatesRoute
   '/projects/$slug': typeof ProjectsSlugRoute
+  '/tools/$slug': typeof ToolsSlugRoute
   '/projects/': typeof ProjectsIndexRoute
+  '/tools/': typeof ToolsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/updates': typeof UpdatesRoute
   '/projects/$slug': typeof ProjectsSlugRoute
+  '/tools/$slug': typeof ToolsSlugRoute
   '/projects': typeof ProjectsIndexRoute
+  '/tools': typeof ToolsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/updates': typeof UpdatesRoute
   '/projects/$slug': typeof ProjectsSlugRoute
+  '/tools/$slug': typeof ToolsSlugRoute
   '/projects/': typeof ProjectsIndexRoute
+  '/tools/': typeof ToolsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/updates' | '/projects/$slug' | '/projects/'
+  fullPaths:
+    | '/'
+    | '/updates'
+    | '/projects/$slug'
+    | '/tools/$slug'
+    | '/projects/'
+    | '/tools/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/updates' | '/projects/$slug' | '/projects'
-  id: '__root__' | '/' | '/updates' | '/projects/$slug' | '/projects/'
+  to:
+    | '/'
+    | '/updates'
+    | '/projects/$slug'
+    | '/tools/$slug'
+    | '/projects'
+    | '/tools'
+  id:
+    | '__root__'
+    | '/'
+    | '/updates'
+    | '/projects/$slug'
+    | '/tools/$slug'
+    | '/projects/'
+    | '/tools/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   UpdatesRoute: typeof UpdatesRoute
   ProjectsSlugRoute: typeof ProjectsSlugRoute
+  ToolsSlugRoute: typeof ToolsSlugRoute
   ProjectsIndexRoute: typeof ProjectsIndexRoute
+  ToolsIndexRoute: typeof ToolsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +138,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tools/': {
+      id: '/tools/'
+      path: '/tools'
+      fullPath: '/tools/'
+      preLoaderRoute: typeof ToolsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/$slug': {
+      id: '/tools/$slug'
+      path: '/tools/$slug'
+      fullPath: '/tools/$slug'
+      preLoaderRoute: typeof ToolsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -106,7 +159,9 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   UpdatesRoute: UpdatesRoute,
   ProjectsSlugRoute: ProjectsSlugRoute,
+  ToolsSlugRoute: ToolsSlugRoute,
   ProjectsIndexRoute: ProjectsIndexRoute,
+  ToolsIndexRoute: ToolsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -305,6 +305,65 @@ export const projects: ProjectItem[] = [
 // togliergli quella riga. Ora sono nascosti tutti.
 export const visibleProjects = projects.filter((project) => !project.hidden);
 
+export type ToolItem = {
+  slug: string;
+  label: Localized<string>;
+  summary: Localized<string>;
+};
+
+// I componenti stanno in src/components/tools.tsx: qui solo dati, perché
+// vite.config.ts importa questo file e non può tirarsi dentro del JSX.
+export const tools: ToolItem[] = [
+  {
+    slug: "coin-flip",
+    label: { it: "Testa o croce", en: "Coin flip" },
+    summary: {
+      it: "Una moneta, quando serve decidere e basta.",
+      en: "A coin, for when you just need to decide.",
+    },
+  },
+  {
+    slug: "random-number",
+    label: { it: "Numero casuale", en: "Random number" },
+    summary: {
+      it: "Un numero fra due estremi, estremi inclusi.",
+      en: "A number between two bounds, bounds included.",
+    },
+  },
+  {
+    slug: "character-count",
+    label: { it: "Contatore caratteri", en: "Character count" },
+    summary: {
+      it: "Caratteri e parole, con le soglie di title e meta description.",
+      en: "Characters and words, against the title and meta description limits.",
+    },
+  },
+  {
+    slug: "contrast-checker",
+    label: { it: "Contrasto WCAG", en: "WCAG contrast" },
+    summary: {
+      it: "Due colori, il rapporto di contrasto e i livelli AA e AAA.",
+      en: "Two colours, their contrast ratio and the AA and AAA levels.",
+    },
+  },
+  {
+    slug: "lorem-ipsum",
+    label: { it: "Lorem ipsum", en: "Lorem ipsum" },
+    summary: {
+      it: "Paragrafi di riempimento da copiare.",
+      en: "Filler paragraphs to copy.",
+    },
+  },
+  {
+    slug: "figma-swatches",
+    label: { it: "Swatches per Figma", en: "Figma swatches" },
+    summary: {
+      it: "Incolla colori in qualsiasi formato: copi un SVG che in Figma diventa un rettangolo per colore.",
+      en: "Paste colours in any format: you copy an SVG that becomes one rectangle per colour in Figma.",
+    },
+  },
+];
+
 export type UpdateItem = {
   title: Localized<string>;
   date: Localized<string>;
@@ -327,7 +386,10 @@ export const updates: UpdateItem[] = [
     },
   },
   {
-    title: { it: "UX Consultant", en: "UX Consultant" },
+    title: {
+      it: "UX & Product Consultant for B4i Acceleration",
+      en: "UX & Product Consultant for B4i Acceleration",
+    },
     date: { it: "Apr 2026 — Ago 2026", en: "Apr 2026 — Aug 2026" },
     kind: { it: "Consulenza", en: "Consulting" },
     venue: { it: "Università Bocconi, Milano", en: "Bocconi University, Milan" },

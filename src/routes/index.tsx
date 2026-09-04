@@ -11,13 +11,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Luca Scalvinoni è un UX designer di Brescia, UX Consultant all'Università Bocconi di Milano fino ad agosto 2026.",
+          "Luca Scalvinoni è un UX designer di Brescia. Fino ad agosto 2026 UX & Product Consultant per B4i, l'acceleratore di startup dell'Università Bocconi.",
       },
       { property: "og:title", content: "Luca Scalvinoni — UX Designer" },
       {
         property: "og:description",
         content:
-          "UX designer di Brescia, UX Consultant all'Università Bocconi fino ad agosto 2026. Progetti di UX/UI e graphic design.",
+          "UX designer di Brescia. UX & Product Consultant per B4i, l'acceleratore startup della Bocconi: tre startup su prodotto, UX/UI e branding.",
       },
       { property: "og:type", content: "profile" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -45,7 +45,9 @@ function Index() {
           <p className="text-muted-foreground">
             <span className="link-quiet text-foreground">Luca Scalvinoni</span> è un UX
             designer di Brescia, in Italia. Fino ad agosto 2026 è stato{" "}
-            <span className="text-foreground">UX Consultant</span> all'
+            <span className="text-foreground">UX &amp; Product Consultant</span> per{" "}
+            <span className="text-foreground">B4i</span>, il programma di accelerazione
+            per startup dell'
             <a
               href="https://www.unibocconi.it/"
               className="link-quiet text-foreground"
@@ -54,20 +56,15 @@ function Index() {
             >
               Università Bocconi
             </a>{" "}
-            di Milano, dove si è occupato di prodotti digitali.
+            di Milano, dove ha seguito tre startup su UX e comunicazione, occupandosi di
+            prodotto, UX/UI e branding.
           </p>
 
           <p className="mt-6 text-muted-foreground">
-            Ha studiato web design e comunicazione d'impresa all'
-            <a
-              href="https://www.accademiasantagiulia.it/"
-              className="link-quiet text-foreground"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Accademia Santa Giulia
-            </a>{" "}
-            di Brescia, con un Erasmus in Media Art a Breslavia. La sua passione per il
+            Ha studiato <span className="text-foreground">web design</span> e{" "}
+            <span className="text-foreground">comunicazione d'impresa</span>{" "}
+            all'Accademia Santa Giulia di Brescia, con un Erasmus in{" "}
+            <span className="text-foreground">Media Art</span> a Breslavia. La sua passione per il
             digitale nasce dalla fotografia e dalla grafica, e oggi si muove tra
             interfacce, design di prodotto e visual design.
           </p>
@@ -77,7 +74,8 @@ function Index() {
           <p className="text-muted-foreground">
             <span className="link-quiet text-foreground">Luca Scalvinoni</span> is a UX
             designer based in Brescia, Italy. Until August 2026 he worked as a{" "}
-            <span className="text-foreground">UX Consultant</span> at{" "}
+            <span className="text-foreground">UX &amp; Product Consultant</span> for{" "}
+            <span className="text-foreground">B4i</span>, the startup accelerator of{" "}
             <a
               href="https://www.unibocconi.it/"
               className="link-quiet text-foreground"
@@ -86,20 +84,15 @@ function Index() {
             >
               Bocconi University
             </a>{" "}
-            in Milan, focusing on digital products.
+            in Milan, where he supported three startups across UX and communication,
+            covering product, UX/UI and branding.
           </p>
 
           <p className="mt-6 text-muted-foreground">
-            He studied web design and business communication at{" "}
-            <a
-              href="https://www.accademiasantagiulia.it/"
-              className="link-quiet text-foreground"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Accademia Santa Giulia
-            </a>{" "}
-            in Brescia, with an Erasmus in Media Art in Wrocław. His interest in digital
+            He studied <span className="text-foreground">web design</span> and{" "}
+            <span className="text-foreground">business communication</span> at Accademia
+            Santa Giulia in Brescia, with an Erasmus in{" "}
+            <span className="text-foreground">Media Art</span> in Wrocław. His interest in digital
             work grew out of photography and graphic design, and today he moves between
             interfaces, product design and visual design.
           </p>
@@ -133,6 +126,9 @@ function Index() {
       <nav className="mt-5 flex gap-x-6 text-[0.95rem] text-muted-foreground">
         <Link to="/projects" className="transition-colors hover:text-foreground">
           {t(ui.projects)}
+        </Link>
+        <Link to="/tools" className="transition-colors hover:text-foreground">
+          {t(ui.toolbox)}
         </Link>
         <Link to="/updates" className="transition-colors hover:text-foreground">
           {t(ui.path)}

@@ -66,6 +66,7 @@ export function useT() {
 
 export const ui = {
   projects: { it: "Progetti", en: "Projects" },
+  toolbox: { it: "Strumenti", en: "Tools" },
   path: { it: "Percorso", en: "Journey" },
   recentPath: { it: "Percorso recente", en: "Recent journey" },
   seeProjects: { it: "vedi i progetti", en: "see the projects" },
@@ -76,6 +77,11 @@ export const ui = {
     en: "This project doesn't exist or has been moved.",
   },
   previewAlt: { it: "Anteprima del progetto", en: "Project preview" },
+  toolNotFound: { it: "Strumento non trovato", en: "Tool not found" },
+  toolNotFoundBody: {
+    it: "Questo strumento non esiste o è stato spostato.",
+    en: "This tool doesn't exist or has been moved.",
+  },
   projectsEmpty: {
     it: "Le schede sono in aggiornamento, tornano presto.",
     en: "The case studies are being updated, back soon.",
