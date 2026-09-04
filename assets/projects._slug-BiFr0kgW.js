@@ -1,0 +1,1 @@
+import{t as e}from"./projects._slug-SzidtjDt.js";export{e as notFoundComponent};
