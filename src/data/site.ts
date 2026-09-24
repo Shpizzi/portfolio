@@ -18,13 +18,13 @@ const media = "/media";
 
 const uxui: Localized<string> = { it: "UX/UI", en: "UX/UI" };
 const graphic: Localized<string> = { it: "Graphic Design", en: "Graphic Design" };
-const product: Localized<string> = { it: "Product Design", en: "Product Design" };
+const service: Localized<string> = { it: "Service Design", en: "Service Design" };
 
 export const projects: ProjectItem[] = [
   {
     slug: "recce-maps",
     title: "Recce Maps",
-    category: product,
+    category: service,
     year: "2026",
     href: "https://reccemaps.com",
     links: [
@@ -73,13 +73,11 @@ export const projects: ProjectItem[] = [
         "n8n",
         "Google My Maps",
         "Meta Ads",
-        "Telegram",
-        "TypeScript PWA",
+        "PWA",
         "PostgreSQL",
         "Coolify",
         "OpenStreetMap",
-        "OpenAI GPT nano",
-        "DeepL API",
+        "API OpenAI e DeepL",
       ],
       en: [
         "Product and information design",
@@ -89,13 +87,11 @@ export const projects: ProjectItem[] = [
         "n8n",
         "Google My Maps",
         "Meta Ads",
-        "Telegram",
-        "TypeScript PWA",
+        "PWA",
         "PostgreSQL",
         "Coolify",
         "OpenStreetMap",
-        "OpenAI GPT nano",
-        "DeepL API",
+        "OpenAI and DeepL APIs",
       ],
     },
   },
