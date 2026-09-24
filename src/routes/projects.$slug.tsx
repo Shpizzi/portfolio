@@ -53,7 +53,7 @@ function ProjectNotFound() {
   );
 }
 
-// ponytail: **testo** nei paragrafi diventa un'evidenziazione, niente markdown completo
+// ponytail: nei paragrafi `## ` apre un titolo e **testo** evidenzia, niente markdown completo
 function emphasize(text: string) {
   return text.split(/\*\*(.+?)\*\*/g).map((part, i) =>
     i % 2 ? (
@@ -92,9 +92,15 @@ function ProjectDetail() {
         ) : null}
 
         <div className="mt-8 space-y-5 text-muted-foreground">
-          {t(project.description).map((paragraph: string) => (
-            <p key={paragraph}>{emphasize(paragraph)}</p>
-          ))}
+          {t(project.description).map((paragraph: string) =>
+            paragraph.startsWith("## ") ? (
+              <h2 key={paragraph} className="pt-6 text-[0.95rem] text-foreground">
+                {paragraph.slice(3)}
+              </h2>
+            ) : (
+              <p key={paragraph}>{emphasize(paragraph)}</p>
+            ),
+          )}
         </div>
 
         {project.links?.length ? (
