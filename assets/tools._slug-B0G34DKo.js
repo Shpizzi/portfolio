@@ -1,0 +1,1 @@
+import{n as e}from"./index-DfC-kM2P.js";export{e as notFoundComponent};
