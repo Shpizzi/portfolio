@@ -48,11 +48,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  return (
-    <LanguageContext.Provider value={{ lang, setLang }}>
-      {children}
-    </LanguageContext.Provider>
-  );
+  return <LanguageContext.Provider value={{ lang, setLang }}>{children}</LanguageContext.Provider>;
 }
 
 export function useLang() {
@@ -71,6 +67,7 @@ export const ui = {
   lately: { it: "Ultimamente", en: "Lately" },
   seeProjects: { it: "vedi i progetti", en: "see the projects" },
   tools: { it: "Strumenti e tecnologie", en: "Tools and technologies" },
+  links: { it: "Link", en: "Links" },
   notFound: { it: "Progetto non trovato", en: "Project not found" },
   notFoundBody: {
     it: "Questo progetto non esiste o è stato spostato.",

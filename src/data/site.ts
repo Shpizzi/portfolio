@@ -8,6 +8,7 @@ export type ProjectItem = {
   href?: string;
   image?: string;
   hidden?: boolean;
+  links?: { label: string; url: string }[];
   summary: Localized<string>;
   description: Localized<string[]>;
   tech: Localized<string[]>;
@@ -26,6 +27,15 @@ export const projects: ProjectItem[] = [
     category: product,
     year: "2026",
     href: "https://reccemaps.com",
+    links: [
+      { label: "reccemaps.com", url: "https://reccemaps.com" },
+      { label: "shop.reccemaps.com", url: "https://shop.reccemaps.com" },
+      {
+        label: "Behance",
+        url: "https://www.behance.net/gallery/256215023/Recce-Maps-Platform-Branding-UXUI",
+      },
+      { label: "Instagram @recce.world", url: "https://www.instagram.com/recce.world" },
+    ],
     summary: {
       it: "Una guida digitale per chi segue i rally dal bordo strada, co-fondata con tre amici e cresciuta in un anno fino a 1.613 ordini e a una partnership ufficiale con il WRC Croatia Rally.",
       en: "A digital guide for rally spectators, co-founded with three friends and grown in one year to 1,613 orders and an official partnership with WRC Croatia Rally.",

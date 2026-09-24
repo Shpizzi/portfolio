@@ -97,6 +97,21 @@ function ProjectDetail() {
           ))}
         </div>
 
+        {project.links?.length ? (
+          <section className="mt-16">
+            <SectionLabel>{t(ui.links)}</SectionLabel>
+            <ul className="flex flex-wrap gap-x-4 gap-y-2 text-[0.95rem]">
+              {project.links.map((link) => (
+                <li key={link.url}>
+                  <a href={link.url} target="_blank" rel="noreferrer" className="link-quiet">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
+
         <section className="mt-16">
           <SectionLabel>{t(ui.tools)}</SectionLabel>
           <ul className="flex flex-wrap gap-x-4 gap-y-2 text-[0.95rem] text-muted-foreground">
