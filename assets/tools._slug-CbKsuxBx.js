@@ -1,0 +1,1 @@
+import{n as e}from"./index-BzF0Oc-p.js";export{e as notFoundComponent};
