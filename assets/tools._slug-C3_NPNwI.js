@@ -1,0 +1,1 @@
+import{n as e}from"./index-CRj9BafR.js";export{e as notFoundComponent};
