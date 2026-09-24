@@ -1,0 +1,1 @@
+import{n as e}from"./index-5jMKVSjz.js";export{e as notFoundComponent};
