@@ -53,6 +53,19 @@ function ProjectNotFound() {
   );
 }
 
+// ponytail: **testo** nei paragrafi diventa un'evidenziazione, niente markdown completo
+function emphasize(text: string) {
+  return text.split(/\*\*(.+?)\*\*/g).map((part, i) =>
+    i % 2 ? (
+      <strong key={i} className="font-medium text-foreground">
+        {part}
+      </strong>
+    ) : (
+      part
+    ),
+  );
+}
+
 function ProjectDetail() {
   const project = Route.useLoaderData() as ProjectItem | undefined;
   const t = useT();
@@ -80,7 +93,7 @@ function ProjectDetail() {
 
         <div className="mt-8 space-y-5 text-muted-foreground">
           {t(project.description).map((paragraph: string) => (
-            <p key={paragraph}>{paragraph}</p>
+            <p key={paragraph}>{emphasize(paragraph)}</p>
           ))}
         </div>
 
