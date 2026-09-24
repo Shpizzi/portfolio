@@ -75,7 +75,7 @@ export const projects: ProjectItem[] = [
         "Meta Ads",
         "PWA",
         "PostgreSQL",
-        "API OpenAI e DeepL",
+        "Integrazioni API e LLM",
       ],
       en: [
         "Product and information design",
@@ -87,7 +87,7 @@ export const projects: ProjectItem[] = [
         "Meta Ads",
         "PWA",
         "PostgreSQL",
-        "OpenAI and DeepL APIs",
+        "API and LLM integrations",
       ],
     },
   },
