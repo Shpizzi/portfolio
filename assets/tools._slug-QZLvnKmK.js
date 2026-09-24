@@ -1,0 +1,1 @@
+import{n as e}from"./index-mrHNk_DJ.js";export{e as notFoundComponent};
