@@ -19,6 +19,8 @@ const media = "/media";
 const uxui: Localized<string> = { it: "UX/UI", en: "UX/UI" };
 const graphic: Localized<string> = { it: "Graphic Design", en: "Graphic Design" };
 const service: Localized<string> = { it: "Service Design", en: "Service Design" };
+const brand: Localized<string> = { it: "Brand Identity", en: "Brand Identity" };
+const web: Localized<string> = { it: "Web & SEO", en: "Web & SEO" };
 
 export const projects: ProjectItem[] = [
   {
@@ -89,6 +91,271 @@ export const projects: ProjectItem[] = [
         "PostgreSQL",
         "API and LLM integrations",
       ],
+    },
+  },
+  {
+    slug: "cartografie-della-storia",
+    title: "Cartografie della Storia — Archivio Corriere della Sera",
+    category: uxui,
+    year: "2026",
+    links: [{ label: "Fondazione Corriere della Sera", url: "https://fondazionecorriere.corriere.it" }],
+    summary: {
+      it: "Il ripensamento del sistema digitale dell'archivio storico del Corriere della Sera: da magazzino per specialisti a mappa narrativa da attraversare, con un prototipo navigabile e un ecosistema di comunicazione. Progetto di gruppo per il corso Sistemi editoriali per l'arte, NABA.",
+      en: "A rethink of the digital system behind Corriere della Sera's historical archive: from a warehouse for specialists to a narrative map to travel through, with a navigable prototype and a communication ecosystem. Group project for the Editorial Systems for the Arts course at NABA.",
+    },
+    description: {
+      it: [
+        "## Il problema",
+        "Il Corriere della Sera racconta l'Italia dal 1876 e il suo archivio in via Solferino conserva **1,2 milioni di reperti digitalizzati, 54.000 prime pagine e oltre 12.000 collezioni**, ma è consultabile quasi solo su appuntamento e da ricercatori che sanno già cosa cercare. Il sistema digitale in costruzione è pensato per specialisti, quindi il pubblico curioso resta fuori, mentre le visite online agli archivi nazionali sono cresciute del 600% in cinque anni. La domanda di ricerca era **come rendere l'archivio accessibile a utenti con bisogni, ritmi e obiettivi diversi**, valorizzando quello che esiste già.",
+        "## La ricerca",
+        "Abbiamo lavorato su quattro livelli, ovvero desk research sulla Fondazione, competitor analysis su BBC Archive, Europeana e GNM Archive con comparable come Atlas Obscura e Google Arts & Culture, una **visita etnografica in via Solferino con interviste alle curatrici** e infine la sintesi in personas e journey map. Tre frasi delle archiviste sono diventate i principi del progetto, e in particolare che **il patrimonio non è il singolo documento ma le relazioni tra i documenti**, che l'archivio ha una grammatica propria e che il digitale deve raccontare, non solo mostrare oggetti belli.",
+        "## La soluzione",
+        "Un sistema editoriale digitale che trasforma l'archivio in una **mappa narrativa interattiva**, dove si esplorano le connessioni tra eventi, persone e temi seguendo percorsi costruiti sui propri interessi. Lo stesso sistema serve due utenti opposti: il curioso trova ingressi multipli, la prima pagina del giorno in cui è nato e percorsi curati, mentre il professionista ha ricerca full-text sugli OCR, filtri, citazioni in formato Chicago o APA e raccolte tematiche. L'architettura si regge su cinque aree, i wireframe sono stati **testati in due round con utenti reali e sulle linee guida WCAG**, e il design system parla la lingua del giornale con i caratteri Solferino e Brera. Il **prototipo web navigabile ottiene 100/100 nel test di accessibilità Lighthouse** e aggiunge un widget di personalizzazione, un lettore vocale e descrizioni automatiche delle immagini.",
+        "Intorno al sistema abbiamo disegnato un ecosistema di sei canali che si rimandano l'uno all'altro: una newsletter che racconta l'archivio stesso, il podcast **A Mano** che parte ogni volta da un oggetto fisico, un canale YouTube, manifesti in città, l'evento annuale **La notte dell'Archivio** e un ponte fisico-digitale con QR e NFC sui reperti. Il piano di realizzazione prevede 15 persone e 24 settimane in sei fasi, dall'idea al go-live.",
+        "## Il mio ruolo",
+        "Progetto in quattro con Maria Chieregato, Yating Hu e Giampaolo Zirone. Ho seguito in particolare **l'architettura dell'informazione e il prototipo navigabile**, costruito in React e pubblicato online perché la giuria potesse provarlo da sola.",
+      ],
+      en: [
+        "## The problem",
+        "Corriere della Sera has been telling Italy's story since 1876 and its archive in via Solferino holds **1.2 million digitised items, 54,000 front pages and more than 12,000 collections**, yet it can be consulted almost only by appointment and by researchers who already know what they are looking for. The digital system under construction is designed for specialists, so the curious public stays out, while online visits to national archives grew by 600% in five years. The research question was **how to make the archive accessible to users with different needs, paces and goals**, building on what already exists.",
+        "## The research",
+        "We worked on four levels: desk research on the Foundation, a competitor analysis of BBC Archive, Europeana and GNM Archive with comparables such as Atlas Obscura and Google Arts & Culture, an **ethnographic visit to via Solferino with interviews to the curators**, and finally a synthesis into personas and journey maps. Three sentences from the archivists became the project's principles, above all that **the heritage is not the single document but the relationships between documents**, that the archive has a grammar of its own and that digital has to tell a story, not just show beautiful objects.",
+        "## The solution",
+        "A digital editorial system that turns the archive into an **interactive narrative map**, where people explore the connections between events, people and themes along paths built on their own interests. The same system serves two opposite users: the curious visitor finds multiple entry points, the front page of the day they were born and curated paths, while the professional gets full-text search on OCR, filters, citations in Chicago or APA format and thematic collections. The architecture rests on five areas, the wireframes were **tested in two rounds with real users and against WCAG guidelines**, and the design system speaks the newspaper's language with the Solferino and Brera typefaces. The **navigable web prototype scores 100/100 on the Lighthouse accessibility test** and adds a personalisation widget, a voice reader and automatic image descriptions.",
+        "Around the system we designed an ecosystem of six channels that point to one another: a newsletter about the archive itself, the podcast **A Mano** that starts every episode from a physical object, a YouTube channel, posters in the city, the yearly event **La notte dell'Archivio** and a physical-digital bridge with QR and NFC tags on the items. The delivery plan calls for 15 people and 24 weeks in six phases, from idea to go-live.",
+        "## My role",
+        "A four-person project with Maria Chieregato, Yating Hu and Giampaolo Zirone. I focused on **the information architecture and the navigable prototype**, built in React and published online so the jury could try it on their own.",
+      ],
+    },
+    tech: {
+      it: [
+        "UX research e interviste",
+        "Information architecture",
+        "Design system",
+        "Figma",
+        "React",
+        "Accessibilità WCAG",
+        "Service e content design",
+      ],
+      en: [
+        "UX research and interviews",
+        "Information architecture",
+        "Design system",
+        "Figma",
+        "React",
+        "WCAG accessibility",
+        "Service and content design",
+      ],
+    },
+  },
+  {
+    slug: "guido",
+    title: "Guido — From bureaucracy to dialogue",
+    category: uxui,
+    year: "2026",
+    href: "https://ux-design-awards.com/winners/2026-2-guido-from-bureaucracy-to-dialogue",
+    links: [
+      {
+        label: "UX Design Awards 2026",
+        url: "https://ux-design-awards.com/winners/2026-2-guido-from-bureaucracy-to-dialogue",
+      },
+    ],
+    summary: {
+      it: "Un sistema unico e accessibile che accompagna i cittadini nelle pratiche della pubblica amministrazione, con traduzione in linguaggio semplice, procedure guidate e un totem phygital. Nominato agli UX Design Awards 2026, categoria New Talent.",
+      en: "A single, accessible system that guides citizens through public administration procedures, with plain-language translation, guided steps and a phygital totem. Nominated at the UX Design Awards 2026, New Talent category.",
+    },
+    description: {
+      it: [
+        "## Il problema",
+        "Ogni pratica con la pubblica amministrazione passa da sportelli, portali e moduli diversi, scritti in una lingua che la maggior parte delle persone non capisce. Il risultato è che **il cittadino non sa da dove cominciare, cosa gli serve e a chi chiedere**, e la burocrazia diventa una barriera prima ancora che un servizio.",
+        "## La soluzione",
+        "Guido è un **hub unico che collega i servizi pubblici** e li rende leggibili. Un assistente basato su AI **traduce i documenti amministrativi in linguaggio semplice**, le procedure vengono scomposte in passaggi guidati e gli appuntamenti si prenotano dallo stesso posto. Per chi non ha o non vuole uno smartphone, un **totem phygital installato nei luoghi civici** offre lo stesso accesso di persona. Il passaggio che dà il nome al progetto è questo: dalla burocrazia al dialogo.",
+        "## Il mio ruolo",
+        "Progetto sviluppato in NABA con Nicola Sorgesa e Giampaolo Zirone, con la guida di Gabriele Ruscelli. Ho lavorato sulla **ricerca, sui flussi e sul prototipo** del sistema.",
+        "## Risultati",
+        "Guido è stato **nominato agli UX Design Awards 2026 nella categoria New Talent**, nelle sezioni Platform & Community e Citizens & Society.",
+      ],
+      en: [
+        "## The problem",
+        "Every procedure with public administration goes through different counters, portals and forms, written in a language most people do not understand. The result is that **citizens do not know where to start, what they need or whom to ask**, and bureaucracy becomes a barrier before it is a service.",
+        "## The solution",
+        "Guido is a **single hub that connects public services** and makes them readable. An AI assistant **translates administrative documents into plain language**, procedures are broken down into guided steps and appointments are booked from the same place. For people who do not have or do not want a smartphone, a **phygital totem installed in civic locations** offers the same access in person. That shift is what gives the project its name: from bureaucracy to dialogue.",
+        "## My role",
+        "Developed at NABA with Nicola Sorgesa and Giampaolo Zirone, mentored by Gabriele Ruscelli. I worked on the **research, the flows and the prototype** of the system.",
+        "## Results",
+        "Guido was **nominated at the UX Design Awards 2026 in the New Talent category**, in the Platform & Community and Citizens & Society sections.",
+      ],
+    },
+    tech: {
+      it: ["UX research", "Service design", "User flow", "Figma", "Prototipazione", "Integrazione AI"],
+      en: ["UX research", "Service design", "User flows", "Figma", "Prototyping", "AI integration"],
+    },
+  },
+  {
+    slug: "antevo",
+    title: "Antevo — naming e brand identity",
+    category: brand,
+    year: "2026",
+    href: "https://antevo.ai",
+    links: [{ label: "antevo.ai", url: "https://antevo.ai" }],
+    summary: {
+      it: "Il rebrand di Evoclin, spin-off di Bicocca e San Raffaele che sviluppa software clinico AI per l'oncologia di precisione: dal problema del nome al naming, all'identità e al pitch deck, come consulente UX e product per B4i, l'acceleratore dell'Università Bocconi.",
+      en: "The rebrand of Evoclin, a Bicocca and San Raffaele spin-off building AI clinical software for precision oncology: from the naming problem to the new name, the identity and the pitch deck, as UX and product consultant for B4i, Bocconi University's accelerator.",
+    },
+    description: {
+      it: [
+        "## Il problema",
+        "Evoclin sviluppa software che parte dai dati genomici già raccolti negli ospedali per **prevedere come evolverà un tumore**, con framework validati su oltre 35.000 casi e due premi nazionali alle spalle. Il nome però aveva due problemi concreti: **suonava come \"EvoClean\"**, cioè un detergente, ed **esisteva già un prodotto cosmetico con lo stesso nome**. Per una startup che si presenta a ospedali e investitori la credibilità viene prima di tutto, e il rebrand era la priorità del batch.",
+        "## Cosa ho fatto",
+        "Ho seguito Evoclin come consulente nel Batch XIII di B4i. Sono partito dal brand sprint dei founder e dal brief dell'agenzia senior e li ho **sintetizzati in un brand brief unico** con valori, personalità e vincoli, in particolare che il nuovo nome non dovesse suonare cosmetico né farmaceutico. Ho sviluppato **sette proposte di naming, ognuna con un concetto tracciabile**, una verifica dei domini e dei conflitti con altri marchi, e le ho discusse con il team in più giri. In parallelo ho **riorganizzato il pitch deck** su gerarchia e leggibilità, e ho preparato quattro direzioni di brand identity da cui derivare logo, palette, tipografia e tono di voce.",
+        "## Risultati",
+        "Il team ha scelto **Antevo**, da \"ante\" ed \"evo\": anticipare l'evoluzione del tumore, mantenendo la radice che collega il nuovo nome ai paper e ai premi già firmati come Evoclin. La società oggi si chiama Antevo S.r.l. e vive su antevo.ai, mentre il nuovo deck è stato definito dal team \"molto meglio\" e \"molto pulito\" ed è diventato la base della presentazione agli investitori.",
+      ],
+      en: [
+        "## The problem",
+        "Evoclin builds software that starts from genomic data hospitals already collect to **predict how a tumour will evolve**, with frameworks validated on more than 35,000 cases and two national awards behind it. The name, though, had two concrete problems: **it sounded like \"EvoClean\"**, a detergent, and **a cosmetic product with the same name already existed**. For a startup pitching to hospitals and investors credibility comes first, and the rebrand was the batch's top priority.",
+        "## What I did",
+        "I worked with Evoclin as a consultant in B4i's Batch XIII. I started from the founders' brand sprint and the senior agency's brief and **merged them into a single brand brief** with values, personality and constraints, above all that the new name must not sound cosmetic or pharmaceutical. I developed **seven naming proposals, each with a traceable concept**, a check of domains and conflicts with other brands, and discussed them with the team over several rounds. In parallel I **reworked the pitch deck** for hierarchy and readability, and prepared four brand identity directions from which to derive logo, palette, typography and tone of voice.",
+        "## Results",
+        "The team chose **Antevo**, from \"ante\" and \"evo\": anticipating the tumour's evolution, while keeping the root that ties the new name to the papers and awards already signed as Evoclin. The company is now Antevo S.r.l. and lives at antevo.ai, while the new deck was called \"much better\" and \"very clean\" by the team and became the base of the investor presentation.",
+      ],
+    },
+    tech: {
+      it: ["Naming", "Brand strategy", "Brand identity", "Pitch deck", "Figma", "Workshop e brand sprint"],
+      en: ["Naming", "Brand strategy", "Brand identity", "Pitch deck", "Figma", "Workshops and brand sprint"],
+    },
+  },
+  {
+    slug: "evasurgica",
+    title: "Evasurgica — expert review UX/UI e pitch",
+    category: uxui,
+    year: "2026",
+    summary: {
+      it: "Expert review dell'interfaccia di un sistema AR per la chirurgia mini-invasiva e robotica, più due pitch deck distinti per investitori e cliniche, alla vigilia dei trial clinici. Consulenza per B4i, l'acceleratore dell'Università Bocconi.",
+      en: "An expert review of the interface of an AR system for minimally invasive and robotic surgery, plus two separate pitch decks for investors and clinics, on the eve of clinical trials. Consulting for B4i, Bocconi University's accelerator.",
+    },
+    description: {
+      it: [
+        "## Il problema",
+        "Evasurgica vende software e carrello per la chirurgia mini-invasiva e robotica: il sistema **sovrappone un modello 3D del paziente all'immagine endoscopica in realtà aumentata**, così che il chirurgo identifichi le strutture anatomiche più in fretta e con meno complicanze. Il prodotto era tecnicamente solido e già testato, ma **la comunicazione visiva e il pitch non erano all'altezza della tecnologia**, proprio mentre stavano per partire i trial clinici e bisognava convincere ospedali pubblici e cliniche private.",
+        "## Cosa ho fatto",
+        "Ho raccolto i materiali esistenti e organizzato un **walkthrough del software con il team**, per capire come si usa davvero in sala: l'hardware non è touch, si lavora con una tastiera medical grade e uno space mouse dal lettino operatorio, in ambiente sterile, e questo cambia tutte le regole di usabilità. Da lì ho condotto una **expert review UX/UI dell'applicativo**, con un benchmark dei software affini e una serie di schermate prima e dopo che motivano ogni intervento sui fondamenti dell'usabilità, non sull'estetica. Sul pitch ho separato quello che era un ibrido tra deck da leggere e presentazione da parlare in **due versioni distinte, una per gli investitori e una per cliniche e ospedali**, intervenendo su gerarchia tipografica, leggibilità e struttura senza stravolgere l'identità.",
+      ],
+      en: [
+        "## The problem",
+        "Evasurgica sells software and a cart for minimally invasive and robotic surgery: the system **overlays a 3D model of the patient onto the endoscopic image in augmented reality**, so the surgeon identifies anatomical structures faster and with fewer complications. The product was technically solid and already tested, but **its visual communication and pitch were not up to the technology**, just as clinical trials were about to start and public hospitals and private clinics had to be convinced.",
+        "## What I did",
+        "I gathered the existing materials and set up a **walkthrough of the software with the team**, to understand how it is really used in the operating room: the hardware is not touch, you work with a medical-grade keyboard and a space mouse from the operating table, in a sterile environment, and that changes every usability rule. From there I ran an **expert UX/UI review of the application**, with a benchmark of similar software and a series of before-and-after screens that justify each change on usability fundamentals, not on aesthetics. On the pitch I split what was a hybrid between a deck to read and a presentation to speak into **two separate versions, one for investors and one for clinics and hospitals**, working on typographic hierarchy, readability and structure without changing the identity.",
+      ],
+    },
+    tech: {
+      it: ["Expert review", "Euristiche di usabilità", "Benchmark", "Figma", "Pitch deck", "Design per ambienti sterili"],
+      en: ["Expert review", "Usability heuristics", "Benchmark", "Figma", "Pitch deck", "Design for sterile environments"],
+    },
+  },
+  {
+    slug: "pclab",
+    title: "PCLab — redesign SEO del sito",
+    category: web,
+    year: "2026",
+    href: "https://pclab.bs.it",
+    links: [{ label: "pclab.bs.it", url: "https://pclab.bs.it" }],
+    summary: {
+      it: "Il nuovo sito di PCLab, azienda di assistenza IT in provincia di Brescia: da poche pagine generiche a una struttura di circa trenta pagine costruite sulle ricerche reali dei clienti, con tema WordPress su misura, migrazione senza perdere posizionamento e PageSpeed mobile da 78 a 93.",
+      en: "The new website of PCLab, an IT services company in the Brescia area: from a few generic pages to a structure of about thirty pages built on what customers actually search for, with a custom WordPress theme, a migration that kept rankings intact and mobile PageSpeed from 78 to 93.",
+    },
+    description: {
+      it: [
+        "## Il problema",
+        "PCLab fa assistenza informatica, cybersecurity, cloud e reti per le aziende della provincia di Brescia, ma il sito raccontava i servizi con **poche pagine macro** che non corrispondevano a come le aziende cercano davvero, cioè con query precise e locali come \"assistenza server Brescia\" o \"backup cloud\". Chi arrivava da Google trovava una pagina generica, e chi cercava un servizio specifico spesso non arrivava proprio.",
+        "## La soluzione",
+        "Sono partito da una ricerca sulle parole chiave del settore per disegnare una **struttura di circa trenta pagine orientate alle ricerche reali**, con due livelli di servizi, pagine per settore, pagine per i brand partner e una sezione di domande frequenti che risponde alle domande informative senza cannibalizzare quelle transazionali. Il sito gira su un **tema WordPress scritto su misura**, con tipi di contenuto dedicati, breadcrumb, dati strutturati e sitemap che si aggiornano da soli quando si aggiunge una pagina.",
+        "## Cosa ho fatto",
+        "Ho progettato e costruito tutto, dal tema alla migrazione. Il passaggio alla nuova struttura ha comportato **65 rinomine di URL e 99 redirect**, verificati uno per uno perché non si perdesse il posizionamento esistente, con i link interni riscritti via script. Dopo il go-live ho lavorato sulle prestazioni, con font ottimizzati, CSS minificati e cache lato server, portando il **punteggio PageSpeed mobile da 78 a 93**, e ho impostato il monitoraggio SEO con Search Console e gli eventi di conversione in GA4.",
+        "## Risultati",
+        "Il sito è online da luglio 2026 con la struttura completa, tutti i vecchi indirizzi rispondono con un redirect diretto e le pagine servizio si posizionano sulle query locali per cui sono state progettate.",
+      ],
+      en: [
+        "## The problem",
+        "PCLab provides IT support, cybersecurity, cloud and networking to companies in the Brescia area, but the website described its services with **a handful of broad pages** that did not match how businesses actually search, that is with precise, local queries such as \"server support Brescia\" or \"cloud backup\". People coming from Google landed on a generic page, and those looking for a specific service often did not land at all.",
+        "## The solution",
+        "I started from keyword research for the sector to design a **structure of about thirty pages oriented to real searches**, with two levels of services, pages per industry, pages for partner brands and a FAQ section that answers informational questions without cannibalising the transactional ones. The site runs on a **custom-written WordPress theme**, with dedicated content types, breadcrumbs, structured data and sitemaps that update themselves when a page is added.",
+        "## What I did",
+        "I designed and built everything, from the theme to the migration. Moving to the new structure meant **65 URL renames and 99 redirects**, checked one by one so that existing rankings were not lost, with internal links rewritten by script. After go-live I worked on performance, with optimised fonts, minified CSS and server-side caching, taking the **mobile PageSpeed score from 78 to 93**, and set up SEO monitoring with Search Console and conversion events in GA4.",
+        "## Results",
+        "The site has been live since July 2026 with the full structure, every old address answers with a direct redirect and the service pages rank for the local queries they were designed for.",
+      ],
+    },
+    tech: {
+      it: ["SEO e keyword research", "Information architecture", "WordPress", "PHP", "Rank Math", "Search Console", "GA4", "Plesk"],
+      en: ["SEO and keyword research", "Information architecture", "WordPress", "PHP", "Rank Math", "Search Console", "GA4", "Plesk"],
+    },
+  },
+  {
+    slug: "muba-arborea",
+    title: "MUBA — Museo della Bonifica di Arborea",
+    category: graphic,
+    year: "2025",
+    links: [{ label: "museoarborea.it", url: "https://www.museoarborea.it/" }],
+    summary: {
+      it: "Art direction e comunicazione digitale per il museo comunale di Arborea, in Sardegna: identità visiva, sito, app, podcast e strategia social per raccontare la storia di una città nata da una bonifica e da una migrazione interna. Progetto di corso in NABA con Giampaolo Zirone.",
+      en: "Art direction and digital communication for the municipal museum of Arborea, Sardinia: visual identity, website, app, podcast and social strategy to tell the story of a town born from land reclamation and internal migration. Course project at NABA with Giampaolo Zirone.",
+    },
+    description: {
+      it: [
+        "## Il contesto",
+        "Il MUBA è allestito nei locali dell'ex Mulino di Arborea, un esempio di archeologia industriale che conserva ancora le attrezzature per la macinazione del grano. Raccoglie i documenti della bonifica della piana del Sassu e della città, **fondata nel 1928 e popolata da famiglie arrivate dal Veneto, dal Friuli, dalla Romagna e dalla Sicilia** per un esperimento di migrazione interna unico per l'epoca. È una storia di visione e di fatica che gli abitanti sentono ancora propria, ma **la comunicazione del museo non la racconta**, e fuori dalla Sardegna quasi nessuno la conosce.",
+        "## La soluzione",
+        "Il brief del corso chiedeva l'art direction e la comunicazione digitale di un brand culturale, con l'obiettivo di coinvolgere emotivamente e non solo di informare. Abbiamo costruito **un'identità visiva digitale con logo adattivo, palette, tipografia per web e mobile e tono di voce**, documentata in linee guida brevi, e da lì il sito, l'app mobile e la strategia social. L'estensione immersiva è un **podcast che dà voce ai veri testimoni della trasformazione del territorio**, registrato nei luoghi reali e senza set, affiancato da una newsletter e da un'esplorazione in realtà aumentata degli spazi del Mulino.",
+        "## Il mio ruolo",
+        "Progetto in due con Giampaolo Zirone, con la ricerca condivisa e il lavoro diviso tra identità, digitale e contenuti.",
+      ],
+      en: [
+        "## The context",
+        "MUBA is housed in the former Mill of Arborea, an example of industrial archaeology that still keeps the machinery once used to grind wheat. It collects the documents of the reclamation of the Sassu plain and of the town, **founded in 1928 and settled by families from Veneto, Friuli, Romagna and Sicily** in an internal migration experiment unique for its time. It is a story of vision and hard work that residents still feel as their own, but **the museum's communication does not tell it**, and outside Sardinia almost nobody knows it.",
+        "## The solution",
+        "The course brief asked for the art direction and digital communication of a cultural brand, with the goal of engaging emotionally rather than just informing. We built **a digital visual identity with an adaptive logo, palette, web and mobile typography and tone of voice**, documented in short guidelines, and from there the website, the mobile app and the social strategy. The immersive extension is a **podcast that gives voice to the real witnesses of the territory's transformation**, recorded in real places with no set, alongside a newsletter and an augmented-reality exploration of the Mill's spaces.",
+        "## My role",
+        "A two-person project with Giampaolo Zirone, with shared research and the work split between identity, digital and content.",
+      ],
+    },
+    tech: {
+      it: ["Art direction", "Brand identity", "Design system", "Figma", "UI web e mobile", "Podcast e contenuti", "Strategia social"],
+      en: ["Art direction", "Brand identity", "Design system", "Figma", "Web and mobile UI", "Podcast and content", "Social strategy"],
+    },
+  },
+  {
+    slug: "teseo",
+    title: "Teseo — riparare invece di sostituire",
+    category: service,
+    year: "2026",
+    summary: {
+      it: "Un servizio che rimette in vita gli oggetti a cui manca un pezzo, collegando i ricambi come file digitali a una rete di FabLab e stampanti 3D di quartiere, raccontato in cielo da uno spettacolo di 200 droni. Progetto di gruppo in NABA.",
+      en: "A service that brings back to life objects missing a single part, connecting spare parts as digital files to a network of neighbourhood FabLabs and 3D printers, told in the sky by a 200-drone show. Group project at NABA.",
+    },
+    description: {
+      it: [
+        "## Il problema",
+        "Gli oggetti hanno punti deboli progettati per cedere, e quando cedono **basta un ingranaggio, una clip o una manopola per buttare via tutto**, perché dopo qualche anno il ricambio non si trova più. Esiste già una rete distribuita di FabLab, makerspace e riparatori capace di stampare quel pezzo localmente, ma nessuno la vede. Il sondaggio e le interviste che abbiamo condotto sulle abitudini di riparazione lo confermano: le persone preferirebbero riparare, e **quello che le ferma è non sapere dove trovare il pezzo e a chi rivolgersi**.",
+        "## La soluzione",
+        "Teseo prende il nome dal paradosso della nave: l'identità di un oggetto sta nelle relazioni tra le parti, non nelle parti, e **un oggetto riparato resta lo stesso oggetto anche se porta i segni di chi l'ha rimesso insieme**. Il servizio collega chi ha un oggetto fermo, i file digitali dei ricambi e la stampante 3D più vicina, che sia un FabLab o un privato disposto a stampare per il quartiere, così che la riparazione diventi più semplice e più vicina dell'acquisto.",
+        "Per raccontarlo abbiamo progettato **Enactive Sky — Memoria Materiale**, uno spettacolo di 60 secondi con 200 droni che rappresentano un oggetto archetipo lungo il suo ciclo di vita: coesione, stress, frattura, attesa, il segnale che arriva dalla rete, la ricomposizione strato per strato come in una stampa 3D, e infine la cicatrice, che resta più luminosa del resto come nel kintsugi giapponese. Ogni fase è descritta con i parametri dello sciame, dalle forze ai colori, così che la lettura sia immediata senza didascalie.",
+        "## Il mio ruolo",
+        "Progetto di gruppo con Yating Hu e i compagni di corso. Ho lavorato sulla ricerca con gli utenti, sul concept del servizio e sulla **progettazione dello spettacolo, dal system feedback allo storyboard di interazione**.",
+      ],
+      en: [
+        "## The problem",
+        "Objects have weak points designed to fail, and when they do **a single gear, clip or knob is enough to throw the whole thing away**, because after a few years the spare part can no longer be found. A distributed network of FabLabs, makerspaces and repairers able to print that part locally already exists, but nobody sees it. The survey and interviews we ran on repair habits confirm it: people would rather repair, and **what stops them is not knowing where to find the part and whom to ask**.",
+        "## The solution",
+        "Teseo takes its name from the ship paradox: an object's identity lies in the relationships between its parts, not in the parts, and **a repaired object is still the same object even if it carries the marks of whoever put it back together**. The service connects the person with a broken object, the digital files of the spare parts and the nearest 3D printer, whether a FabLab or a private owner willing to print for the neighbourhood, so that repairing becomes simpler and closer than buying.",
+        "To tell the story we designed **Enactive Sky — Memoria Materiale**, a 60-second show with 200 drones representing an archetypal object through its life cycle: cohesion, stress, fracture, waiting, the signal coming from the network, the layer-by-layer rebuild as in a 3D print, and finally the scar, which stays brighter than the rest as in Japanese kintsugi. Every phase is described with the swarm's parameters, from forces to colours, so that the reading is immediate with no captions.",
+        "## My role",
+        "A group project with Yating Hu and coursemates. I worked on user research, on the service concept and on the **design of the show, from the system feedback to the interaction storyboard**.",
+      ],
+    },
+    tech: {
+      it: ["Service design", "UX research e sondaggi", "Concept design", "Storyboard", "Blender e geometry nodes", "Figma"],
+      en: ["Service design", "UX research and surveys", "Concept design", "Storyboard", "Blender and geometry nodes", "Figma"],
     },
   },
   {
@@ -398,7 +665,7 @@ export const projects: ProjectItem[] = [
 
 // ponytail: un progetto con `hidden: true` sparisce dall'elenco, dal prerender e dalla
 // sitemap, e la sua pagina risponde 404. I dati restano qui: per rimetterlo online basta
-// togliergli quella riga. Ora sono nascosti tutti.
+// togliergli quella riga.
 export const visibleProjects = projects.filter((project) => !project.hidden);
 
 export type ToolItem = {
