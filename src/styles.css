@@ -161,9 +161,16 @@
 
   /* La selezione è l'altro momento in cui l'utente "tocca" la pagina: stesso blu.
      Pieno e non trasparente, così anche il testo muted resta leggibile sopra. */
+  /* Nelle schede progetto con un `accent` la selezione prende il colore del brand del progetto. */
   ::selection {
-    background-color: var(--color-brand);
+    background-color: var(--project-accent, var(--color-brand));
     color: var(--color-background);
+  }
+
+  /* Immagini e video restano fuori dalla selezione: trascinando sul testo non si colorano. */
+  img,
+  video {
+    user-select: none;
   }
 
   /* L'anello di sistema non parla la lingua del sito. Questo sì, ed è l'unico
@@ -261,3 +268,24 @@
   }
 }
 
+
+/* Lightbox delle schede progetto: l'immagine si espande dalla sua posizione. */
+::view-transition-group(lightbox) {
+  animation-duration: 420ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+::view-transition-old(lightbox),
+::view-transition-new(lightbox) {
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Usato solo nei campioni di carattere delle schede progetto: il browser lo scarica se serve. */
+@font-face {
+  font-family: "Inclusive Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/inclusive-sans.woff2") format("woff2");
+}

@@ -7,12 +7,18 @@ export type ProjectItem = {
   year: string;
   href?: string;
   image?: string;
+  gallery?: string[];
+  /** Colore della selezione del testo nella scheda, di solito il colore del brand. */
+  accent?: string;
   hidden?: boolean;
   links?: { label: string; url: string }[];
   summary: Localized<string>;
   description: Localized<string[]>;
   tech: Localized<string[]>;
 };
+
+export const mailto = "mailto:luca@scalvinoni.com";
+export const linkedin = "https://www.linkedin.com/in/luca-scalvinoni/";
 
 const media = "/media";
 
@@ -29,6 +35,9 @@ export const projects: ProjectItem[] = [
     category: service,
     year: "2026",
     href: "https://reccemaps.com",
+    image: `${media}/recce-maps-spectator-map.webp`,
+    gallery: [`${media}/recce-maps-website-full.webp`],
+    accent: "#0f39d3",
     links: [
       { label: "reccemaps.com", url: "https://reccemaps.com" },
       { label: "shop.reccemaps.com", url: "https://shop.reccemaps.com" },
@@ -39,57 +48,65 @@ export const projects: ProjectItem[] = [
       { label: "Instagram @recce.world", url: "https://www.instagram.com/recce.world" },
     ],
     summary: {
-      it: "Una guida digitale per chi segue i rally dal bordo strada, co-fondata con tre amici e cresciuta in un anno fino a oltre 1.600 ordini e a una partnership ufficiale con il WRC Croatia Rally.",
-      en: "A digital guide for rally spectators, co-founded with three friends and grown in one year to more than 1,600 orders and an official partnership with WRC Croatia Rally.",
+      it: "Una guida digitale per chi segue i rally dal bordo strada, co-fondata con tre amici e cresciuta in pochi mesi fino a oltre 1.600 ordini e a una collaborazione con il WRC Croatia Rally.",
+      en: "A digital guide for rally spectators, co-founded with three friends and grown in a few months to more than 1,600 orders and a collaboration with WRC Croatia Rally.",
     },
     description: {
       it: [
         "## Il problema",
-        "Un rally si guarda dal bordo di strade che vengono chiuse molto prima del passaggio della prima vettura, quindi **la giornata di uno spettatore dipende da scelte fatte in anticipo**, ovvero dove parcheggiare fuori dalle chiusure, quale sentiero porta alla prova e quali curve sono spettacolari e allo stesso tempo dentro un'area pubblica. Queste informazioni sono sparse tra documenti ufficiali, portali dei percorsi e forum, e arrivano sul telefono come PDF da ingrandire all'infinito o come mappe piene di segnaposto che non dicono nulla su accessi e sicurezza, mentre **quasi 4 spettatori su 5 arrivano dall'estero** e la guida deve quindi essere pronta prima del viaggio e leggibile nella loro lingua.",
+        "> La giornata di chi guarda un rally si decide **in anticipo**, molto prima che passi la prima vettura.",
+        "Le strade chiudono molto prima del passaggio e le informazioni su parcheggi, sentieri e aree pubbliche sono sparse tra documenti ufficiali e forum, mentre **quasi 4 spettatori su 5 arrivano dall'estero** e devono **organizzarsi** prima del viaggio.",
+        `![Un rally si decide prima che passi la prima vettura: dove parcheggio, da dove guardo](${media}/recce-maps-rally-day.webp)`,
         "## La soluzione",
-        "Recce nasce come progetto collaterale di un canale YouTube dedicato ai rally, dove le mappe fatte per divertimento e condivise gratis hanno suggerito l'idea di trasformarle in un prodotto. Ogni guida è un livello di Google My Maps che si apre nell'app che gli spettatori hanno già, così **non c'è nulla da installare** e la navigazione verso un parcheggio è a un tocco di distanza, e partire da My Maps ha permesso di **testare il servizio con acquirenti reali prima di scrivere una riga di software nostro**. Ogni prova è disegnata con le curve classificate dal pieno al tornante e centinaia di punti scelti a mano sono divisi in 6 tipi, ciascuno con icona e colore propri, dato che i limiti di una piattaforma che non controllavamo sono diventati le regole del linguaggio visivo del prodotto. Un kit costa circa 5 € e contiene la mappa, una guida in PDF e l'accesso a una community Telegram che resta aperta durante l'evento.",
+        "> Una guida che si apre in Google Maps, con **niente da installare** e niente da imparare.",
+        "Ogni guida è una mappa che si apre in Google Maps, l'app che gli spettatori hanno già, con le curve classificate dal pieno al tornante e centinaia di punti scelti a mano, e appoggiarsi a Maps ha permesso anche di **testare il servizio con acquirenti reali** fin da subito.",
+        `![Basta il telefono: nessuna app da installare, nessun account da creare, niente da imparare](${media}/recce-maps-all-you-need-is-your-phone.mp4)`,
         "## Cosa ho fatto",
-        "Ho co-fondato il progetto con tre amici che realizzano le mappe e i video, mentre **io ho progettato e costruito tutto quello che sta intorno**, dal brand al sito in italiano e inglese, dallo store alle campagne Meta fino all'assistenza clienti. Ho portato lo store su Shopify con vetrine in due lingue e **prezzi locali in 30 mercati e 10 valute**, e ho **automatizzato la consegna delle mappe**, che prima richiedeva di condividere a mano ogni file con l'account Google dell'acquirente, così gli ordini arrivano sul telefono dello spettatore senza che nessuno debba intervenire. Le campagne Meta, con un budget di pochi euro al giorno e contenuti localizzati per fan di diversi paesi, hanno superato le **175.000 visualizzazioni**.",
-        "Una volta che vendita e consegna giravano da sole, la parte lenta era la produzione delle mappe, che richiedeva al team **circa 15 giorni di lavoro** per rally tra tracciare le prove, posizionare i punti, scrivere le descrizioni e tradurle. Ho progettato e costruito **l'MVP di uno strumento interno** che importa il percorso ufficiale, offre un editor per i punti e genera bozze delle descrizioni e delle traduzioni a partire da un **archivio di oltre 3.000 descrizioni** scritte per le mappe precedenti, così che una mappa richieda **un paio di giorni invece di 15**.",
+        "> Ho progettato con i colleghi **tutto il servizio**, dal branding alla vendita sul web fino all'MVP.",
+        "Ho progettato brand, sito e store, ho **automatizzato la consegna delle mappe** e gestito le campagne Meta.",
+        "Ho poi costruito l'MVP di uno strumento interno che prepara le bozze a partire da un archivio di oltre 3.000 descrizioni, così da poter **ridurre drasticamente i tempi di produzione** di una mappa e avere una coerenza tra i punti.",
+        `![Editor interno delle mappe Recce: le prove del Croatia Rally sulla mappa, l'elenco dei livelli e il riepilogo di un punto spettatori](${media}/recce-maps-map-editor.webp)`,
         "## Risultati",
-        "In 7 rally del 2026 Recce ha raccolto **oltre 1.600 ordini**, con 3 checkout su 4 completati da fuori Italia, ed è cresciuta attraverso le collaborazioni con gli organizzatori fino alla **partnership ufficiale con il WRC Croatia Rally**, una tappa del mondiale FIA, che ha incluso la promozione sui canali ufficiali della gara e ha reso la Croazia la guida più venduta del catalogo.",
+        "> Oltre **1.600 ordini** in 7 rally e una collaborazione con il **WRC Croatia Rally**.",
+        "Da gennaio abbiamo coperto **7 rally**, con ogni mappa disponibile in **almeno due lingue** e fino a quattro. Per il WRC Croatia Rally, tappa del mondiale FIA, abbiamo collaborato con gli organizzatori della gara, mentre le campagne sui social hanno superato le **175.000 visualizzazioni** e **3 ordini su 4** arrivano da fuori Italia.",
       ],
       en: [
         "## The problem",
-        "A rally is watched from the side of roads that close well before the first car, so **a spectator's day depends on choices made in advance**, such as where to park outside the closures, which path leads to the stage and which corners are both spectacular and inside a public area. That information is scattered across official documents, route portals and forums, and it reaches the phone as a PDF to zoom endlessly or as a map full of pins that say nothing about access or safety, while **almost 4 spectators in 5 come from outside Italy**, so the guide has to be ready before the trip and readable in their own language.",
+        "> A rally spectator's day is decided **in advance**, long before the first car goes by.",
+        "Roads close well before the cars arrive and the information on parking, paths and public areas is scattered across official documents and forums, while **almost 4 spectators in 5 come from outside Italy** and have to **plan** before the trip.",
+        `![A rally day is decided before the first car: where do I park, where do I watch](${media}/recce-maps-rally-day.webp)`,
         "## The solution",
-        "Recce started as a side project of a rally channel on YouTube, where maps made for fun and shared for free gave us the idea of turning them into a product. Each guide is a Google My Maps layer that opens in the app spectators already have, so **there is nothing to install** and navigation to a parking area is one tap away, and starting from My Maps meant the service could be **tested with real buyers before writing any software of our own**. Every stage is drawn with each corner classified from flat out to hairpin and hundreds of hand-picked points are sorted into 6 types, each with its own icon and colour, since the limits of a platform we did not control became the rules of the product's visual language. A kit costs around €5 and holds the map, a PDF guide and access to a Telegram community that stays open during the event.",
+        "> A guide that opens in Google Maps, with **nothing to install** and nothing to learn.",
+        "Each guide is a map that opens in Google Maps, the app spectators already have, with every corner classified from flat out to hairpin and hundreds of hand-picked points, and relying on Maps also let us **test the service with real buyers** from the start.",
+        `![All you need is your phone: no apps to install, no account to create, no learning curve](${media}/recce-maps-all-you-need-is-your-phone.mp4)`,
         "## What I did",
-        "I co-founded the project with three friends who make the maps and the videos, while **I designed and built everything around them**, from the brand to the website in Italian and English, from the store to the Meta campaigns and customer care. I moved the store to Shopify with storefronts in two languages and **local prices in 30 markets and 10 currencies**, and I **automated the delivery of the maps**, which used to mean sharing every file by hand with the buyer's Google account, so orders reach the spectator's phone without anyone stepping in. The Meta ads, on a budget of a few euros a day with assets localised for fans from several countries, gathered more than **175,000 views**.",
-        "Once selling and delivering ran on their own, the slow part was making the maps, which took the team **about 15 working days** per rally between tracing stages, placing points, writing descriptions and translating them. I designed and built **an MVP of an internal tool** that imports the official route, offers an editor for the points and drafts descriptions and translations from an **archive of 3,000+ descriptions** written for earlier maps, so that a map takes **a couple of days instead of 15**.",
+        "> With my colleagues I designed **the whole service**, from the branding to selling online to the MVP.",
+        "I designed the brand, the website and the store, **automated the delivery of the maps** and ran the Meta campaigns.",
+        "I then built the MVP of an internal tool that drafts each map from an archive of 3,000+ descriptions, so as to **drastically cut the time it takes to produce** a map and keep the points consistent with one another.",
+        `![Recce's internal map editor: the Croatia Rally stages on the map, the layer list and the summary of a spectator point](${media}/recce-maps-map-editor.webp)`,
         "## Results",
-        "Across 7 rallies in 2026 Recce took **more than 1,600 orders**, with 3 checkouts in 4 completed from outside Italy, and grew through collaborations with organisers up to an **official partnership with WRC Croatia Rally**, a round of the FIA World Rally Championship, which included promotion on the rally's official channels and made Croatia the best-selling guide in the catalogue.",
+        "> More than **1,600 orders** across 7 rallies and a collaboration with **WRC Croatia Rally**.",
+        "Since January we have covered **7 rallies**, with every map available in **at least two languages** and up to four. For WRC Croatia Rally, a round of the FIA world championship, we worked with the organisers of the event, while the social campaigns gathered more than **175,000 views** and **3 orders in 4** come from outside Italy.",
       ],
     },
     tech: {
       it: [
         "Product e information design",
         "Art direction e brand",
-        "WordPress",
         "Shopify",
         "n8n",
-        "Google My Maps",
         "Meta Ads",
         "PWA",
-        "PostgreSQL",
-        "Integrazioni API e LLM",
+        "Integrazioni LLM",
       ],
       en: [
         "Product and information design",
         "Art direction and brand",
-        "WordPress",
         "Shopify",
         "n8n",
-        "Google My Maps",
         "Meta Ads",
         "PWA",
-        "PostgreSQL",
-        "API and LLM integrations",
+        "LLM integrations",
       ],
     },
   },
@@ -154,10 +171,17 @@ export const projects: ProjectItem[] = [
     category: uxui,
     year: "2026",
     href: "https://ux-design-awards.com/winners/2026-2-guido-from-bureaucracy-to-dialogue",
+    image: `${media}/guido-totem-app-screens.webp`,
+    accent: "#3b6e5a",
+    gallery: [`${media}/guido-ui-components.webp`],
     links: [
       {
         label: "UX Design Awards 2026",
         url: "https://ux-design-awards.com/winners/2026-2-guido-from-bureaucracy-to-dialogue",
+      },
+      {
+        label: "Behance",
+        url: "https://www.behance.net/gallery/256179379/From-bureaucracy-to-dialogue-with-Guido",
       },
     ],
     summary: {
@@ -167,23 +191,41 @@ export const projects: ProjectItem[] = [
     description: {
       it: [
         "## Il problema",
+        "> Per fare una pratica il cittadino deve capire **da solo** dove andare, cosa portare e cosa c'è scritto nei documenti.",
         "Ogni pratica con la pubblica amministrazione passa da sportelli, portali e moduli diversi, scritti in una lingua che la maggior parte delle persone non capisce. Il risultato è che **il cittadino non sa da dove cominciare, cosa gli serve e a chi chiedere**, e la burocrazia diventa una barriera prima ancora che un servizio.",
+        `![Uso dei servizi online della PA: Italia 55%, media UE 70%, obiettivo UE 2030 85%](${media}/guido-online-pa-service-usage.webp)`,
         "## La soluzione",
+        "> Un solo posto dove la burocrazia viene tradotta in **linguaggio semplice** e spiegata un passo alla volta.",
         "Guido è un **hub unico che collega i servizi pubblici** e li rende leggibili. Un assistente basato su AI **traduce i documenti amministrativi in linguaggio semplice**, le procedure vengono scomposte in passaggi guidati e gli appuntamenti si prenotano dallo stesso posto. Per chi non ha o non vuole uno smartphone, un **totem phygital installato nei luoghi civici** offre lo stesso accesso di persona. Il passaggio che dà il nome al progetto è questo: dalla burocrazia al dialogo.",
-        "## Il mio ruolo",
-        "Progetto sviluppato in NABA con Nicola Sorgesa e Giampaolo Zirone, con la guida di Gabriele Ruscelli. Ho lavorato sulla **ricerca, sui flussi e sul prototipo** del sistema.",
+        "## Accessibilità",
+        "> Un servizio pubblico deve poter essere usato da **chiunque**, e sul totem è l'interfaccia ad **adattarsi** alla persona.",
+        "Dal pulsante Accessibilità, sempre presente in basso, ognuno sceglie l'aiuto di cui ha bisogno. Con la modalità per la **mobilità ridotta l'interfaccia si sposta nella parte bassa dello schermo**, così chi è in carrozzina o non arriva in alto raggiunge tutti i comandi. Per chi è **ipovedente il contrasto aumenta**, mentre per chi ha un **disturbo dell'attenzione si riduce**, e le due palette rispettano entrambe le WCAG 2.1 ai livelli AA e AAA. Il carattere è **Inclusive Sans**, disegnato per la leggibilità, con lettere che non si confondono tra loro.",
+        `![Menu Accessibilità del totem con le tre modalità: mobilità, ipovisione e ADHD](${media}/guido-accessibility-menu.webp)`,
+        "@font Inclusive Sans: Carattere · Inclusive Sans",
+        "@palette Alto contrasto · WCAG 2.1 AA e AAA: #0f1e19 #d7e7e2 #1f7a5c #e9f2ef #f1f2f1",
+        "@palette Basso contrasto · WCAG 2.1 AA e AAA: #313e39 #d8dfdc #5f7f74 #e3e8e6 #e6e9e8",
         "## Risultati",
-        "Guido è stato **nominato agli UX Design Awards 2026 nella categoria New Talent**, nelle sezioni Platform & Community e Citizens & Society.",
+        "Guido è stato **nominato agli [UX Design Awards 2026](https://ux-design-awards.com/winners/2026-2-guido-from-bureaucracy-to-dialogue) nella categoria New Talent**, nelle sezioni Platform & Community e Citizens & Society. Il progetto è stato sviluppato in NABA con Nicola Sorgesa e Giampaolo Zirone, con la guida di Gabriele Ruscelli.",
+        `![Demo del totem di Guido: accesso con identità digitale, scelta del servizio e stato della pratica](${media}/guido-demo.mp4)`,
       ],
       en: [
         "## The problem",
+        "> To get anything done, citizens have to work out **on their own** where to go, what to bring and what the documents say.",
         "Every procedure with public administration goes through different counters, portals and forms, written in a language most people do not understand. The result is that **citizens do not know where to start, what they need or whom to ask**, and bureaucracy becomes a barrier before it is a service.",
+        `![Online PA service usage: Italy 55%, EU average 70%, EU 2030 target 85%](${media}/guido-online-pa-service-usage.webp)`,
         "## The solution",
+        "> One place where bureaucracy is translated into **plain language** and explained one step at a time.",
         "Guido is a **single hub that connects public services** and makes them readable. An AI assistant **translates administrative documents into plain language**, procedures are broken down into guided steps and appointments are booked from the same place. For people who do not have or do not want a smartphone, a **phygital totem installed in civic locations** offers the same access in person. That shift is what gives the project its name: from bureaucracy to dialogue.",
-        "## My role",
-        "Developed at NABA with Nicola Sorgesa and Giampaolo Zirone, mentored by Gabriele Ruscelli. I worked on the **research, the flows and the prototype** of the system.",
+        "## Accessibility",
+        "> A public service has to work for **anyone**, and on the totem it is the interface that **adapts** to the person.",
+        "From the Accessibility button, always available at the bottom, people choose the help they need. In the **reduced mobility mode the interface moves to the lower part of the screen**, so wheelchair users and anyone who cannot reach high get to every control. For people with **low vision the contrast increases**, while for people with **attention disorders it decreases**, and both palettes meet WCAG 2.1 at AA and AAA levels. The typeface is **Inclusive Sans**, designed for legibility, with letters that cannot be mistaken for one another.",
+        `![Accessibility menu on the totem with its three modes: mobility, low vision and ADHD](${media}/guido-accessibility-menu.webp)`,
+        "@font Inclusive Sans: Typeface · Inclusive Sans",
+        "@palette High contrast · WCAG 2.1 AA and AAA: #0f1e19 #d7e7e2 #1f7a5c #e9f2ef #f1f2f1",
+        "@palette Low contrast · WCAG 2.1 AA and AAA: #313e39 #d8dfdc #5f7f74 #e3e8e6 #e6e9e8",
         "## Results",
-        "Guido was **nominated at the UX Design Awards 2026 in the New Talent category**, in the Platform & Community and Citizens & Society sections.",
+        "Guido was **nominated at the [UX Design Awards 2026](https://ux-design-awards.com/winners/2026-2-guido-from-bureaucracy-to-dialogue) in the New Talent category**, in the Platform & Community and Citizens & Society sections. The project was developed at NABA with Nicola Sorgesa and Giampaolo Zirone, mentored by Gabriele Ruscelli.",
+        `![Demo of Guido's totem: digital identity login, service selection and request status](${media}/guido-demo.mp4)`,
       ],
     },
     tech: {

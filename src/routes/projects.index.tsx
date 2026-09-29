@@ -51,7 +51,7 @@ function Projects() {
                     src={project.image}
                     alt={`${t(ui.previewAlt)} — ${project.title}`}
                     loading="lazy"
-                    className="aspect-[4/3] w-full object-cover grayscale transition-all duration-500 hover:grayscale-0"
+                    className="aspect-[4/3] w-full object-cover"
                   />
                 </Link>
               ) : null}

@@ -1,7 +1,7 @@
-import { Link, type LinkProps } from "@tanstack/react-router";
+import { Link, useRouter, type LinkProps } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
-import { useLang } from "@/i18n";
+import { ui, useLang, useT } from "@/i18n";
 import { cachedNowPlaying, nowPlaying, type Track } from "@/lib/now-playing";
 
 export function PageShell({ children }: { children: ReactNode }) {
@@ -104,27 +104,54 @@ function NowPlaying() {
   );
 }
 
-// Il nome del sito da solo si legge come un titolo, non come un "indietro":
-// la freccia lo dichiara. Stessa idea di ExternalArrow, direzione opposta.
+// In cima a ogni pagina interna: "Indietro" torna alla pagina di prima, come il tasto del
+// browser, e sotto in piccolo c'è il percorso. `to` è la pagina madre, omesso se è la home.
 export function BackLink({
   to,
   children,
 }: {
-  to: NonNullable<LinkProps["to"]>;
-  children: ReactNode;
+  to?: NonNullable<LinkProps["to"]>;
+  children?: ReactNode;
 }) {
+  const t = useT();
+  const router = useRouter();
   return (
-    <Link to={to} className="group link-nav text-[0.95rem] text-muted-foreground">
-      <span className="mr-1.5 inline-block transition-transform duration-150 group-hover:-translate-x-px">
-        ←
-      </span>
-      {children}
-    </Link>
+    <div className="text-muted-foreground">
+      <button
+        type="button"
+        className="link-nav text-[0.95rem]"
+        // Chi arriva da un link esterno non ha una pagina di prima: va alla pagina madre.
+        onClick={() =>
+          window.history.length > 1 ? router.history.back() : router.navigate({ to: to ?? "/" })
+        }
+      >
+        {t(ui.back)}
+      </button>
+      <nav aria-label="Breadcrumb" className="mt-1 text-[0.8rem]">
+        <ol className="flex flex-wrap gap-x-1.5">
+          <li>
+            <Link to="/" className="link-nav">
+              Home
+            </Link>
+          </li>
+          {to ? (
+            <>
+              <li aria-hidden>/</li>
+              <li>
+                <Link to={to} className="link-nav">
+                  {children}
+                </Link>
+              </li>
+            </>
+          ) : null}
+        </ol>
+      </nav>
+    </div>
   );
 }
 
 export function BackHome() {
-  return <BackLink to="/">Luca Scalvinoni</BackLink>;
+  return <BackLink />;
 }
 
 export function SectionLabel({ children }: { children: ReactNode }) {

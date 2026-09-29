@@ -66,8 +66,14 @@ export const ui = {
   path: { it: "Percorso", en: "Journey" },
   lately: { it: "Ultimamente", en: "Lately" },
   seeProjects: { it: "vedi i progetti", en: "see the projects" },
-  tools: { it: "Strumenti e tecnologie", en: "Tools and technologies" },
-  links: { it: "Link", en: "Links" },
+  back: { it: "Indietro", en: "Back" },
+  links: { it: "Risorse utili", en: "Useful resources" },
+  ctaContact: { it: "Scrivimi", en: "Get in touch" },
+  ctaOr: {
+    it: ", oppure continua a scorrere per il prossimo progetto.",
+    en: ", or keep scrolling for the next project.",
+  },
+  nextProject: { it: "Prossimo progetto", en: "Next project" },
   notFound: { it: "Progetto non trovato", en: "Project not found" },
   notFoundBody: {
     it: "Questo progetto non esiste o è stato spostato.",

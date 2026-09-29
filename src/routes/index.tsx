@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { ExternalArrow, PageShell, SectionLabel } from "@/components/PageShell";
-import { updates } from "@/data/site";
+import { linkedin, mailto, updates } from "@/data/site";
 import { ui, useLang, useT } from "@/i18n";
 
 export const Route = createFileRoute("/")({
@@ -32,8 +32,8 @@ export const Route = createFileRoute("/")({
 const RECAP = ["", "[@media(max-height:949px)]:hidden", "[@media(max-height:1199px)]:hidden"];
 
 const social = [
-  { label: "Mail", href: "mailto:luca@scalvinoni.com" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/luca-scalvinoni/" },
+  { label: "Mail", href: mailto },
+  { label: "LinkedIn", href: linkedin },
   { label: "Dribbble", href: "https://dribbble.com/Scalvinoni" },
 ];
 
@@ -48,11 +48,11 @@ function Index() {
       {lang === "it" ? (
         <>
           <p className="text-muted-foreground">
-            <span className="link-quiet text-foreground">Luca Scalvinoni</span> è un UX
-            designer di Brescia, in Italia. Fino ad agosto 2026 è stato{" "}
+            <span className="link-quiet text-foreground">Luca Scalvinoni</span> è un UX designer di
+            Brescia, in Italia. Fino ad agosto 2026 è stato{" "}
             <span className="text-foreground">UX &amp; Product Consultant</span> per{" "}
-            <span className="text-foreground">B4i</span>, il programma di accelerazione
-            per startup dell'
+            <span className="text-foreground">B4i</span>, il programma di accelerazione per startup
+            dell'
             <a
               href="https://www.unibocconi.it/"
               className="link-quiet text-foreground"
@@ -61,24 +61,23 @@ function Index() {
             >
               Università Bocconi
             </a>{" "}
-            di Milano, dove ha seguito tre startup su UX e comunicazione, occupandosi di
-            prodotto, UX/UI e branding.
+            di Milano, dove ha seguito tre startup su UX e comunicazione, occupandosi di prodotto,
+            UX/UI e branding.
           </p>
 
           <p className="mt-6 text-muted-foreground">
             Ha studiato <span className="text-foreground">web design</span> e{" "}
-            <span className="text-foreground">comunicazione d'impresa</span>{" "}
-            all'Accademia Santa Giulia di Brescia, con un Erasmus in{" "}
-            <span className="text-foreground">Media Art</span> a Breslavia. La sua passione per il
-            digitale nasce dalla fotografia e dalla grafica, e oggi si muove tra
-            interfacce, design di prodotto e visual design.
+            <span className="text-foreground">comunicazione d'impresa</span> all'Accademia Santa
+            Giulia di Brescia, con un Erasmus in <span className="text-foreground">Media Art</span>{" "}
+            a Breslavia. La sua passione per il digitale nasce dalla fotografia e dalla grafica, e
+            oggi si muove tra interfacce, design di prodotto e visual design.
           </p>
         </>
       ) : (
         <>
           <p className="text-muted-foreground">
-            <span className="link-quiet text-foreground">Luca Scalvinoni</span> is a UX
-            designer based in Brescia, Italy. Until August 2026 he worked as a{" "}
+            <span className="link-quiet text-foreground">Luca Scalvinoni</span> is a UX designer
+            based in Brescia, Italy. Until August 2026 he worked as a{" "}
             <span className="text-foreground">UX &amp; Product Consultant</span> for{" "}
             <span className="text-foreground">B4i</span>, the startup accelerator of{" "}
             <a
@@ -89,17 +88,16 @@ function Index() {
             >
               Bocconi University
             </a>{" "}
-            in Milan, where he supported three startups across UX and communication,
-            covering product, UX/UI and branding.
+            in Milan, where he supported three startups across UX and communication, covering
+            product, UX/UI and branding.
           </p>
 
           <p className="mt-6 text-muted-foreground">
             He studied <span className="text-foreground">web design</span> and{" "}
-            <span className="text-foreground">business communication</span> at Accademia
-            Santa Giulia in Brescia, with an Erasmus in{" "}
-            <span className="text-foreground">Media Art</span> in Wrocław. His interest in digital
-            work grew out of photography and graphic design, and today he moves between
-            interfaces, product design and visual design.
+            <span className="text-foreground">business communication</span> at Accademia Santa
+            Giulia in Brescia, with an Erasmus in <span className="text-foreground">Media Art</span>{" "}
+            in Wrocław. His interest in digital work grew out of photography and graphic design, and
+            today he moves between interfaces, product design and visual design.
           </p>
         </>
       )}
@@ -146,12 +144,7 @@ function Index() {
           {updates.slice(0, RECAP.length).map((item, i) => (
             <li key={item.title.it} className={RECAP[i]}>
               {item.href ? (
-                <a
-                  href={item.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group link-quiet"
-                >
+                <a href={item.href} target="_blank" rel="noreferrer" className="group link-quiet">
                   {t(item.title)}
                   <ExternalArrow />
                 </a>
