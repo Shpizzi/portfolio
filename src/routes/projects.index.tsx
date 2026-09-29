@@ -31,7 +31,7 @@ function Projects() {
 
   return (
     <PageShell>
-      <BackHome />
+      <BackHome crumbs={false} />
       <h1 className="sr-only">{t(ui.projects)}</h1>
       <section className="mt-16">
         <SectionLabel>{t(ui.projects)}</SectionLabel>
@@ -55,11 +55,7 @@ function Projects() {
                   />
                 </Link>
               ) : null}
-              <Link
-                to="/projects/$slug"
-                params={{ slug: project.slug }}
-                className="link-quiet"
-              >
+              <Link to="/projects/$slug" params={{ slug: project.slug }} className="link-quiet">
                 {project.title}
               </Link>
               <div className="text-[0.95rem] text-muted-foreground">

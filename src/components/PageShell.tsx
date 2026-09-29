@@ -109,9 +109,11 @@ function NowPlaying() {
 export function BackLink({
   to,
   children,
+  crumbs = true,
 }: {
   to?: NonNullable<LinkProps["to"]>;
   children?: ReactNode;
+  crumbs?: boolean;
 }) {
   const t = useT();
   const router = useRouter();
@@ -127,31 +129,33 @@ export function BackLink({
       >
         {t(ui.back)}
       </button>
-      <nav aria-label="Breadcrumb" className="mt-1 text-[0.8rem]">
-        <ol className="flex flex-wrap gap-x-1.5">
-          <li>
-            <Link to="/" className="link-nav">
-              Home
-            </Link>
-          </li>
-          {to ? (
-            <>
-              <li aria-hidden>/</li>
-              <li>
-                <Link to={to} className="link-nav">
-                  {children}
-                </Link>
-              </li>
-            </>
-          ) : null}
-        </ol>
-      </nav>
+      {crumbs ? (
+        <nav aria-label="Breadcrumb" className="mt-1 text-[0.8rem]">
+          <ol className="flex flex-wrap gap-x-1.5">
+            <li>
+              <Link to="/" className="link-nav">
+                Home
+              </Link>
+            </li>
+            {to ? (
+              <>
+                <li aria-hidden>/</li>
+                <li>
+                  <Link to={to} className="link-nav">
+                    {children}
+                  </Link>
+                </li>
+              </>
+            ) : null}
+          </ol>
+        </nav>
+      ) : null}
     </div>
   );
 }
 
-export function BackHome() {
-  return <BackLink />;
+export function BackHome({ crumbs = true }: { crumbs?: boolean }) {
+  return <BackLink crumbs={crumbs} />;
 }
 
 export function SectionLabel({ children }: { children: ReactNode }) {
