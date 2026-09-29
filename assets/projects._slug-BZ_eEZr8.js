@@ -1,0 +1,1 @@
+import{t as e}from"./projects._slug-BnkRqd2s.js";export{e as notFoundComponent};
