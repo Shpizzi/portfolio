@@ -233,6 +233,9 @@ function NextProject({ current }: { current: ProjectItem }) {
   );
 }
 
+// ponytail: gli elementi UI a sfondo trasparente (evasurgica-ui-*) vanno senza box, a tutta larghezza
+const isUiElement = (paragraph: string) => paragraph.includes("/evasurgica-ui-");
+
 function Zoomable({
   src,
   alt,
@@ -393,7 +396,7 @@ function ProjectDetail() {
                 src={paragraph.slice(paragraph.indexOf("](") + 2, -1)}
                 alt={paragraph.slice(2, paragraph.indexOf("]("))}
                 onOpen={lightbox.open}
-                className="w-full rounded-sm bg-muted"
+                className={isUiElement(paragraph) ? "w-full" : "w-full rounded-sm bg-muted"}
               />
             ) : (
               <p key={paragraph}>{emphasize(paragraph)}</p>
