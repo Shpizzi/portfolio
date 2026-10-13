@@ -1,0 +1,1 @@
+import{u as e}from"./index-BP-H2Lee.js";var t=e;export{t as component};

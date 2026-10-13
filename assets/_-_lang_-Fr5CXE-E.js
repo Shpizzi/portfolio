@@ -1,1 +1,0 @@
-import{u as e}from"./index-C3qaQhtS.js";var t=e;export{t as component};
