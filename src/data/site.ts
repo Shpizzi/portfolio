@@ -296,6 +296,7 @@ export const projects: ProjectItem[] = [
     category: uxui,
     year: "2026",
     image: `${media}/evasurgica-cover.webp`,
+    links: [{ label: "evasurgica.it", url: "https://evasurgica.it/" }],
     tldr: {
       it: "Expert review dell'interfaccia di un sistema AR per la chirurgia e due pitch deck per investitori e cliniche.",
       en: "Expert review of an AR surgery system's interface, plus two pitch decks for investors and clinics.",
