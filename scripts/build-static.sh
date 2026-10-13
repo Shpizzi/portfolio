@@ -11,15 +11,15 @@ echo "==> Installazione dipendenze"
 npm ci 2>/dev/null || npm install --no-audit --no-fund
 
 echo "==> Build"
-rm -rf .output public-dist
+rm -rf dist public-dist
 npm run build
 
-if [ ! -f .output/public/index.html ]; then
-  echo "ERRORE: build senza output prerenderizzato in .output/public" >&2
+if [ ! -f dist/client/index.html ]; then
+  echo "ERRORE: build senza output prerenderizzato in dist/client" >&2
   exit 1
 fi
 
-cp -R .output/public public-dist
+cp -R dist/client public-dist
 cp deploy/.htaccess public-dist/.htaccess
 
 if [ -n "$SITE_URL" ]; then

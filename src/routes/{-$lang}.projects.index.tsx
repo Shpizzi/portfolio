@@ -1,27 +1,39 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 
 import { BackHome, PageShell, SectionLabel } from "@/components/PageShell";
 import { visibleProjects } from "@/data/site";
-import { ui, useT } from "@/i18n";
+import { LocLink, langParam, seoLinks, ui, useT } from "@/i18n";
 
-export const Route = createFileRoute("/projects/")({
-  head: () => ({
-    meta: [
-      { title: "Progetti — Luca Scalvinoni" },
-      {
-        name: "description",
-        content:
-          "Progetti di UX/UI e graphic design di Luca Scalvinoni: flussi di sottoscrizione, dashboard, concept design e branding.",
-      },
-      { property: "og:title", content: "Progetti — Luca Scalvinoni" },
-      {
-        property: "og:description",
-        content: "Progetti di UX/UI e graphic design di Luca Scalvinoni.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+const meta = {
+  it: {
+    title: "Progetti — Luca Scalvinoni",
+    description:
+      "Progetti di UX/UI e graphic design di Luca Scalvinoni: flussi di sottoscrizione, dashboard, concept design e branding.",
+    ogDescription: "Progetti di UX/UI e graphic design di Luca Scalvinoni.",
+  },
+  en: {
+    title: "Projects — Luca Scalvinoni",
+    description:
+      "UX/UI and graphic design projects by Luca Scalvinoni: subscription flows, dashboards, concept design and branding.",
+    ogDescription: "UX/UI and graphic design projects by Luca Scalvinoni.",
+  },
+};
+
+export const Route = createFileRoute("/{-$lang}/projects/")({
+  head: ({ params }) => {
+    const lang = langParam(params.lang);
+    return {
+      meta: [
+        { title: meta[lang].title },
+        { name: "description", content: meta[lang].description },
+        { property: "og:title", content: meta[lang].title },
+        { property: "og:description", content: meta[lang].ogDescription },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
+      ],
+      links: seoLinks(lang, "/projects"),
+    };
+  },
 
   component: Projects,
 });
@@ -42,9 +54,8 @@ function Projects() {
           {visibleProjects.map((project) => (
             <li key={project.slug}>
               {project.image ? (
-                <Link
-                  to="/projects/$slug"
-                  params={{ slug: project.slug }}
+                <LocLink
+                  to={`/projects/${project.slug}`}
                   className="mb-3 block overflow-hidden rounded-sm bg-muted"
                 >
                   <img
@@ -53,11 +64,11 @@ function Projects() {
                     loading="lazy"
                     className="aspect-[4/3] w-full object-cover"
                   />
-                </Link>
+                </LocLink>
               ) : null}
-              <Link to="/projects/$slug" params={{ slug: project.slug }} className="link-quiet">
+              <LocLink to={`/projects/${project.slug}`} className="link-quiet">
                 {project.title}
-              </Link>
+              </LocLink>
               <div className="text-[0.95rem] text-muted-foreground">
                 {t(project.category)} · {project.year}
               </div>

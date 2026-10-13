@@ -1,7 +1,8 @@
-import { Link, useRouter, type LinkProps } from "@tanstack/react-router";
+import { Link, useRouter, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
-import { ui, useLang, useT } from "@/i18n";
+import type { UpdateItem } from "@/data/site";
+import { LocLink, localePath, rememberLang, stripLang, ui, useLang, useT } from "@/i18n";
 import { cachedNowPlaying, nowPlaying, type Track } from "@/lib/now-playing";
 
 export function PageShell({ children }: { children: ReactNode }) {
@@ -30,16 +31,22 @@ export function PageShell({ children }: { children: ReactNode }) {
 }
 
 export function LanguageSwitcher() {
-  const { lang, setLang } = useLang();
+  const { lang } = useLang();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const rest = stripLang(pathname);
 
   return (
     <div className="mb-10 flex items-center gap-x-3 text-[0.85rem] uppercase tracking-wide text-muted-foreground">
       {(["it", "en"] as const).map((code) => (
-        <button
+        // Un link vero, non un bottone: ogni lingua ha il suo URL e i crawler lo seguono.
+        <Link
           key={code}
-          type="button"
-          onClick={() => setLang(code)}
-          aria-pressed={lang === code}
+          to={localePath(code, rest) as never}
+          hrefLang={code}
+          // replace: il cambio lingua non aggiunge una voce alla cronologia
+          replace
+          onClick={() => rememberLang(code)}
+          aria-current={lang === code ? "true" : undefined}
           // La transizione sta sulla base: prima stava solo sul ramo inattivo,
           // così attivo→inattivo sfumava e inattivo→attivo scattava.
           className={`transition-colors ${
@@ -47,7 +54,7 @@ export function LanguageSwitcher() {
           }`}
         >
           {code}
-        </button>
+        </Link>
       ))}
       <NowPlaying />
     </div>
@@ -111,12 +118,13 @@ export function BackLink({
   children,
   crumbs = true,
 }: {
-  to?: NonNullable<LinkProps["to"]>;
+  to?: string;
   children?: ReactNode;
   crumbs?: boolean;
 }) {
   const t = useT();
   const router = useRouter();
+  const { lang } = useLang();
   return (
     <div className="text-muted-foreground">
       <button
@@ -124,7 +132,9 @@ export function BackLink({
         className="link-nav text-[0.95rem]"
         // Chi arriva da un link esterno non ha una pagina di prima: va alla pagina madre.
         onClick={() =>
-          window.history.length > 1 ? router.history.back() : router.navigate({ to: to ?? "/" })
+          window.history.length > 1
+            ? router.history.back()
+            : router.navigate({ to: localePath(lang, to ?? "/") as never })
         }
       >
         {t(ui.back)}
@@ -133,17 +143,17 @@ export function BackLink({
         <nav aria-label="Breadcrumb" className="mt-1 text-[0.8rem]">
           <ol className="flex flex-wrap gap-x-1.5">
             <li>
-              <Link to="/" className="link-nav">
+              <LocLink to="/" className="link-nav">
                 Home
-              </Link>
+              </LocLink>
             </li>
             {to ? (
               <>
                 <li aria-hidden>/</li>
                 <li>
-                  <Link to={to} className="link-nav">
+                  <LocLink to={to} className="link-nav">
                     {children}
-                  </Link>
+                  </LocLink>
                 </li>
               </>
             ) : null}
@@ -168,5 +178,36 @@ export function ExternalArrow() {
     <span className="ml-1 inline-block align-super text-[0.6em] text-muted-foreground transition-transform duration-150 group-hover:-translate-y-px">
       ↗
     </span>
+  );
+}
+
+// Una voce di Percorso, uguale in home e in /updates: link esterno (↗), pagina interna o testo.
+export function UpdateRow({
+  item,
+  className,
+}: {
+  item: UpdateItem;
+  className?: string | undefined;
+}) {
+  const t = useT();
+  const meta = [item.date, item.kind, item.venue].filter((v) => v !== undefined);
+  return (
+    <li className={className}>
+      {item.to ? (
+        <LocLink to={item.to} className="link-quiet">
+          {t(item.title)}
+        </LocLink>
+      ) : item.href ? (
+        <a href={item.href} target="_blank" rel="noreferrer" className="group link-quiet">
+          {t(item.title)}
+          <ExternalArrow />
+        </a>
+      ) : (
+        <span>{t(item.title)}</span>
+      )}
+      {meta.length ? (
+        <div className="text-[0.95rem] text-muted-foreground">{meta.map(t).join(" · ")}</div>
+      ) : null}
+    </li>
   );
 }

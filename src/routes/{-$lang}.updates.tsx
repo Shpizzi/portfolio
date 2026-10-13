@@ -1,28 +1,39 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { BackHome, ExternalArrow, PageShell, SectionLabel } from "@/components/PageShell";
+import { BackHome, PageShell, SectionLabel, UpdateRow } from "@/components/PageShell";
 import { updates } from "@/data/site";
-import { ui, useT } from "@/i18n";
+import { langParam, seoLinks, ui, useT } from "@/i18n";
 
-export const Route = createFileRoute("/updates")({
-  head: () => ({
-    meta: [
-      { title: "Percorso — Luca Scalvinoni" },
-      {
-        name: "description",
-        content:
-          "Il percorso di Luca Scalvinoni: consulenza UX all'Università Bocconi, studi in web design a Brescia, Erasmus in Media Art a Breslavia e riconoscimenti.",
-      },
-      { property: "og:title", content: "Percorso — Luca Scalvinoni" },
-      {
-        property: "og:description",
-        content: "Esperienze, studi e riconoscimenti di Luca Scalvinoni.",
-      },
+const meta = {
+  it: {
+    title: "Percorso — Luca Scalvinoni",
+    description:
+      "Il percorso di Luca Scalvinoni: consulenza UX all'Università Bocconi, studi in web design a Brescia, Erasmus in Media Art a Breslavia e riconoscimenti.",
+    ogDescription: "Esperienze, studi e riconoscimenti di Luca Scalvinoni.",
+  },
+  en: {
+    title: "Journey — Luca Scalvinoni",
+    description:
+      "Luca Scalvinoni's journey: UX consulting at Bocconi University, web design studies in Brescia, an Erasmus in Media Art in Wrocław, and recognitions.",
+    ogDescription: "Experience, studies and recognitions of Luca Scalvinoni.",
+  },
+};
 
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+export const Route = createFileRoute("/{-$lang}/updates")({
+  head: ({ params }) => {
+    const lang = langParam(params.lang);
+    return {
+      meta: [
+        { title: meta[lang].title },
+        { name: "description", content: meta[lang].description },
+        { property: "og:title", content: meta[lang].title },
+        { property: "og:description", content: meta[lang].ogDescription },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
+      ],
+      links: seoLinks(lang, "/updates"),
+    };
+  },
   component: Updates,
 });
 
@@ -37,19 +48,7 @@ function Updates() {
         <SectionLabel>{t(ui.path)}</SectionLabel>
         <ul className="space-y-5">
           {updates.map((item) => (
-            <li key={item.title.it}>
-              {item.href ? (
-                <a href={item.href} target="_blank" rel="noreferrer" className="group link-quiet">
-                  {t(item.title)}
-                  <ExternalArrow />
-                </a>
-              ) : (
-                <span>{t(item.title)}</span>
-              )}
-              <div className="text-[0.95rem] text-muted-foreground">
-                {t(item.date)} · {t(item.kind)} · {t(item.venue)}
-              </div>
-            </li>
+            <UpdateRow key={item.title.it} item={item} />
           ))}
         </ul>
       </section>

@@ -8,10 +8,10 @@ Il repository ha due branch con ruoli diversi.
 
 | Branch | Contenuto | Chi lo usa |
 | --- | --- | --- |
-| `main` | sorgenti (`src/`, config, script) | Lovable, sviluppo locale |
+| `main` | sorgenti (`src/`, config, script) | sviluppo locale |
 | `production` | solo `public-dist`, cioè l'HTML già buildato | Plesk |
 
-`main` non viene mai riscritto, quindi la cronologia che Lovable sincronizza resta intatta.
+`main` non viene mai riscritto.
 
 ## 1. Backup del WordPress attuale
 

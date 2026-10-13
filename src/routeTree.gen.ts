@@ -9,159 +9,192 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as UpdatesRouteImport } from './routes/updates'
-import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
-import { Route as ProjectsSlugRouteImport } from './routes/projects.$slug'
-import { Route as ToolsIndexRouteImport } from './routes/tools.index'
-import { Route as ToolsSlugRouteImport } from './routes/tools.$slug'
+import { Route as Char123LangChar125RouteImport } from './routes/{-$lang}'
+import { Route as Char123LangChar125IndexRouteImport } from './routes/{-$lang}.index'
+import { Route as Char123LangChar125UpdatesRouteImport } from './routes/{-$lang}.updates'
+import { Route as Char123LangChar125ProjectsIndexRouteImport } from './routes/{-$lang}.projects.index'
+import { Route as Char123LangChar125ProjectsSlugRouteImport } from './routes/{-$lang}.projects.$slug'
+import { Route as Char123LangChar125ToolsIndexRouteImport } from './routes/{-$lang}.tools.index'
+import { Route as Char123LangChar125ToolsSlugRouteImport } from './routes/{-$lang}.tools.$slug'
 
-const IndexRoute = IndexRouteImport.update({
+const Char123LangChar125Route = Char123LangChar125RouteImport.update({
+  id: '/{-$lang}',
+  path: '/{-$lang}',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Char123LangChar125IndexRoute = Char123LangChar125IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => Char123LangChar125Route,
 } as any)
-const UpdatesRoute = UpdatesRouteImport.update({
-  id: '/updates',
-  path: '/updates',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProjectsIndexRoute = ProjectsIndexRouteImport.update({
-  id: '/projects/',
-  path: '/projects/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
-  id: '/projects/$slug',
-  path: '/projects/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ToolsIndexRoute = ToolsIndexRouteImport.update({
-  id: '/tools/',
-  path: '/tools/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ToolsSlugRoute = ToolsSlugRouteImport.update({
-  id: '/tools/$slug',
-  path: '/tools/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
+const Char123LangChar125UpdatesRoute =
+  Char123LangChar125UpdatesRouteImport.update({
+    id: '/updates',
+    path: '/updates',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
+const Char123LangChar125ProjectsIndexRoute =
+  Char123LangChar125ProjectsIndexRouteImport.update({
+    id: '/projects/',
+    path: '/projects/',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
+const Char123LangChar125ProjectsSlugRoute =
+  Char123LangChar125ProjectsSlugRouteImport.update({
+    id: '/projects/$slug',
+    path: '/projects/$slug',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
+const Char123LangChar125ToolsIndexRoute =
+  Char123LangChar125ToolsIndexRouteImport.update({
+    id: '/tools/',
+    path: '/tools/',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
+const Char123LangChar125ToolsSlugRoute =
+  Char123LangChar125ToolsSlugRouteImport.update({
+    id: '/tools/$slug',
+    path: '/tools/$slug',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/updates': typeof UpdatesRoute
-  '/projects/$slug': typeof ProjectsSlugRoute
-  '/tools/$slug': typeof ToolsSlugRoute
-  '/projects/': typeof ProjectsIndexRoute
-  '/tools/': typeof ToolsIndexRoute
+  '/{-$lang}': typeof Char123LangChar125RouteWithChildren
+  '/{-$lang}/updates': typeof Char123LangChar125UpdatesRoute
+  '/{-$lang}/': typeof Char123LangChar125IndexRoute
+  '/{-$lang}/projects/$slug': typeof Char123LangChar125ProjectsSlugRoute
+  '/{-$lang}/tools/$slug': typeof Char123LangChar125ToolsSlugRoute
+  '/{-$lang}/projects/': typeof Char123LangChar125ProjectsIndexRoute
+  '/{-$lang}/tools/': typeof Char123LangChar125ToolsIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/updates': typeof UpdatesRoute
-  '/projects/$slug': typeof ProjectsSlugRoute
-  '/tools/$slug': typeof ToolsSlugRoute
-  '/projects': typeof ProjectsIndexRoute
-  '/tools': typeof ToolsIndexRoute
+  '/{-$lang}/updates': typeof Char123LangChar125UpdatesRoute
+  '/{-$lang}': typeof Char123LangChar125IndexRoute
+  '/{-$lang}/projects/$slug': typeof Char123LangChar125ProjectsSlugRoute
+  '/{-$lang}/tools/$slug': typeof Char123LangChar125ToolsSlugRoute
+  '/{-$lang}/projects': typeof Char123LangChar125ProjectsIndexRoute
+  '/{-$lang}/tools': typeof Char123LangChar125ToolsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/updates': typeof UpdatesRoute
-  '/projects/$slug': typeof ProjectsSlugRoute
-  '/tools/$slug': typeof ToolsSlugRoute
-  '/projects/': typeof ProjectsIndexRoute
-  '/tools/': typeof ToolsIndexRoute
+  '/{-$lang}': typeof Char123LangChar125RouteWithChildren
+  '/{-$lang}/updates': typeof Char123LangChar125UpdatesRoute
+  '/{-$lang}/': typeof Char123LangChar125IndexRoute
+  '/{-$lang}/projects/$slug': typeof Char123LangChar125ProjectsSlugRoute
+  '/{-$lang}/tools/$slug': typeof Char123LangChar125ToolsSlugRoute
+  '/{-$lang}/projects/': typeof Char123LangChar125ProjectsIndexRoute
+  '/{-$lang}/tools/': typeof Char123LangChar125ToolsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
-    | '/updates'
-    | '/projects/$slug'
-    | '/tools/$slug'
-    | '/projects/'
-    | '/tools/'
+    | '/{-$lang}'
+    | '/{-$lang}/updates'
+    | '/{-$lang}/'
+    | '/{-$lang}/projects/$slug'
+    | '/{-$lang}/tools/$slug'
+    | '/{-$lang}/projects/'
+    | '/{-$lang}/tools/'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
-    | '/updates'
-    | '/projects/$slug'
-    | '/tools/$slug'
-    | '/projects'
-    | '/tools'
+    | '/{-$lang}/updates'
+    | '/{-$lang}'
+    | '/{-$lang}/projects/$slug'
+    | '/{-$lang}/tools/$slug'
+    | '/{-$lang}/projects'
+    | '/{-$lang}/tools'
   id:
     | '__root__'
-    | '/'
-    | '/updates'
-    | '/projects/$slug'
-    | '/tools/$slug'
-    | '/projects/'
-    | '/tools/'
+    | '/{-$lang}'
+    | '/{-$lang}/updates'
+    | '/{-$lang}/'
+    | '/{-$lang}/projects/$slug'
+    | '/{-$lang}/tools/$slug'
+    | '/{-$lang}/projects/'
+    | '/{-$lang}/tools/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  UpdatesRoute: typeof UpdatesRoute
-  ProjectsSlugRoute: typeof ProjectsSlugRoute
-  ToolsSlugRoute: typeof ToolsSlugRoute
-  ProjectsIndexRoute: typeof ProjectsIndexRoute
-  ToolsIndexRoute: typeof ToolsIndexRoute
+  Char123LangChar125Route: typeof Char123LangChar125RouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
+    '/{-$lang}': {
+      id: '/{-$lang}'
+      path: '/{-$lang}'
+      fullPath: '/{-$lang}'
+      preLoaderRoute: typeof Char123LangChar125RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/{-$lang}/': {
+      id: '/{-$lang}/'
       path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$lang}/'
+      preLoaderRoute: typeof Char123LangChar125IndexRouteImport
+      parentRoute: typeof Char123LangChar125Route
     }
-    '/updates': {
-      id: '/updates'
+    '/{-$lang}/updates': {
+      id: '/{-$lang}/updates'
       path: '/updates'
-      fullPath: '/updates'
-      preLoaderRoute: typeof UpdatesRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$lang}/updates'
+      preLoaderRoute: typeof Char123LangChar125UpdatesRouteImport
+      parentRoute: typeof Char123LangChar125Route
     }
-    '/projects/': {
-      id: '/projects/'
+    '/{-$lang}/projects/': {
+      id: '/{-$lang}/projects/'
       path: '/projects'
-      fullPath: '/projects/'
-      preLoaderRoute: typeof ProjectsIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$lang}/projects/'
+      preLoaderRoute: typeof Char123LangChar125ProjectsIndexRouteImport
+      parentRoute: typeof Char123LangChar125Route
     }
-    '/projects/$slug': {
-      id: '/projects/$slug'
+    '/{-$lang}/projects/$slug': {
+      id: '/{-$lang}/projects/$slug'
       path: '/projects/$slug'
-      fullPath: '/projects/$slug'
-      preLoaderRoute: typeof ProjectsSlugRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$lang}/projects/$slug'
+      preLoaderRoute: typeof Char123LangChar125ProjectsSlugRouteImport
+      parentRoute: typeof Char123LangChar125Route
     }
-    '/tools/': {
-      id: '/tools/'
+    '/{-$lang}/tools/': {
+      id: '/{-$lang}/tools/'
       path: '/tools'
-      fullPath: '/tools/'
-      preLoaderRoute: typeof ToolsIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$lang}/tools/'
+      preLoaderRoute: typeof Char123LangChar125ToolsIndexRouteImport
+      parentRoute: typeof Char123LangChar125Route
     }
-    '/tools/$slug': {
-      id: '/tools/$slug'
+    '/{-$lang}/tools/$slug': {
+      id: '/{-$lang}/tools/$slug'
       path: '/tools/$slug'
-      fullPath: '/tools/$slug'
-      preLoaderRoute: typeof ToolsSlugRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$lang}/tools/$slug'
+      preLoaderRoute: typeof Char123LangChar125ToolsSlugRouteImport
+      parentRoute: typeof Char123LangChar125Route
     }
   }
 }
 
+interface Char123LangChar125RouteChildren {
+  Char123LangChar125UpdatesRoute: typeof Char123LangChar125UpdatesRoute
+  Char123LangChar125IndexRoute: typeof Char123LangChar125IndexRoute
+  Char123LangChar125ProjectsSlugRoute: typeof Char123LangChar125ProjectsSlugRoute
+  Char123LangChar125ToolsSlugRoute: typeof Char123LangChar125ToolsSlugRoute
+  Char123LangChar125ProjectsIndexRoute: typeof Char123LangChar125ProjectsIndexRoute
+  Char123LangChar125ToolsIndexRoute: typeof Char123LangChar125ToolsIndexRoute
+}
+
+const Char123LangChar125RouteChildren: Char123LangChar125RouteChildren = {
+  Char123LangChar125UpdatesRoute: Char123LangChar125UpdatesRoute,
+  Char123LangChar125IndexRoute: Char123LangChar125IndexRoute,
+  Char123LangChar125ProjectsSlugRoute: Char123LangChar125ProjectsSlugRoute,
+  Char123LangChar125ToolsSlugRoute: Char123LangChar125ToolsSlugRoute,
+  Char123LangChar125ProjectsIndexRoute: Char123LangChar125ProjectsIndexRoute,
+  Char123LangChar125ToolsIndexRoute: Char123LangChar125ToolsIndexRoute,
+}
+
+const Char123LangChar125RouteWithChildren =
+  Char123LangChar125Route._addFileChildren(Char123LangChar125RouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  UpdatesRoute: UpdatesRoute,
-  ProjectsSlugRoute: ProjectsSlugRoute,
-  ToolsSlugRoute: ToolsSlugRoute,
-  ProjectsIndexRoute: ProjectsIndexRoute,
-  ToolsIndexRoute: ToolsIndexRoute,
+  Char123LangChar125Route: Char123LangChar125RouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

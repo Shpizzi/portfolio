@@ -11,7 +11,9 @@ export type ProjectItem = {
   /** Colore della selezione del testo nella scheda, di solito il colore del brand. */
   accent?: string;
   hidden?: boolean;
-  links?: { label: string; url: string }[];
+  links?: { label: string | Localized<string>; url: string }[];
+  /** Riga di sintesi mostrata in cima alla scheda, massimo due righe. */
+  tldr?: Localized<string>;
   summary: Localized<string>;
   description: Localized<string[]>;
   tech: Localized<string[]>;
@@ -26,6 +28,7 @@ const uxui: Localized<string> = { it: "UX/UI", en: "UX/UI" };
 const graphic: Localized<string> = { it: "Graphic Design", en: "Graphic Design" };
 const service: Localized<string> = { it: "Service Design", en: "Service Design" };
 const brand: Localized<string> = { it: "Brand Identity", en: "Brand Identity" };
+const artDirection: Localized<string> = { it: "Art Direction", en: "Art Direction" };
 const web: Localized<string> = { it: "Web & SEO", en: "Web & SEO" };
 
 export const projects: ProjectItem[] = [
@@ -47,6 +50,10 @@ export const projects: ProjectItem[] = [
       },
       { label: "Instagram @recce.world", url: "https://www.instagram.com/recce.world" },
     ],
+    tldr: {
+      it: "Guida digitale per chi segue i rally dal bordo strada, co-fondata e portata in pochi mesi a oltre 1.600 ordini.",
+      en: "A digital guide for rally spectators, co-founded and taken to over 1,600 orders in a few months.",
+    },
     summary: {
       it: "Una guida digitale per chi segue i rally dal bordo strada, co-fondata con tre amici e cresciuta in pochi mesi fino a oltre 1.600 ordini e a una collaborazione con il WRC Croatia Rally.",
       en: "A digital guide for rally spectators, co-founded with three friends and grown in a few months to more than 1,600 orders and a collaboration with WRC Croatia Rally.",
@@ -116,6 +123,10 @@ export const projects: ProjectItem[] = [
     category: uxui,
     year: "2026",
     links: [{ label: "Fondazione Corriere della Sera", url: "https://fondazionecorriere.corriere.it" }],
+    tldr: {
+      it: "L'archivio storico del Corriere trasformato in una mappa narrativa, con un prototipo navigabile da 100/100 in accessibilità.",
+      en: "Corriere's historical archive turned into a narrative map, with a navigable prototype scoring 100/100 on accessibility.",
+    },
     summary: {
       it: "Il ripensamento del sistema digitale dell'archivio storico del Corriere della Sera: da magazzino per specialisti a mappa narrativa da attraversare, con un prototipo navigabile e un ecosistema di comunicazione. Progetto di gruppo per il corso Sistemi editoriali per l'arte, NABA.",
       en: "A rethink of the digital system behind Corriere della Sera's historical archive: from a warehouse for specialists to a narrative map to travel through, with a navigable prototype and a communication ecosystem. Group project for the Editorial Systems for the Arts course at NABA.",
@@ -184,6 +195,10 @@ export const projects: ProjectItem[] = [
         url: "https://www.behance.net/gallery/256179379/From-bureaucracy-to-dialogue-with-Guido",
       },
     ],
+    tldr: {
+      it: "Un sistema unico che guida i cittadini nelle pratiche della PA in linguaggio semplice. Nominato agli UX Design Awards 2026.",
+      en: "One system that guides citizens through public-administration procedures in plain language. Nominated at the UX Design Awards 2026.",
+    },
     summary: {
       it: "Un sistema unico e accessibile che accompagna i cittadini nelle pratiche della pubblica amministrazione, con traduzione in linguaggio semplice, procedure guidate e un totem phygital. Nominato agli UX Design Awards 2026, categoria New Talent.",
       en: "A single, accessible system that guides citizens through public administration procedures, with plain-language translation, guided steps and a phygital totem. Nominated at the UX Design Awards 2026, New Talent category.",
@@ -207,6 +222,8 @@ export const projects: ProjectItem[] = [
         "## Risultati",
         "Guido è stato **nominato agli [UX Design Awards 2026](https://ux-design-awards.com/winners/2026-2-guido-from-bureaucracy-to-dialogue) nella categoria New Talent**, nelle sezioni Platform & Community e Citizens & Society. Il progetto è stato sviluppato in NABA con Nicola Sorgesa e Giampaolo Zirone, con la guida di Gabriele Ruscelli.",
         `![Demo del totem di Guido: accesso con identità digitale, scelta del servizio e stato della pratica](${media}/guido-demo.mp4)`,
+        "## Il mio ruolo",
+        "Abbiamo lavorato in tre su tutte le fasi del progetto, dalla ricerca con gli utenti ai flussi, all'interfaccia, al prototipo e alla presentazione, senza dividerci le aree.",
       ],
       en: [
         "## The problem",
@@ -226,6 +243,8 @@ export const projects: ProjectItem[] = [
         "## Results",
         "Guido was **nominated at the [UX Design Awards 2026](https://ux-design-awards.com/winners/2026-2-guido-from-bureaucracy-to-dialogue) in the New Talent category**, in the Platform & Community and Citizens & Society sections. The project was developed at NABA with Nicola Sorgesa and Giampaolo Zirone, mentored by Gabriele Ruscelli.",
         `![Demo of Guido's totem: digital identity login, service selection and request status](${media}/guido-demo.mp4)`,
+        "## My role",
+        "The three of us worked together on every phase of the project, from user research to flows, interface, prototype and presentation, without splitting it into separate areas.",
       ],
     },
     tech: {
@@ -240,6 +259,10 @@ export const projects: ProjectItem[] = [
     year: "2026",
     href: "https://antevo.ai",
     links: [{ label: "antevo.ai", url: "https://antevo.ai" }],
+    tldr: {
+      it: "Naming, identità e pitch deck per un software clinico AI di oncologia: da Evoclin nasce Antevo.",
+      en: "Naming, identity and pitch deck for an AI clinical software in oncology: Evoclin becomes Antevo.",
+    },
     summary: {
       it: "Il rebrand di Evoclin, spin-off di Bicocca e San Raffaele che sviluppa software clinico AI per l'oncologia di precisione: dal problema del nome al naming, all'identità e al pitch deck, come consulente UX e product per B4i, l'acceleratore dell'Università Bocconi.",
       en: "The rebrand of Evoclin, a Bicocca and San Raffaele spin-off building AI clinical software for precision oncology: from the naming problem to the new name, the identity and the pitch deck, as UX and product consultant for B4i, Bocconi University's accelerator.",
@@ -272,6 +295,11 @@ export const projects: ProjectItem[] = [
     title: "Evasurgica — expert review UX/UI e pitch",
     category: uxui,
     year: "2026",
+    image: `${media}/evasurgica-cover.webp`,
+    tldr: {
+      it: "Expert review dell'interfaccia di un sistema AR per la chirurgia e due pitch deck per investitori e cliniche.",
+      en: "Expert review of an AR surgery system's interface, plus two pitch decks for investors and clinics.",
+    },
     summary: {
       it: "Expert review dell'interfaccia di un sistema AR per la chirurgia mini-invasiva e robotica, più due pitch deck distinti per investitori e cliniche, alla vigilia dei trial clinici. Consulenza per B4i, l'acceleratore dell'Università Bocconi.",
       en: "An expert review of the interface of an AR system for minimally invasive and robotic surgery, plus two separate pitch decks for investors and clinics, on the eve of clinical trials. Consulting for B4i, Bocconi University's accelerator.",
@@ -280,14 +308,20 @@ export const projects: ProjectItem[] = [
       it: [
         "## Il problema",
         "Evasurgica vende software e carrello per la chirurgia mini-invasiva e robotica: il sistema **sovrappone un modello 3D del paziente all'immagine endoscopica in realtà aumentata**, così che il chirurgo identifichi le strutture anatomiche più in fretta e con meno complicanze. Il prodotto era tecnicamente solido e già testato, ma **la comunicazione visiva e il pitch non erano all'altezza della tecnologia**, proprio mentre stavano per partire i trial clinici e bisognava convincere ospedali pubblici e cliniche private.",
+        `![Evasurgica: concept di navigazione in AR con le viste assiale, coronale, sagittale e il render 3D](${media}/evasurgica-problem.webp)`,
+        `![L'interfaccia di Evasurgica: il modello 3D del paziente sovrapposto all'immagine endoscopica](${media}/evasurgica-build-loop.mp4)`,
         "## Cosa ho fatto",
         "Ho raccolto i materiali esistenti e organizzato un **walkthrough del software con il team**, per capire come si usa davvero in sala: l'hardware non è touch, si lavora con una tastiera medical grade e uno space mouse dal lettino operatorio, in ambiente sterile, e questo cambia tutte le regole di usabilità. Da lì ho condotto una **expert review UX/UI dell'applicativo**, con un benchmark dei software affini e una serie di schermate prima e dopo che motivano ogni intervento sui fondamenti dell'usabilità, non sull'estetica. Sul pitch ho separato quello che era un ibrido tra deck da leggere e presentazione da parlare in **due versioni distinte, una per gli investitori e una per cliniche e ospedali**, intervenendo su gerarchia tipografica, leggibilità e struttura senza stravolgere l'identità.",
+        `![Una schermata dell'applicativo prima e dopo la revisione](${media}/evasurgica-before-after.mp4)`,
       ],
       en: [
         "## The problem",
         "Evasurgica sells software and a cart for minimally invasive and robotic surgery: the system **overlays a 3D model of the patient onto the endoscopic image in augmented reality**, so the surgeon identifies anatomical structures faster and with fewer complications. The product was technically solid and already tested, but **its visual communication and pitch were not up to the technology**, just as clinical trials were about to start and public hospitals and private clinics had to be convinced.",
+        `![Evasurgica: AR navigation concept with the axial, coronal and sagittal views and the 3D render](${media}/evasurgica-problem.webp)`,
+        `![Evasurgica's interface: the patient's 3D model overlaid on the endoscopic image](${media}/evasurgica-build-loop.mp4)`,
         "## What I did",
         "I gathered the existing materials and set up a **walkthrough of the software with the team**, to understand how it is really used in the operating room: the hardware is not touch, you work with a medical-grade keyboard and a space mouse from the operating table, in a sterile environment, and that changes every usability rule. From there I ran an **expert UX/UI review of the application**, with a benchmark of similar software and a series of before-and-after screens that justify each change on usability fundamentals, not on aesthetics. On the pitch I split what was a hybrid between a deck to read and a presentation to speak into **two separate versions, one for investors and one for clinics and hospitals**, working on typographic hierarchy, readability and structure without changing the identity.",
+        `![An application screen before and after the review](${media}/evasurgica-before-after.mp4)`,
       ],
     },
     tech: {
@@ -302,6 +336,10 @@ export const projects: ProjectItem[] = [
     year: "2026",
     href: "https://pclab.bs.it",
     links: [{ label: "pclab.bs.it", url: "https://pclab.bs.it" }],
+    tldr: {
+      it: "Nuovo sito per un'azienda IT bresciana: tema su misura, migrazione senza perdere posizionamento, PageSpeed mobile da 78 a 93.",
+      en: "New website for a Brescia IT company: custom theme, migration with rankings intact, mobile PageSpeed from 78 to 93.",
+    },
     summary: {
       it: "Il nuovo sito di PCLab, azienda di assistenza IT in provincia di Brescia: da poche pagine generiche a una struttura di circa trenta pagine costruite sulle ricerche reali dei clienti, con tema WordPress su misura, migrazione senza perdere posizionamento e PageSpeed mobile da 78 a 93.",
       en: "The new website of PCLab, an IT services company in the Brescia area: from a few generic pages to a structure of about thirty pages built on what customers actually search for, with a custom WordPress theme, a migration that kept rankings intact and mobile PageSpeed from 78 to 93.",
@@ -336,67 +374,64 @@ export const projects: ProjectItem[] = [
   {
     slug: "muba-arborea",
     title: "MUBA — Museo della Bonifica di Arborea",
-    category: graphic,
+    category: artDirection,
     year: "2025",
     image: `${media}/muba-cover.webp`,
     accent: "#e52d28",
     links: [
       { label: "Behance", url: "https://www.behance.net/gallery/256179223/MUBA-Past-Future-Present" },
+      { label: { it: "Prototipo", en: "Prototype" }, url: "https://muba-website.vercel.app/" },
     ],
+    tldr: {
+      it: "Rebranding completo di un museo: identità, sito, app, biglietteria, podcast e piano editoriale, pronto per il cliente.",
+      en: "Complete museum rebranding: identity, website, app, ticketing, podcast and editorial plan, ready for the client.",
+    },
     summary: {
-      it: "Rebranding del museo comunale di Arborea, in Sardegna: da museo statico a memoria viva e condivisa, con identità visiva, sito, app, podcast e strategia social che invitano ogni visitatore a scoprire la storia della città e a lasciare il proprio segno. Progetto di corso in NABA con Giampaolo Zirone.",
-      en: "Rebranding of the municipal museum of Arborea, Sardinia: from a static museum to a living, shared memory, with visual identity, website, app, podcast and social strategy inviting every visitor to discover the town's story and leave their own mark. Course project at NABA with Giampaolo Zirone.",
+      it: "Rebranding completo del museo di Arborea, in Sardegna: ricerca, identità visiva con illustrazioni e animazioni, sito storytelling, app nativa, biglietteria online, podcast e piano editoriale. Pronto da consegnare al cliente.",
+      en: "Complete rebranding of the museum of Arborea, Sardinia: research, a visual identity with illustrations and animations, a storytelling website, a native app, online ticketing, a podcast and an editorial plan. Ready to hand over to the client.",
     },
     description: {
       it: [
         "## Il contesto",
-        "Il MUBA è allestito nei locali dell'ex Mulino di Arborea, un esempio di archeologia industriale che conserva ancora le attrezzature per la macinazione del grano. Raccoglie i documenti della bonifica della piana del Sassu e della città, **fondata nel 1928 e popolata da famiglie arrivate dal Veneto, dal Friuli, dalla Romagna e dalla Sicilia** per un esperimento di migrazione interna unico per l'epoca.",
+        "Il MUBA è allestito nell'ex Mulino di Arborea e racconta la bonifica della piana del Sassu e la città, **fondata nel 1928 da famiglie arrivate da Veneto, Friuli, Romagna e Sicilia**, un esperimento di migrazione interna unico per l'epoca.",
         "## La sfida",
         "> Un museo che racconta una storia viva, ma **in una sola direzione**: il visitatore guarda, legge e se ne va.",
-        "È una storia di visione e di fatica che gli abitanti sentono ancora propria, ma **la comunicazione del museo non la racconta**, e fuori dalla Sardegna quasi nessuno la conosce. L'obiettivo era passare da una collezione statica a **una memoria viva e condivisa**, senza riempire il museo di tecnologia fine a sé stessa. Prima di progettare abbiamo mappato il pubblico, tre cluster e nove personas, e confrontato cinque musei su diciotto fattori: **nessuno usa l'ironia e la condivisione è quasi inesplorata**, ed è lì che il MUBA poteva stare.",
+        "Fuori dalla Sardegna quasi nessuno la conosce, e la comunicazione del museo non la racconta. Ho curato la ricerca su branding, tono di voce e personalità: tre cluster di pubblico, nove personas, cinque musei a confronto su diciotto fattori. **Nessuno usa l'ironia e la condivisione è quasi inesplorata**, ed è lì che il MUBA poteva stare.",
         "## L'idea",
         "> Un museo che non guardi soltanto. **Lo vivi.**",
-        "La proposta di valore si riassume in tre verbi: **scoprire** la storia di una città costruita sulla palude bonificata, **connettersi** con la comunità attraverso generazioni, storie ed eventi, **lasciare il proprio segno** aggiungendo un ricordo. Ogni visitatore diventa custode della storia di Arborea. A parlare è una nonna disegnata a mano, con un tono caldo e ironico. La promessa del brand è scritta in italiano, veneto e sardo.",
+        "Tre verbi: **scoprire**, **connettersi**, **lasciare il proprio segno**. A parlare è una nonna disegnata a mano, con un tono caldo e ironico, e la promessa del brand è scritta in italiano, veneto e sardo.",
         `![Proposta di valore del MUBA: scopri, connettiti, lascia il tuo segno](${media}/muba-value-proposition.webp)`,
         "## L'identità",
-        "Il logo ha una B allungata che lega le lettere del nome e si adatta in versione estesa, sigla e sigillo. Il sistema usa **due colori di base, antracite e crema, e un solo accento, il rosso bonifica**, usato per i segni a mano che sottolineano le parole importanti. Le fotografie d'archivio restano in bianco e nero, con i bordi tremolanti come ritagli.",
-        "@font Mostra Nuova · Semplicità Modern: Titoli · Mostra Nuova, testi · Semplicità Modern",
+        "Come art director ho costruito un'identità a tutto tondo: un logo con la B allungata, **antracite e crema con un solo accento, il rosso bonifica**, fotografie d'archivio in bianco e nero, illustrazioni e animazioni disegnate su misura.",
         "@palette Colori del MUBA: #2b2b2b #faefdc #e52d28",
         `![La nuova identità del MUBA: logo esteso, logo breve e sigillo nei tre colori](${media}/muba-identity.webp)`,
         "## Sito e MUBApp",
-        "Il sito accoglie con una fotografia d'archivio e un'unica azione, **prendere i biglietti**, e dice subito se il museo è aperto. La **MUBApp** accompagna la visita con guide e audioguida per ogni opera, mappa, scansione dei pezzi e un profilo con biglietti e preferiti, perché la tecnologia serva a raccontare e non diventi lo scopo.",
+        "Ho ridisegnato il sito attorno allo storytelling, con una sitemap rivista da zero e nuove pagine e funzioni: museo digitale, digitalizzazione dei reperti, **prenotazione online dei biglietti**. La **MUBApp** nativa rende l'esplorazione più consapevole, con audioguida, mappa e scansione dei pezzi.",
         `![La MUBApp: guida del museo con l'elenco delle opere e la tab bar](${media}/muba-app.webp)`,
-        "## Il podcast",
-        "> Il racconto lo fanno **le persone che hanno visto cambiare la terra**.",
-        "**Ciacolare e ciacoleremo**, \"chiacchieriamo e continueremo a farlo\" in veneto, dà voce a residenti ed ex residenti, con un tono colloquiale ed empatico. Le copertine sono ritratti strappati e ricomposti, come una memoria che si rimette insieme. Ai contenuti si affianca un piano editoriale di mostre, incontri e annunci con la stessa grammatica visiva.",
+        "## Comunicazione",
+        "Il podcast **Ciacolate**, dal motto veneto \"ciacolare e ciacoleremo\", \"chiacchieriamo e continueremo a farlo\", dà voce a chi ha visto cambiare la terra. Un piano editoriale ad hoc di mostre, incontri e annunci usa la stessa grammatica visiva. Il progetto è pronto da consegnare al cliente.",
         `![Ciacolate, il podcast del MUBA: copertina e due episodi](${media}/muba-podcast.webp)`,
-        "## Il mio ruolo",
-        "Progetto di corso in NABA con Giampaolo Zirone: per me **brand strategy, art direction e UX design**, con la ricerca condivisa.",
       ],
       en: [
         "## The context",
-        "MUBA is housed in the former Mill of Arborea, an example of industrial archaeology that still keeps the machinery once used to grind wheat. It collects the documents of the reclamation of the Sassu plain and of the town, **founded in 1928 and settled by families from Veneto, Friuli, Romagna and Sicily** in an internal migration experiment unique for its time.",
+        "MUBA is housed in the former Mill of Arborea and tells the story of the reclamation of the Sassu plain and of the town, **founded in 1928 by families from Veneto, Friuli, Romagna and Sicily**, an internal migration experiment unique for its time.",
         "## The challenge",
         "> A museum that tells a living story, but **in one direction only**: visitors look, read and leave.",
-        "It is a story of vision and hard work that residents still feel as their own, but **the museum's communication does not tell it**, and outside Sardinia almost nobody knows it. The goal was to move from a static collection to **a living, shared memory**, without filling the museum with technology for its own sake. Before designing we mapped the audience, three clusters and nine personas, and compared five museums across eighteen factors: **none uses irony and sharing is barely explored**, and that is where MUBA could stand.",
+        "Outside Sardinia almost nobody knows it, and the museum's communication does not tell it. I led the research on branding, tone of voice and personality: three audience clusters, nine personas, five museums compared across eighteen factors. **None uses irony and sharing is barely explored**, and that is where MUBA could stand.",
         "## The idea",
         "> A museum you don't just look at. **You live it.**",
-        "The value proposition comes down to three verbs: **discover** the story of a town built on reclaimed marshland, **connect** with the community across generations, stories and events, and **leave your mark** by adding a memory. Every visitor becomes a keeper of Arborea's story. The voice is a hand-drawn grandmother, warm and ironic. The brand promise is written in Italian, Venetan and Sardinian.",
+        "Three verbs: **discover**, **connect**, **leave your mark**. The voice is a hand-drawn grandmother, warm and ironic, and the brand promise is written in Italian, Venetan and Sardinian.",
         `![MUBA value proposition: discover, connect, leave your mark](${media}/muba-value-proposition.webp)`,
         "## The identity",
-        "The logo has a stretched B that ties the letters of the name together, and adapts as a full wordmark, a short mark and a seal. The system uses **two base colours, charcoal and cream, and a single accent, reclamation red**, used for the hand-drawn marks that underline key words. Archive photographs stay in black and white, with wobbly edges like cut-outs.",
-        "@font Mostra Nuova · Semplicità Modern: Titles · Mostra Nuova, body · Semplicità Modern",
+        "As art director I built a complete identity: a logo with a stretched B, **charcoal and cream with a single accent, reclamation red**, black-and-white archive photographs, custom-drawn illustrations and animations.",
         "@palette MUBA colours: #2b2b2b #faefdc #e52d28",
         `![The new MUBA identity: full logo, short logo and seal in the three colours](${media}/muba-identity.webp)`,
         "## Website and MUBApp",
-        "The website welcomes visitors with an archive photograph and a single action, **get your tickets**, and says right away whether the museum is open. The **MUBApp** accompanies the visit with guides and an audio guide for every work, a map, item scanning and a profile with tickets and favourites, so that technology serves the storytelling instead of becoming the goal.",
+        "I redesigned the website around storytelling, with a sitemap rebuilt from scratch and new pages and features: a digital museum, digitised artefacts, **online ticket booking**. The native **MUBApp** makes exploring more mindful, with an audio guide, a map and item scanning.",
         `![The MUBApp: museum guide with the list of works and the tab bar](${media}/muba-app.webp)`,
-        "## The podcast",
-        "> The story is told by **the people who watched the land change**.",
-        "**Ciacolare e ciacoleremo**, \"we chat, and we'll keep chatting\" in Venetan, gives a voice to residents and former residents, in a colloquial, empathetic tone. The covers are portraits torn and put back together, like a memory being reassembled. An editorial plan of exhibitions, talks and announcements sits alongside, with the same visual grammar.",
+        "## Communication",
+        "The podcast **Ciacolate**, from the Venetan motto \"ciacolare e ciacoleremo\", \"we chat, and we'll keep chatting\", gives a voice to those who watched the land change. A tailor-made editorial plan of exhibitions, talks and announcements shares the same visual grammar. The project is ready to hand over to the client.",
         `![Ciacolate, the MUBA podcast: cover and two episodes](${media}/muba-podcast.webp)`,
-        "## My role",
-        "A course project at NABA with Giampaolo Zirone: for me **brand strategy, art direction and UX design**, with shared research.",
       ],
     },
     tech: {
@@ -409,6 +444,10 @@ export const projects: ProjectItem[] = [
     title: "Teseo — riparare invece di sostituire",
     category: service,
     year: "2026",
+    tldr: {
+      it: "Un servizio che collega ricambi digitali e stampanti 3D di quartiere per riparare invece di sostituire, raccontato da 200 droni.",
+      en: "A service linking digital spare parts to neighbourhood 3D printers to repair instead of replace, told by 200 drones.",
+    },
     summary: {
       it: "Un servizio che rimette in vita gli oggetti a cui manca un pezzo, collegando i ricambi come file digitali a una rete di FabLab e stampanti 3D di quartiere, raccontato in cielo da uno spettacolo di 200 droni. Progetto di gruppo in NABA.",
       en: "A service that brings back to life objects missing a single part, connecting spare parts as digital files to a network of neighbourhood FabLabs and 3D printers, told in the sky by a 200-drone show. Group project at NABA.",
@@ -801,10 +840,15 @@ export const tools: ToolItem[] = [
 
 export type UpdateItem = {
   title: Localized<string>;
-  date: Localized<string>;
-  kind: Localized<string>;
-  venue: Localized<string>;
+  /** Senza date/kind/venue la voce è la sola riga di titolo. */
+  date?: Localized<string>;
+  kind?: Localized<string>;
+  venue?: Localized<string>;
   href?: string;
+  /** Pagina interna (percorso italiano, senza prefisso lingua); ha la precedenza su `href`. */
+  to?: string;
+  /** Compare in "Ultimamente" nella home. */
+  lately?: true;
 };
 
 export const updates: UpdateItem[] = [
@@ -813,7 +857,7 @@ export const updates: UpdateItem[] = [
       it: "Laurea magistrale in User Experience Design",
       en: "MA in User Experience Design",
     },
-    date: { it: "2026 — oggi", en: "2026 — present" },
+    date: { it: "Ott 2024 — oggi", en: "Oct 2024 — Today" },
     kind: { it: "Formazione", en: "Education" },
     venue: {
       it: "NABA, Nuova Accademia di Belle Arti — Design della Comunicazione",
@@ -838,6 +882,15 @@ export const updates: UpdateItem[] = [
     kind: { it: "Riconoscimento", en: "Recognition" },
     venue: { it: "UX Design Awards", en: "UX Design Awards" },
     href: "https://ux-design-awards.com/winners/2026-2-guido-from-bureaucracy-to-dialogue",
+    lately: true,
+  },
+  {
+    title: {
+      it: "Milano Digital Week 2026 · Teseo esposto allo STEP FuturAbility District, 30 settembre - 4 ottobre 2026",
+      en: "Milano Digital Week 2026 · Teseo exhibited at STEP FuturAbility District, 30 Sep - 4 Oct 2026",
+    },
+    to: "/projects/teseo",
+    lately: true,
   },
   {
     title: {

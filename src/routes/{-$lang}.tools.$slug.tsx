@@ -5,7 +5,7 @@ import { BackLink, PageShell } from "@/components/PageShell";
 import { CharacterCount, CoinFlip, Contrast, Lorem, RandomNumber } from "@/components/tools";
 // `summary` non compare più in pagina: sopravvive solo come meta description.
 import { tools, type ToolItem } from "@/data/site";
-import { ui, useT } from "@/i18n";
+import { langParam, seoLinks, ui, useT } from "@/i18n";
 
 // L'unico punto in cui uno slug incontra il suo componente. Aggiungendo uno
 // strumento vanno toccati due posti: l'elenco in src/data/site.ts e questa mappa.
@@ -17,31 +17,33 @@ const components: Record<string, ComponentType> = {
   "lorem-ipsum": Lorem,
 };
 
-export const Route = createFileRoute("/tools/$slug")({
+export const Route = createFileRoute("/{-$lang}/tools/$slug")({
   loader: ({ params }): ToolItem => {
     const tool = tools.find((item) => item.slug === params.slug);
     if (!tool || !components[tool.slug]) throw notFound();
     return tool;
   },
-  head: ({ loaderData }) => {
+  head: ({ loaderData, params }) => {
+    const lang = langParam(params.lang);
     if (!loaderData) {
       return {
         meta: [
-          { title: "Strumento non trovato — Luca Scalvinoni" },
+          { title: `${lang === "en" ? "Tool not found" : "Strumento non trovato"} — Luca Scalvinoni` },
           { name: "robots", content: "noindex" },
         ],
       };
     }
-    const title = `${loaderData.label.it} — Luca Scalvinoni`;
+    const title = `${loaderData.label[lang]} — Luca Scalvinoni`;
     return {
       meta: [
         { title },
-        { name: "description", content: loaderData.summary.it },
+        { name: "description", content: loaderData.summary[lang] },
         { property: "og:title", content: title },
-        { property: "og:description", content: loaderData.summary.it },
+        { property: "og:description", content: loaderData.summary[lang] },
         { property: "og:type", content: "website" },
         { name: "twitter:card", content: "summary_large_image" },
       ],
+      links: seoLinks(lang, `/tools/${loaderData.slug}`),
     };
   },
   notFoundComponent: ToolNotFound,

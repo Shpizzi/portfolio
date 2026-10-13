@@ -1,35 +1,41 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 
-import { ExternalArrow, PageShell, SectionLabel } from "@/components/PageShell";
+import { PageShell, SectionLabel, UpdateRow } from "@/components/PageShell";
 import { linkedin, mailto, updates } from "@/data/site";
-import { ui, useLang, useT } from "@/i18n";
+import { LocLink, langParam, seoLinks, ui, useLang, useT } from "@/i18n";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Luca Scalvinoni — UX Designer" },
-      {
-        name: "description",
-        content:
-          "Luca Scalvinoni è un UX designer di Brescia. Fino ad agosto 2026 UX & Product Consultant per B4i, l'acceleratore di startup dell'Università Bocconi.",
-      },
-      { property: "og:title", content: "Luca Scalvinoni — UX Designer" },
-      {
-        property: "og:description",
-        content:
-          "UX designer di Brescia. UX & Product Consultant per B4i, l'acceleratore startup della Bocconi: tre startup su prodotto, UX/UI e branding.",
-      },
-      { property: "og:type", content: "profile" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+const meta = {
+  it: {
+    description:
+      "Luca Scalvinoni è un UX designer di Brescia. Fino ad agosto 2026 UX & Product Consultant per B4i, l'acceleratore di startup dell'Università Bocconi.",
+    ogDescription:
+      "UX designer di Brescia. UX & Product Consultant per B4i, l'acceleratore startup della Bocconi: tre startup su prodotto, UX/UI e branding.",
+  },
+  en: {
+    description:
+      "Luca Scalvinoni is a UX designer based in Brescia, Italy. Until August 2026 UX & Product Consultant for B4i, the startup accelerator of Bocconi University.",
+    ogDescription:
+      "UX designer based in Brescia, Italy. UX & Product Consultant for B4i, Bocconi's startup accelerator: three startups across product, UX/UI and branding.",
+  },
+};
+
+export const Route = createFileRoute("/{-$lang}/")({
+  head: ({ params }) => {
+    const lang = langParam(params.lang);
+    return {
+      meta: [
+        { title: "Luca Scalvinoni — UX Designer" },
+        { name: "description", content: meta[lang].description },
+        { property: "og:title", content: "Luca Scalvinoni — UX Designer" },
+        { property: "og:description", content: meta[lang].ogDescription },
+        { property: "og:type", content: "profile" },
+        { name: "twitter:card", content: "summary_large_image" },
+      ],
+      links: seoLinks(lang, "/"),
+    };
+  },
   component: Index,
 });
-
-// Un recap, non un elenco: sulla home entrano al massimo tre voci, e quante
-// davvero ce ne stiano lo decide l'altezza dello schermo. Media query e non JS,
-// così il server rende già il numero giusto e la pagina non scrolla.
-const RECAP = ["", "[@media(max-height:949px)]:hidden", "[@media(max-height:1199px)]:hidden"];
 
 const social = [
   { label: "Mail", href: mailto },
@@ -127,42 +133,32 @@ function Index() {
       </nav>
 
       <nav className="mt-5 flex gap-x-6 text-[0.95rem] text-muted-foreground">
-        <Link to="/projects" className="link-nav">
+        <LocLink to="/projects" className="link-nav">
           {t(ui.projects)}
-        </Link>
-        <Link to="/tools" className="link-nav">
+        </LocLink>
+        <LocLink to="/tools" className="link-nav">
           {t(ui.toolbox)}
-        </Link>
-        <Link to="/updates" className="link-nav">
+        </LocLink>
+        <LocLink to="/updates" className="link-nav">
           {t(ui.path)}
-        </Link>
+        </LocLink>
       </nav>
 
       <section className="mt-20 [@media(max-height:949px)]:mt-12">
         <SectionLabel>{t(ui.lately)}</SectionLabel>
         <ul className="space-y-5">
-          {updates.slice(0, RECAP.length).map((item, i) => (
-            <li key={item.title.it} className={RECAP[i]}>
-              {item.href ? (
-                <a href={item.href} target="_blank" rel="noreferrer" className="group link-quiet">
-                  {t(item.title)}
-                  <ExternalArrow />
-                </a>
-              ) : (
-                <span>{t(item.title)}</span>
-              )}
-              <div className="text-[0.95rem] text-muted-foreground">
-                {t(item.date)} · {t(item.kind)} · {t(item.venue)}
-              </div>
-            </li>
-          ))}
+          {updates
+            .filter((item) => item.lately)
+            .map((item) => (
+              <UpdateRow key={item.title.it} item={item} />
+            ))}
         </ul>
-        <Link
+        <LocLink
           to="/projects"
           className="link-nav mt-8 inline-block text-[0.95rem] text-muted-foreground"
         >
           {t(ui.seeProjects)}
-        </Link>
+        </LocLink>
       </section>
     </PageShell>
   );

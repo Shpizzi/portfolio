@@ -1,28 +1,29 @@
-import { createFileRoute, Link, notFound, useNavigate, useRouter } from "@tanstack/react-router";
+import { createFileRoute, notFound, useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 
 import { BackLink, PageShell, SectionLabel } from "@/components/PageShell";
 import { mailto, visibleProjects, type ProjectItem } from "@/data/site";
-import { ui, useT } from "@/i18n";
+import { LocLink, langParam, localePath, seoLinks, siteUrl, ui, useLang, useT } from "@/i18n";
 
-export const Route = createFileRoute("/projects/$slug")({
+export const Route = createFileRoute("/{-$lang}/projects/$slug")({
   loader: ({ params }): ProjectItem => {
     const project = visibleProjects.find((item) => item.slug === params.slug);
     if (!project) throw notFound();
     return project;
   },
-  head: ({ loaderData }) => {
+  head: ({ loaderData, params }) => {
+    const lang = langParam(params.lang);
     if (!loaderData) {
       return {
         meta: [
-          { title: "Progetto non trovato — Luca Scalvinoni" },
+          { title: `${lang === "en" ? "Project not found" : "Progetto non trovato"} — Luca Scalvinoni` },
           { name: "robots", content: "noindex" },
         ],
       };
     }
     const title = `${loaderData.title} — Luca Scalvinoni`;
-    const description = loaderData.summary.it;
+    const description = loaderData.summary[lang];
     return {
       meta: [
         { title },
@@ -33,11 +34,12 @@ export const Route = createFileRoute("/projects/$slug")({
         { name: "twitter:card", content: "summary_large_image" },
         ...(loaderData.image
           ? [
-              { property: "og:image", content: loaderData.image },
-              { name: "twitter:image", content: loaderData.image },
+              { property: "og:image", content: `${siteUrl}${loaderData.image}` },
+              { name: "twitter:image", content: `${siteUrl}${loaderData.image}` },
             ]
           : []),
       ],
+      links: seoLinks(lang, `/projects/${loaderData.slug}`),
     };
   },
   notFoundComponent: ProjectNotFound,
@@ -131,6 +133,7 @@ function FontSpecimen({ spec }: { spec: string }) {
 // è piena la pagina diventa quella.
 function NextProject({ current }: { current: ProjectItem }) {
   const t = useT();
+  const { lang } = useLang();
   const navigate = useNavigate();
   const section = useRef<HTMLElement>(null);
   const bar = useRef<HTMLDivElement>(null);
@@ -172,11 +175,7 @@ function NextProject({ current }: { current: ProjectItem }) {
       clearTimeout(release);
       if (pull >= target) {
         done = true;
-        void navigate({
-          to: "/projects/$slug",
-          params: { slug: next.slug },
-          viewTransition: true,
-        });
+        void navigate({ to: localePath(lang, `/projects/${next.slug}`) as never, viewTransition: true });
         return;
       }
       // Se ci si ferma prima, tutto torna al suo posto.
@@ -219,14 +218,14 @@ function NextProject({ current }: { current: ProjectItem }) {
       page.style.translate = "";
       page.style.transition = "";
     };
-  }, [navigate, next.slug]);
+  }, [navigate, next.slug, lang]);
 
   return (
     <section ref={section} className="mt-16 pb-16">
-      <Link to="/projects/$slug" params={{ slug: next.slug }} viewTransition className="block">
+      <LocLink to={`/projects/${next.slug}`} viewTransition className="block">
         <div className="text-[0.85rem] text-muted-foreground">{t(ui.nextProject)}</div>
         <div className="mt-2 text-[1.3rem] leading-snug">{next.title.split(" — ")[0]}</div>
-      </Link>
+      </LocLink>
       <div aria-hidden className="mt-4 h-0.5 bg-border">
         <div ref={bar} className="h-full origin-left bg-foreground" style={{ scale: "0 1" }} />
       </div>
@@ -347,6 +346,13 @@ function ProjectDetail() {
           ))}
         </ul>
 
+        {project.tldr ? (
+          <p className="mt-6 text-[1.05rem] leading-snug text-foreground">
+            <span className="text-muted-foreground">TL;DR </span>
+            {t(project.tldr)}
+          </p>
+        ) : null}
+
         {project.image ? (
           <Zoomable
             src={project.image}
@@ -416,7 +422,7 @@ function ProjectDetail() {
               {project.links.map((link) => (
                 <li key={link.url}>
                   <a href={link.url} target="_blank" rel="noreferrer" className="link-quiet">
-                    {link.label}
+                    {typeof link.label === "string" ? link.label : t(link.label)}
                   </a>
                 </li>
               ))}

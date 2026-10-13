@@ -1,28 +1,37 @@
-// @lovable.dev/vite-tanstack-config already includes the following — do NOT add them manually
-// or the app will break with duplicate plugins:
-//   - TanStack devtools (dev-only, first), tanstackStart, viteReact, tailwindcss, tsConfigPaths,
-//     nitro (build-only using cloudflare as a default target), VITE_* env injection, @ path alias,
-//     React/TanStack dedupe, error logger plugins, and sandbox detection (port/host/strictPort).
-// You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
-import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import tailwindcss from "@tailwindcss/vite";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import viteReact from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
+import tsConfigPaths from "vite-tsconfig-paths";
 
 import { tools, visibleProjects } from "./src/data/site";
 
 export default defineConfig({
-  tanstackStart: {
-    // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-    // nitro/vite builds from this
-    server: { entry: "server" },
-    // ponytail: schede progetto e strumenti vengono da src/data/site.ts, così
-    // aggiungerne uno non richiede di aggiornare anche questo elenco.
-    pages: [
-      { path: "/" },
-      { path: "/projects" },
-      { path: "/updates" },
-      { path: "/tools" },
-      ...visibleProjects.map((project) => ({ path: `/projects/${project.slug}` })),
-      ...tools.map((tool) => ({ path: `/tools/${tool.slug}` })),
-    ],
-    prerender: { enabled: true, autoStaticPathsDiscovery: false },
+  css: { transformer: "lightningcss" },
+  resolve: {
+    alias: { "@": `${process.cwd()}/src` },
+    dedupe: ["react", "react-dom", "@tanstack/react-query", "@tanstack/query-core"],
   },
+  server: { host: "::", port: 8080 },
+  plugins: [
+    tailwindcss(),
+    tsConfigPaths({ projects: ["./tsconfig.json"] }),
+    tanstackStart({
+      // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
+      server: { entry: "server" },
+      // ponytail: schede progetto e strumenti vengono da src/data/site.ts, così
+      // aggiungerne uno non richiede di aggiornare anche questo elenco.
+      // Ogni pagina esce due volte: italiano senza prefisso, inglese sotto /en.
+      pages: [
+        "/",
+        "/projects",
+        "/updates",
+        "/tools",
+        ...visibleProjects.map((project) => `/projects/${project.slug}`),
+        ...tools.map((tool) => `/tools/${tool.slug}`),
+      ].flatMap((path) => [{ path }, { path: path === "/" ? "/en" : `/en${path}` }]),
+      prerender: { enabled: true, autoStaticPathsDiscovery: false },
+    }),
+    viteReact(),
+  ],
 });
