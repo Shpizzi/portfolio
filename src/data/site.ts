@@ -1047,8 +1047,8 @@ export const updates: UpdateItem[] = [
   },
   {
     title: {
-      it: "Recce Maps · oltre 1.600 ordini in 7 rally, 3 su 4 da fuori Italia, e una collaborazione con il WRC Croatia Rally",
-      en: "Recce Maps · more than 1,600 orders across 7 rallies, 3 in 4 from outside Italy, and a collaboration with WRC Croatia Rally",
+      it: "Recce Maps · oltre 1.600 ordini e una collaborazione con il WRC Croatia Rally",
+      en: "Recce Maps · more than 1,600 orders and a collaboration with WRC Croatia Rally",
     },
     date: { it: "2026", en: "2026" },
     kind: { it: "Prodotto", en: "Product" },
