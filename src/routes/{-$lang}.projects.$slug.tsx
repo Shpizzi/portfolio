@@ -253,7 +253,7 @@ function NextProject({ current }: { current: ProjectItem }) {
     <section ref={section} className="mt-16 pb-16">
       <LocLink to={`/projects/${next.slug}`} viewTransition className="block">
         <div className="text-[0.85rem] text-muted-foreground">{t(ui.nextProject)}</div>
-        <div className="mt-2 text-[1.3rem] leading-snug">{t(next.title).split(" — ")[0]}</div>
+        <div className="mt-2 text-[1.3rem] leading-snug">{t(next.title).split(": ")[0]}</div>
       </LocLink>
       <div aria-hidden className="mt-4 h-0.5 bg-border">
         <div ref={bar} className="h-full origin-left bg-foreground" style={{ scale: "0 1" }} />
@@ -358,7 +358,7 @@ function ProjectDetail() {
 
   return (
     <PageShell>
-      <BackLink to="/projects" strict current={t(project.title).split(" — ")[0]}>
+      <BackLink to="/projects" strict current={t(project.title).split(": ")[0]}>
         {t(ui.projects)}
       </BackLink>
 

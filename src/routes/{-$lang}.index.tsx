@@ -24,9 +24,9 @@ export const Route = createFileRoute("/{-$lang}/")({
     const lang = langParam(params.lang);
     return {
       meta: [
-        { title: "Luca Scalvinoni — UX Designer" },
+        { title: "Luca Scalvinoni, UX & Product Designer" },
         { name: "description", content: meta[lang].description },
-        { property: "og:title", content: "Luca Scalvinoni — UX Designer" },
+        { property: "og:title", content: "Luca Scalvinoni, UX & Product Designer" },
         { property: "og:description", content: meta[lang].ogDescription },
         { property: "og:type", content: "profile" },
         { name: "twitter:card", content: "summary_large_image" },

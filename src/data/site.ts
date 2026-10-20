@@ -77,7 +77,7 @@ export const projects: ProjectItem[] = [
         `![Editor interno delle mappe Recce: le prove del Croatia Rally sulla mappa, l'elenco dei livelli e il riepilogo di un punto spettatori](${media}/recce-maps-map-editor.webp)`,
         "## Risultati",
         "> Oltre **1.600 ordini** in 7 rally e una collaborazione con il **WRC Croatia Rally**.",
-        "Da gennaio abbiamo coperto **7 rally**, con ogni mappa disponibile in **almeno due lingue** e fino a quattro. Per il WRC Croatia Rally, tappa del mondiale FIA, abbiamo collaborato con gli organizzatori della gara, mentre le campagne sui social hanno superato le **175.000 visualizzazioni** e **3 ordini su 4** arrivano da fuori Italia.",
+        "Da gennaio abbiamo coperto **7 rally**, con ogni mappa disponibile in **almeno due lingue** e fino a quattro. Per il WRC Croatia Rally, tappa del mondiale FIA, abbiamo collaborato con gli organizzatori della gara, mentre le campagne sui social hanno superato le **175.000 visualizzazioni** e **3 ordini su 4** (contro quasi 4 spettatori su 5) arrivano da fuori Italia.",
         "## Cosa è cambiato dopo il lancio",
         "Ogni guida è una mappa di Google My Maps, e siccome non avevamo budget e dovevamo tenere bassi i costi di pagamento e di consegna, la prima versione mandava il link alla mappa dentro un PDF allegato all'ordine. Molti clienti ci hanno scritto perché non riuscivano ad aprire la mappa, soprattutto perché non avevano un account Google o avevano usato un'altra email al checkout, e questo ci ha fatto capire che la consegna faceva parte del prodotto e che il PDF dava un'immagine poco professionale.",
         "Ho ricostruito la consegna con n8n, le API di Google Cloud e Shopify, così ogni cliente riceve per email un link personale che aggiunge la mappa al proprio account Google in modo permanente, mentre ogni accesso viene tracciato e usato per il marketing e l'assistenza clienti. Per il problema degli account ho costruito un'automazione che invia un modulo precompilato quando un cliente deve cambiare l'email collegata alla mappa, e che incrocia i dati di Shopify, di Google e dell'email così che nessuno del team debba gestire il cambio a mano.",
@@ -89,7 +89,7 @@ export const projects: ProjectItem[] = [
         `![A rally day is decided before the first car: where do I park, where do I watch](${media}/recce-maps-rally-day.webp)`,
         "## The solution",
         "> A guide that opens in Google Maps, with **nothing to install** and nothing to learn.",
-        "Each guide is a map that opens in Google Maps, the app spectators already have, with every corner classified from flat out to hairpin and hundreds of hand-picked points, and relying on Maps also let us **test the service with real buyers** from the start.",
+        "Each guide is a map that opens in Google Maps, the app spectators already have, with every corner classified from flat out to hairpin and hundreds of hand-picked points, and relying on Maps also lets us **test the service with real buyers** from the start.",
         `![All you need is your phone: no apps to install, no account to create, no learning curve](${media}/recce-maps-all-you-need-is-your-phone.mp4)`,
         "## What I did",
         "> I co-founded Recce Maps with three friends, and while we designed the whole service together, from the branding to selling online to the MVP, **some parts were mine from start to finish**.",
@@ -98,7 +98,7 @@ export const projects: ProjectItem[] = [
         `![Recce's internal map editor: the Croatia Rally stages on the map, the layer list and the summary of a spectator point](${media}/recce-maps-map-editor.webp)`,
         "## Results",
         "> More than **1,600 orders** across 7 rallies and a collaboration with **WRC Croatia Rally**.",
-        "Since January we have covered **7 rallies**, with every map available in **at least two languages** and up to four. For WRC Croatia Rally, a round of the FIA world championship, we worked with the organisers of the event, while the social campaigns gathered more than **175,000 views** and **3 orders in 4** come from outside Italy.",
+        "Since January we have covered **7 rallies**, with every map available in **at least two languages** and up to four. For WRC Croatia Rally, a round of the FIA world championship, we worked with the organisers of the event, while the social campaigns gathered more than **175,000 views** and **3 orders in 4** (against almost 4 spectators in 5) come from outside Italy.",
         "## What changed after launch",
         "Each guide is a Google My Maps map, and because we had no budget and needed to keep payment and delivery costs low, the first version sent the map link inside a PDF attached to the order. Many customers wrote to us because they could not open the map, mostly because they had no Google account or had used a different email at checkout, which showed us that delivery was part of the product and that the PDF looked unprofessional.",
         "I rebuilt the delivery with n8n, the Google Cloud APIs and Shopify, so that each customer now receives a personal link by email which adds the map to their own Google account permanently, while every access is tracked and used for marketing and customer support. For the account problem I built an automation that sends a prefilled form when a customer needs to change the email linked to the map, and which cross-checks Shopify, Google and the email address so that nobody on the team has to handle the change by hand.",
@@ -127,7 +127,7 @@ export const projects: ProjectItem[] = [
   },
   {
     slug: "guido",
-    title: { it: "Guido — Dalla burocrazia al dialogo", en: "Guido — From bureaucracy to dialogue" },
+    title: { it: "Guido: dalla burocrazia al dialogo", en: "Guido: From bureaucracy to dialogue" },
     category: uxui,
     year: "2026",
     href: "https://ux-design-awards.com/winners/2026-2-guido-from-bureaucracy-to-dialogue",
@@ -174,7 +174,7 @@ export const projects: ProjectItem[] = [
         "Guido è stato **nominato agli [UX Design Awards 2026](https://ux-design-awards.com/winners/2026-2-guido-from-bureaucracy-to-dialogue) nella categoria New Talent**, nelle sezioni Platform & Community e Citizens & Society. Il progetto è stato sviluppato in NABA con Nicola Sorgesa e Giampaolo Zirone, con la guida di Gabriele Ruscelli.",
         `![Demo del totem di Guido: accesso con identità digitale, scelta del servizio e stato della pratica](${media}/guido-demo.mp4)`,
         "## Il mio ruolo",
-        "Progetto in tre con Nicola Sorgesa e Giampaolo Zirone, con la guida di Gabriele Ruscelli. Abbiamo lavorato insieme su tutte le fasi del progetto, dalla ricerca con gli utenti ai flussi, all'interfaccia, al prototipo e alla presentazione, e all'interno di questo lavoro comune ho guidato in particolare [da completare: la parte che hai guidato tu].",
+        "Progetto in tre con Nicola Sorgesa e Giampaolo Zirone, con la guida di Gabriele Ruscelli. Abbiamo lavorato insieme su tutte le fasi del progetto, dalla ricerca con gli utenti ai flussi, all'interfaccia, al prototipo e alla presentazione, e all'interno di questo lavoro comune ho seguito in particolare **la ricerca, sia qualitativa sia quantitativa**, tra interviste, user test, stesura del questionario e pulizia dei dati, e ho costruito **il design system** insieme a un altro compagno.",
       ],
       en: [
         "## The problem",
@@ -197,7 +197,7 @@ export const projects: ProjectItem[] = [
         "Guido was **nominated at the [UX Design Awards 2026](https://ux-design-awards.com/winners/2026-2-guido-from-bureaucracy-to-dialogue) in the New Talent category**, in the Platform & Community and Citizens & Society sections. The project was developed at NABA with Nicola Sorgesa and Giampaolo Zirone, mentored by Gabriele Ruscelli.",
         `![Demo of Guido's totem: digital identity login, service selection and request status](${media}/guido-demo.mp4)`,
         "## My role",
-        "A three-person project with Nicola Sorgesa and Giampaolo Zirone, mentored by Gabriele Ruscelli. The three of us worked together on every phase of the project, from user research to flows, interface, prototype and presentation, and within that shared work I led [da completare: la parte che hai guidato tu].",
+        "A three-person project with Nicola Sorgesa and Giampaolo Zirone, mentored by Gabriele Ruscelli. The three of us worked together on every phase of the project, from user research to flows, interface, prototype and presentation, and within that shared work I focused on **the research, both qualitative and quantitative**, from interviews and user tests to writing the questionnaire and cleaning the data, and built **the design system** together with another teammate.",
       ],
     },
     tech: {
@@ -207,7 +207,7 @@ export const projects: ProjectItem[] = [
   },
   {
     slug: "cartografie-della-storia",
-    title: { it: "Cartografie della Storia — Archivio Corriere della Sera", en: "Cartografie della Storia — Corriere della Sera Archive" },
+    title: { it: "Cartografie della Storia: Archivio Corriere della Sera", en: "Cartografie della Storia: Corriere della Sera Archive" },
     category: uxui,
     year: "2026",
     image: `${media}/cartografie-cover.webp`,
@@ -291,7 +291,7 @@ export const projects: ProjectItem[] = [
   },
   {
     slug: "evasurgica",
-    title: { it: "Evasurgica — redesign UX/UI e pitch", en: "Evasurgica — UX/UI redesign and pitch" },
+    title: { it: "Evasurgica: redesign UX/UI e pitch", en: "Evasurgica: UX/UI redesign and pitch" },
     category: uxui,
     year: "2026",
     image: `${media}/evasurgica-cover.webp`,
@@ -345,7 +345,7 @@ export const projects: ProjectItem[] = [
   },
   {
     slug: "teseo",
-    title: { it: "Teseo — riparare invece di sostituire", en: "Teseo — repair instead of replace" },
+    title: { it: "Teseo: riparare invece di sostituire", en: "Teseo: repair instead of replace" },
     category: service,
     year: "2026",
     image: `${media}/teseo-cover.webp`,
@@ -430,7 +430,7 @@ export const projects: ProjectItem[] = [
   {
     slug: "pclab",
     other: true,
-    title: { it: "PCLab — redesign SEO del sito", en: "PCLab — SEO website redesign" },
+    title: { it: "PCLab: redesign SEO del sito", en: "PCLab: SEO website redesign" },
     category: web,
     year: "2026",
     href: "https://pclab.bs.it",
@@ -483,7 +483,7 @@ export const projects: ProjectItem[] = [
     // ponytail: oscurato per ora; togliere `hidden` per ripubblicarla
     hidden: true,
     other: true,
-    title: { it: "Antevo — naming e brand identity", en: "Antevo — naming and brand identity" },
+    title: { it: "Antevo: naming e brand identity", en: "Antevo: naming and brand identity" },
     category: brand,
     year: "2026",
     href: "https://antevo.ai",
@@ -530,7 +530,7 @@ export const projects: ProjectItem[] = [
   {
     slug: "muba-arborea",
     other: true,
-    title: { it: "MUBA — Museo della Bonifica di Arborea", en: "MUBA — Arborea Land Reclamation Museum" },
+    title: { it: "MUBA: Museo della Bonifica di Arborea", en: "MUBA: Arborea Land Reclamation Museum" },
     category: artDirection,
     year: "2025",
     image: `${media}/muba-cover.webp`,
@@ -608,7 +608,7 @@ export const projects: ProjectItem[] = [
     slug: "evoclin",
     // ponytail: nascosto finché i [da completare] non sono compilati; togliere `hidden` per pubblicarla
     hidden: true,
-    title: { it: "Evoclin — rebrand e UX/UI della demo", en: "Evoclin — rebrand and demo UX/UI" },
+    title: { it: "Evoclin: rebrand e UX/UI della demo", en: "Evoclin: rebrand and demo UX/UI" },
     category: uxui,
     year: "2026",
     tldr: {
@@ -1058,8 +1058,8 @@ export const updates: UpdateItem[] = [
   },
   {
     title: {
-      it: "Nomination UX Design Awards — New Talent",
-      en: "UX Design Awards Nomination — New Talent",
+      it: "Nomination UX Design Awards: New Talent",
+      en: "UX Design Awards Nomination: New Talent",
     },
     date: { it: "2026", en: "2026" },
     kind: { it: "Riconoscimento", en: "Recognition" },
