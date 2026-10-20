@@ -1032,8 +1032,8 @@ export const updates: UpdateItem[] = [
     date: { it: "Ott 2024 — Dic 2026 (prevista)", en: "Oct 2024 — Dec 2026 (expected)" },
     kind: { it: "Formazione", en: "Education" },
     venue: {
-      it: "NABA, Nuova Accademia di Belle Arti — Design della Comunicazione",
-      en: "NABA, Nuova Accademia di Belle Arti — Communication Design",
+      it: "NABA, Nuova Accademia di Belle Arti, User Experience Design (area Design della Comunicazione)",
+      en: "NABA, Nuova Accademia di Belle Arti, User Experience Design (Communication Design area)",
     },
   },
   {
