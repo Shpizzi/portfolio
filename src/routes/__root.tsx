@@ -80,6 +80,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "author", content: "Luca Scalvinoni" },
+      // ponytail: fuori dai risultati di Google e Bing, ma leggibile da chi apre il link (recruiter, strumenti AI)
+      { name: "googlebot", content: "noindex" },
+      { name: "bingbot", content: "noindex" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },

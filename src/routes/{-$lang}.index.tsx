@@ -41,7 +41,6 @@ const social = [
   { label: "Mail", href: mailto },
   { label: "LinkedIn", href: linkedin },
   { label: "Dribbble", href: "https://dribbble.com/Scalvinoni" },
-  { label: "CV", href: "/cv/Luca_Scalvinoni_CV.pdf" },
 ];
 
 function Index() {
@@ -127,8 +126,8 @@ function Index() {
             key={item.label}
             href={item.href}
             // ponytail: il mailto non apre una scheda nuova, resterebbe vuota
-            target={item.href.startsWith("mailto") ? undefined : "_blank"}
-            rel={item.href.startsWith("mailto") ? undefined : "noreferrer"}
+            target={item.href.startsWith("http") ? "_blank" : undefined}
+            rel={item.href.startsWith("http") ? "noreferrer" : undefined}
             className="link-nav"
           >
             {item.label}

@@ -30,7 +30,7 @@ export default defineConfig({
         ...visibleProjects.map((project) => `/projects/${project.slug}`),
         ...(showTools ? tools.map((tool) => `/tools/${tool.slug}`) : []),
       ].flatMap((path) => [{ path }, { path: path === "/" ? "/en" : `/en${path}` }]),
-      // ponytail: le pagine sono già tutte elencate sopra; senza crawl il prerender non insegue /cv/*.pdf
+      // ponytail: le pagine sono già tutte elencate sopra, il prerender non deve inseguire i link
       prerender: { enabled: true, autoStaticPathsDiscovery: false, crawlLinks: false },
     }),
     viteReact(),

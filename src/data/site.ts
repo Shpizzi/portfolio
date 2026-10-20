@@ -1086,16 +1086,6 @@ export const updates: UpdateItem[] = [
     href: "https://linkedin.com/company/recceworld",
   },
   {
-    title: {
-      it: "Shot e concept design pubblicati su Dribbble",
-      en: "Shots and Concept Design Published on Dribbble",
-    },
-    date: { it: "2023 — oggi", en: "2023 — present" },
-    kind: { it: "Design", en: "Design" },
-    venue: { it: "Dribbble", en: "Dribbble" },
-    href: "https://dribbble.com/Scalvinoni",
-  },
-  {
     title: { it: "Erasmus in Media Art", en: "Erasmus in Media Art" },
     date: { it: "2022", en: "2022" },
     kind: { it: "Studio", en: "Studies" },
