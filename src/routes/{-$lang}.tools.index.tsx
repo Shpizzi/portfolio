@@ -1,7 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, notFound } from "@tanstack/react-router";
 
 import { BackHome, PageShell, SectionLabel } from "@/components/PageShell";
-import { tools } from "@/data/site";
+import { showTools, tools } from "@/data/site";
 import { LocLink, langParam, seoLinks, ui, useT } from "@/i18n";
 
 const meta = {
@@ -20,6 +20,9 @@ const meta = {
 };
 
 export const Route = createFileRoute("/{-$lang}/tools/")({
+  beforeLoad: () => {
+    if (!showTools) throw notFound();
+  },
   head: ({ params }) => {
     const lang = langParam(params.lang);
     return {

@@ -117,10 +117,16 @@ export function BackLink({
   to,
   children,
   crumbs = true,
+  strict = false,
+  current,
 }: {
   to?: string;
   children?: ReactNode;
   crumbs?: boolean;
+  /** Va sempre alla pagina madre, senza passare dalla cronologia. */
+  strict?: boolean;
+  /** Pagina corrente, ultima voce del percorso e non cliccabile. */
+  current?: ReactNode;
 }) {
   const t = useT();
   const router = useRouter();
@@ -132,7 +138,7 @@ export function BackLink({
         className="link-nav text-[0.95rem]"
         // Chi arriva da un link esterno non ha una pagina di prima: va alla pagina madre.
         onClick={() =>
-          window.history.length > 1
+          !strict && window.history.length > 1
             ? router.history.back()
             : router.navigate({ to: localePath(lang, to ?? "/") as never })
         }
@@ -155,6 +161,12 @@ export function BackLink({
                     {children}
                   </LocLink>
                 </li>
+              </>
+            ) : null}
+            {current ? (
+              <>
+                <li aria-hidden>/</li>
+                <li aria-current="page">{current}</li>
               </>
             ) : null}
           </ol>

@@ -4,7 +4,7 @@ import type { ComponentType } from "react";
 import { BackLink, PageShell } from "@/components/PageShell";
 import { CharacterCount, CoinFlip, Contrast, Lorem, RandomNumber } from "@/components/tools";
 // `summary` non compare più in pagina: sopravvive solo come meta description.
-import { tools, type ToolItem } from "@/data/site";
+import { showTools, tools, type ToolItem } from "@/data/site";
 import { langParam, seoLinks, ui, useT } from "@/i18n";
 
 // L'unico punto in cui uno slug incontra il suo componente. Aggiungendo uno
@@ -18,6 +18,9 @@ const components: Record<string, ComponentType> = {
 };
 
 export const Route = createFileRoute("/{-$lang}/tools/$slug")({
+  beforeLoad: () => {
+    if (!showTools) throw notFound();
+  },
   loader: ({ params }): ToolItem => {
     const tool = tools.find((item) => item.slug === params.slug);
     if (!tool || !components[tool.slug]) throw notFound();

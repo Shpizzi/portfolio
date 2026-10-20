@@ -22,7 +22,7 @@ export const Route = createFileRoute("/{-$lang}/projects/$slug")({
         ],
       };
     }
-    const title = `${loaderData.title} — Luca Scalvinoni`;
+    const title = `${loaderData.title[lang]} — Luca Scalvinoni`;
     const description = loaderData.summary[lang];
     return {
       meta: [
@@ -50,7 +50,9 @@ function ProjectNotFound() {
   const t = useT();
   return (
     <PageShell>
-      <BackLink to="/projects">{t(ui.projects)}</BackLink>
+      <BackLink to="/projects" strict>
+        {t(ui.projects)}
+      </BackLink>
       <h1 className="mt-16 text-[1.05rem]">{t(ui.notFound)}</h1>
       <p className="mt-3 text-muted-foreground">{t(ui.notFoundBody)}</p>
     </PageShell>
@@ -102,6 +104,33 @@ function Palette({ spec }: { spec: string }) {
           <div key={color} className="h-16 flex-1" style={{ backgroundColor: color }} />
         ))}
       </div>
+    </figure>
+  );
+}
+
+// `@flow Titolo del flusso | Passo: descrizione | Passo: descrizione …` nei paragrafi di una scheda.
+// ponytail: solo testo, per un'immagine di flusso basta un `![alt](src)` subito dopo
+function Flow({ spec }: { spec: string }) {
+  const [label, ...steps] = spec.split(" | ");
+  return (
+    <figure>
+      <figcaption className="text-[0.85rem]">{label}</figcaption>
+      <ol className="mt-3 divide-y divide-border rounded-sm border border-border">
+        {steps.map((step, i) => {
+          const [title, body] = step.split(": ");
+          return (
+            <li key={step} className="flex gap-4 p-4">
+              <div className="w-6 shrink-0 pt-px text-[0.8rem] tabular-nums">
+                {String(i + 1).padStart(2, "0")}
+              </div>
+              <div>
+                <div className="text-[0.95rem] text-foreground">{title}</div>
+                {body ? <p className="mt-0.5 text-[0.9rem] leading-snug">{body}</p> : null}
+              </div>
+            </li>
+          );
+        })}
+      </ol>
     </figure>
   );
 }
@@ -224,7 +253,7 @@ function NextProject({ current }: { current: ProjectItem }) {
     <section ref={section} className="mt-16 pb-16">
       <LocLink to={`/projects/${next.slug}`} viewTransition className="block">
         <div className="text-[0.85rem] text-muted-foreground">{t(ui.nextProject)}</div>
-        <div className="mt-2 text-[1.3rem] leading-snug">{next.title.split(" — ")[0]}</div>
+        <div className="mt-2 text-[1.3rem] leading-snug">{t(next.title).split(" — ")[0]}</div>
       </LocLink>
       <div aria-hidden className="mt-4 h-0.5 bg-border">
         <div ref={bar} className="h-full origin-left bg-foreground" style={{ scale: "0 1" }} />
@@ -329,13 +358,15 @@ function ProjectDetail() {
 
   return (
     <PageShell>
-      <BackLink to="/projects">{t(ui.projects)}</BackLink>
+      <BackLink to="/projects" strict current={t(project.title).split(" — ")[0]}>
+        {t(ui.projects)}
+      </BackLink>
 
       <article
         className="mt-16"
         style={{ "--project-accent": project.accent } as React.CSSProperties}
       >
-        <h1 className="text-[1.05rem]">{project.title}</h1>
+        <h1 className="text-[1.05rem]">{t(project.title)}</h1>
         <div className="mt-1 text-[0.95rem] text-muted-foreground">
           {t(project.category)} · {project.year}
         </div>
@@ -359,7 +390,7 @@ function ProjectDetail() {
         {project.image ? (
           <Zoomable
             src={project.image}
-            alt={`${t(ui.previewAlt)} — ${project.title}`}
+            alt={`${t(ui.previewAlt)} — ${t(project.title)}`}
             onOpen={lightbox.open}
             className="mt-8 aspect-[4/3] w-full rounded-sm bg-muted object-cover"
           />
@@ -377,6 +408,8 @@ function ProjectDetail() {
               </p>
             ) : paragraph.startsWith("@font ") ? (
               <FontSpecimen key={paragraph} spec={paragraph.slice(6)} />
+            ) : paragraph.startsWith("@flow ") ? (
+              <Flow key={paragraph} spec={paragraph.slice(6)} />
             ) : paragraph.startsWith("@palette ") ? (
               <Palette key={paragraph} spec={paragraph.slice(9)} />
             ) : paragraph.startsWith("![") && paragraph.endsWith(".mp4)") ? (
@@ -410,7 +443,7 @@ function ProjectDetail() {
               <Zoomable
                 key={src}
                 src={src}
-                alt={`${t(ui.previewAlt)} — ${project.title} (${i + 2})`}
+                alt={`${t(ui.previewAlt)} — ${t(project.title)} (${i + 2})`}
                 onOpen={lightbox.open}
                 className="w-full rounded-sm bg-muted"
               />

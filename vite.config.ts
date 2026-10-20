@@ -4,7 +4,7 @@ import viteReact from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import tsConfigPaths from "vite-tsconfig-paths";
 
-import { tools, visibleProjects } from "./src/data/site";
+import { showTools, tools, visibleProjects } from "./src/data/site";
 
 export default defineConfig({
   css: { transformer: "lightningcss" },
@@ -26,11 +26,12 @@ export default defineConfig({
         "/",
         "/projects",
         "/updates",
-        "/tools",
+        ...(showTools ? ["/tools"] : []),
         ...visibleProjects.map((project) => `/projects/${project.slug}`),
-        ...tools.map((tool) => `/tools/${tool.slug}`),
+        ...(showTools ? tools.map((tool) => `/tools/${tool.slug}`) : []),
       ].flatMap((path) => [{ path }, { path: path === "/" ? "/en" : `/en${path}` }]),
-      prerender: { enabled: true, autoStaticPathsDiscovery: false },
+      // ponytail: le pagine sono già tutte elencate sopra; senza crawl il prerender non insegue /cv/*.pdf
+      prerender: { enabled: true, autoStaticPathsDiscovery: false, crawlLinks: false },
     }),
     viteReact(),
   ],

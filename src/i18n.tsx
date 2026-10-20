@@ -94,6 +94,7 @@ export function useT() {
 
 export const ui = {
   projects: { it: "Progetti", en: "Projects" },
+  otherWork: { it: "Altri lavori", en: "Other work" },
   toolbox: { it: "Strumenti", en: "Tools" },
   path: { it: "Percorso", en: "Journey" },
   lately: { it: "Ultimamente", en: "Lately" },
